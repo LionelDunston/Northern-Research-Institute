@@ -1,7 +1,18 @@
+"use client"
+
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { siteConfig, contactInfo } from "@/lib/data"
 
+const dashboardPaths = ["/admin", "/mentor", "/student", "/partner"]
+
 export function Footer() {
+  const pathname = usePathname()
+
+  if (dashboardPaths.some((p) => pathname.startsWith(p))) {
+    return null
+  }
+
   return (
     <footer className="bg-primary text-white">
       <div className="container-wide py-12">

@@ -1,25 +1,42 @@
 "use client"
 
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { mainNav } from "@/lib/navigation"
 
+const dashboardPaths = ["/admin", "/mentor", "/student", "/partner"]
+
 export function Header() {
   const router = useRouter()
+  const pathname = usePathname()
   const [user, setUser] = useState<{ role: string | null } | null>(null)
   const [loading, setLoading] = useState(true)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
 
+  if (dashboardPaths.some((p) => pathname.startsWith(p))) {
+    return null
+  }
+
   useEffect(() => {
+    const hasSessionCookie = () =>
+      document.cookie.split(";").some((c) => c.trim().startsWith("sb-") && c.includes("auth-token"))
+
+    if (hasSessionCookie()) {
+      setUser({ role: null })
+    }
+
     fetch("/api/auth/me")
-      .then(r => r.json())
-      .then(data => {
+      .then((r) => r.json())
+      .then((data) => {
         setUser(data.user ? { role: data.role } : null)
         setLoading(false)
       })
-      .catch(() => setLoading(false))
+      .catch(() => {
+        setUser(hasSessionCookie() ? { role: null } : null)
+        setLoading(false)
+      })
   }, [])
 
   const dashboardHref = user?.role === "admin" ? "/admin" : user?.role === "mentor" ? "/mentor" : user?.role === "partner" ? "/partner" : "/student"
