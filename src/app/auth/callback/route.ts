@@ -4,12 +4,17 @@ import { NextResponse } from "next/server"
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const code = searchParams.get("code")
-  const next = searchParams.get("next") ?? "/"
+  const nextParam = searchParams.get("next") ?? "/"
+  const next = nextParam.startsWith("/") ? nextParam : "/"
 
   if (code) {
     const supabase = await createClient()
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     if (!error) {
+      if (next !== "/") {
+        return NextResponse.redirect(new URL(next, request.url))
+      }
+
       const { data: { user } } = await supabase.auth.getUser()
       if (user) {
         const { data: profile } = await supabase
@@ -18,7 +23,7 @@ export async function GET(request: Request) {
           .eq("id", user.id)
           .maybeSingle()
 
-        const redirectTo = profile?.role === "admin" ? "/admin" : profile?.role === "mentor" ? "/mentor" : "/student"
+        const redirectTo = profile?.role === "admin" ? "/admin" : profile?.role === "mentor" ? "/mentor" : profile?.role === "partner" ? "/partner" : "/student"
         return NextResponse.redirect(new URL(redirectTo, request.url))
       }
     }

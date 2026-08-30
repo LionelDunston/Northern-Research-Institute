@@ -2,24 +2,27 @@ import { Section } from "@/components/layout/Section"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "About | Northern Research Institute",
-  description: "Learn about NRI's history, vision, mission, core values, and strategic objectives.",
+  title: "About the Institute | Northern Research Institute",
+  description: "Learn about NRI's purpose, identity, strategic direction, vision, mission, core values, and commitment to transforming research into meaningful national development.",
 }
 
 const values = [
-  { title: "Integrity", description: "Upholding the highest ethical standards in all our research and operations." },
-  { title: "Innovation", description: "Fostering creative thinking and novel approaches to solve complex challenges." },
-  { title: "Collaboration", description: "Building strong partnerships across sectors to maximize impact." },
-  { title: "Excellence", description: "Striving for the highest quality in research, teaching, and service." },
-  { title: "Sustainability", description: "Ensuring long-term environmental, social, and economic viability." },
+  { title: "Integrity", description: "We uphold ethical, transparent, and responsible research and practice." },
+  { title: "Innovation", description: "We encourage creative thinking and transform knowledge into new solutions." },
+  { title: "Collaboration", description: "We build meaningful partnerships across researchers, institutions, sectors, and communities." },
+  { title: "Excellence", description: "We pursue high standards in research, innovation, and implementation." },
+  { title: "Sustainability", description: "We promote solutions and opportunities that create lasting value." },
+  { title: "Impact", description: "We focus on translating knowledge into measurable and meaningful real-world outcomes." },
 ]
 
 const objectives = [
-  "Promote research that addresses national and regional development challenges",
-  "Support innovation and entrepreneurship among researchers and graduates",
-  "Create employment opportunities through research commercialization",
-  "Strengthen partnerships between academia, government, industry, and communities",
-  "Contribute to national development through evidence-based policy recommendations",
+  { title: "Promote Research", description: "Encourage and support quality research across diverse disciplines and areas of national importance." },
+  { title: "Enable Practical Applications", description: "Move valuable research beyond academic publication by supporting its translation into practical solutions and real-world applications." },
+  { title: "Drive Innovation", description: "Encourage new ideas, technologies, products, and services that address real-world needs and opportunities." },
+  { title: "Create Employment", description: "Transform research and innovation into sustainable employment and career opportunities for graduates and communities." },
+  { title: "Foster Entrepreneurship", description: "Support promising research and ideas in developing into enterprises, startups, products, and services." },
+  { title: "Build Partnerships", description: "Strengthen collaboration among researchers, universities, government, industry, investors, and development partners." },
+  { title: "Advance National Development", description: "Use research, innovation, and partnerships to contribute to sustainable economic, social, technological, and national development." },
 ]
 
 export default function AboutPage() {
@@ -29,23 +32,18 @@ export default function AboutPage() {
         <div className="container-wide text-center">
           <h1 className="text-4xl sm:text-5xl font-bold">About the Institute</h1>
           <p className="mt-4 text-lg text-white/80 max-w-2xl mx-auto">
-            Understanding who we are, what we stand for, and where we are going.
+            NRI's purpose, identity, strategic direction, vision, mission, and core values.
           </p>
         </div>
       </section>
 
-      <Section title="Our History" subtitle="Why the Institute was established.">
+      <Section>
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-lg text-muted leading-relaxed">
-            The Northern Research Institute was established to address the critical gap between academic research
-            and practical application. Recognizing that vast amounts of graduate research remained unused, NRI was
-            founded as a bridge between the academic community and the sectors that could benefit from research
-            findings — government, industry, and civil society.
-          </p>
-          <p className="text-lg text-muted leading-relaxed mt-4">
-            Since its inception, NRI has grown into a leading research-to-impact organization, working with
-            universities, government ministries, NGOs, international organizations, and private companies to
-            transform research into tangible outcomes that improve lives and drive sustainable development.
+            The Northern Research Institute (NRI) is a research and innovation organisation dedicated
+            to transforming knowledge across disciplines into practical solutions, opportunities, and
+            real-world impact. NRI connects research, expertise, and partnerships to support innovation,
+            enterprise, policy, employment, and sustainable national development.
           </p>
         </div>
       </Section>
@@ -53,7 +51,7 @@ export default function AboutPage() {
       <Section variant="muted" title="Our Vision" subtitle="The Institute's long-term aspiration.">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-xl font-semibold text-primary italic">
-            "A prosperous nation where research drives innovation, creates opportunities, and transforms communities."
+            "A prosperous nation where research across all disciplines is transformed into practical solutions, innovation, sustainable opportunities, and real-world impact."
           </p>
         </div>
       </Section>
@@ -61,8 +59,8 @@ export default function AboutPage() {
       <Section title="Our Mission" subtitle="What the Institute aims to achieve.">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-lg text-muted leading-relaxed">
-            To transform research into practical solutions that create employment, businesses, public policies,
-            and community development through innovation, partnerships, and evidence-based action.
+            To transform research across disciplines into practical solutions, innovation, sustainable
+            opportunities, and employment through collaboration, partnerships, and real-world application.
           </p>
         </div>
       </Section>
@@ -72,7 +70,7 @@ export default function AboutPage() {
           {values.map((value) => (
             <div key={value.title} className="bg-white p-6 rounded-xl border border-border">
               <h3 className="text-lg font-semibold text-primary mb-2">{value.title}</h3>
-              <p className="text-muted leading-relaxed">{value.description}</p>
+              <p className="text-muted leading-relaxed text-sm">{value.description}</p>
             </div>
           ))}
         </div>
@@ -81,12 +79,17 @@ export default function AboutPage() {
       <Section title="Strategic Objectives">
         <div className="max-w-3xl mx-auto">
           <ul className="space-y-4">
-            {objectives.map((objective, i) => (
-              <li key={i} className="flex items-start gap-3 p-4 rounded-lg bg-gray-50 border border-border">
-                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-accent text-white text-sm font-bold shrink-0">
-                  {i + 1}
-                </span>
-                <span className="text-muted leading-relaxed pt-1">{objective}</span>
+            {objectives.map((obj, i) => (
+              <li key={i} className="p-5 rounded-lg bg-gray-50 border border-border">
+                <div className="flex items-start gap-3">
+                  <span className="flex items-center justify-center w-8 h-8 rounded-full bg-accent text-white text-sm font-bold shrink-0">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <span className="font-semibold text-primary">{obj.title}</span>
+                    <p className="text-muted leading-relaxed text-sm mt-1">{obj.description}</p>
+                  </div>
+                </div>
               </li>
             ))}
           </ul>

@@ -3,6 +3,8 @@ import { newsItems } from "@/lib/data"
 
 export function NewsSection() {
   const latest = newsItems.slice(0, 3)
+  if (latest.length === 0) return null
+
   return (
     <section className="section-padding bg-gray-50">
       <div className="container-wide">

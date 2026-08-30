@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { siteConfig } from "@/lib/data"
+import { siteConfig, contactInfo } from "@/lib/data"
 
 export function Footer() {
   return (
@@ -14,35 +14,33 @@ export function Footer() {
                 <div className="text-sm font-semibold leading-tight">Institute</div>
               </div>
             </div>
-            <p className="text-sm text-white/80 leading-relaxed">{siteConfig.description}</p>
+            <p className="text-sm text-white/80 leading-relaxed">{siteConfig.description.slice(0, 160)}...</p>
           </div>
           <div>
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li><Link href="/about" className="text-sm text-white/70 hover:text-white transition-colors">About Us</Link></li>
-              <li><Link href="/gri" className="text-sm text-white/70 hover:text-white transition-colors">GRI Programme</Link></li>
+              <li><Link href="/rti" className="text-sm text-white/70 hover:text-white transition-colors">RTI Programme</Link></li>
               <li><Link href="/research-programmes" className="text-sm text-white/70 hover:text-white transition-colors">Research</Link></li>
-              <li><Link href="/innovation" className="text-sm text-white/70 hover:text-white transition-colors">Innovation</Link></li>
-              <li><Link href="/publications" className="text-sm text-white/70 hover:text-white transition-colors">Publications</Link></li>
+              <li><Link href="/news" className="text-sm text-white/70 hover:text-white transition-colors">News & Events</Link></li>
+              <li><Link href="/partnerships" className="text-sm text-white/70 hover:text-white transition-colors">Partnerships</Link></li>
             </ul>
           </div>
           <div>
             <h3 className="font-semibold mb-4">For Stakeholders</h3>
             <ul className="space-y-2">
-              <li><Link href="/gri#graduate-portal" className="text-sm text-white/70 hover:text-white transition-colors">Graduates</Link></li>
-              <li><Link href="/gri#investor-portal" className="text-sm text-white/70 hover:text-white transition-colors">Investors</Link></li>
-              <li><Link href="/gri#government-portal" className="text-sm text-white/70 hover:text-white transition-colors">Government</Link></li>
-              <li><Link href="/partnerships" className="text-sm text-white/70 hover:text-white transition-colors">Partners</Link></li>
-              <li><Link href="/knowledge" className="text-sm text-white/70 hover:text-white transition-colors">Knowledge Centre</Link></li>
+              <li><Link href="/rti#research-portal" className="text-sm text-white/70 hover:text-white transition-colors">Researchers</Link></li>
+              <li><Link href="/rti#investor-portal" className="text-sm text-white/70 hover:text-white transition-colors">Investors</Link></li>
+              <li><Link href="/rti#government-portal" className="text-sm text-white/70 hover:text-white transition-colors">Government</Link></li>
+              <li><Link href="/rti#business-portal" className="text-sm text-white/70 hover:text-white transition-colors">Businesses</Link></li>
             </ul>
           </div>
           <div>
             <h3 className="font-semibold mb-4">Contact</h3>
             <ul className="space-y-2 text-sm text-white/70">
-              <li>Plot 123, Independence Avenue</li>
-              <li>Lusaka, Zambia</li>
-              <li>+260 211 234 567</li>
-              <li>info@nri.org.zm</li>
+              <li>Jaffna, Sri Lanka</li>
+              <li>{contactInfo.phone}</li>
+              <li>{contactInfo.email}</li>
             </ul>
           </div>
         </div>

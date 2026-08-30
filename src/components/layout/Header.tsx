@@ -22,7 +22,7 @@ export function Header() {
       .catch(() => setLoading(false))
   }, [])
 
-  const dashboardHref = user?.role === "admin" ? "/admin" : user?.role === "mentor" ? "/mentor" : "/student"
+  const dashboardHref = user?.role === "admin" ? "/admin" : user?.role === "mentor" ? "/mentor" : user?.role === "partner" ? "/partner" : "/student"
 
   async function handleLogout() {
     await fetch("/api/auth/logout", { method: "POST" })

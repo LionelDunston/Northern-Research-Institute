@@ -1,6 +1,8 @@
 import { stats } from "@/lib/data"
 
 export function StatsBar() {
+  if (stats.length === 0) return null
+
   return (
     <section className="bg-accent text-white">
       <div className="container-wide py-12">

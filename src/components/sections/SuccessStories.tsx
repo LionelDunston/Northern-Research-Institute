@@ -1,25 +1,8 @@
-const stories = [
-  {
-    title: "Clean Water Innovation",
-    description:
-      "A PhD research on affordable water filtration led to a startup that now provides clean water to 50,000 rural households.",
-    author: "Dr. Margaret Banda",
-  },
-  {
-    title: "AgriTech Platform",
-    description:
-      "Master's research on crop disease detection using AI evolved into a mobile platform serving 10,000+ smallholder farmers.",
-    author: "Mr. Kenneth Zulu",
-  },
-  {
-    title: "Policy Impact on Education",
-    description:
-      "Research on out-of-school children informed a national policy that increased primary school enrollment by 15%.",
-    author: "Prof. Sarah Mwansa",
-  },
-]
+const stories: { title: string; description: string; author: string }[] = []
 
 export function SuccessStories() {
+  if (stories.length === 0) return null
+
   return (
     <section className="section-padding bg-gray-50">
       <div className="container-wide">

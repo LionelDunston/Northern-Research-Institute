@@ -20,16 +20,23 @@ export default function PublicationsPage() {
       </section>
 
       <Section>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {publications.map((pub) => (
-            <div key={pub.title} className="bg-white rounded-xl border border-border p-6 hover:shadow-lg transition-shadow">
-              <span className="text-xs font-semibold uppercase tracking-wider text-accent">{pub.type}</span>
-              <h3 className="text-lg font-semibold mt-2 mb-2">{pub.title}</h3>
-              <p className="text-xs text-muted mb-3">{pub.date}</p>
-              <p className="text-sm text-muted leading-relaxed">{pub.description}</p>
-            </div>
-          ))}
-        </div>
+        {publications.length === 0 ? (
+          <div className="text-center py-16">
+            <h3 className="text-xl font-semibold text-primary mb-2">Coming soon</h3>
+            <p className="text-muted">Research reports and publications will be available here.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {publications.map((pub) => (
+              <div key={pub.title} className="bg-white rounded-xl border border-border p-6 hover:shadow-lg transition-shadow">
+                <span className="text-xs font-semibold uppercase tracking-wider text-accent">{pub.type}</span>
+                <h3 className="text-lg font-semibold mt-2 mb-2">{pub.title}</h3>
+                <p className="text-xs text-muted mb-3">{pub.date}</p>
+                <p className="text-sm text-muted leading-relaxed">{pub.description}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </Section>
     </>
   )

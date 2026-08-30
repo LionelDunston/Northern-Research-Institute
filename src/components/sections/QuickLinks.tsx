@@ -1,18 +1,17 @@
 import Link from "next/link"
-
-const links = [
-  { title: "About NRI", href: "/about", description: "Learn about our history, mission, vision, and values." },
-  { title: "Governance", href: "/governance", description: "Meet our Board of Directors, leadership, and advisory council." },
-  { title: "Become a Partner", href: "/partnerships", description: "Collaborate with us to drive innovation and impact." },
-  { title: "Contact Us", href: "/contact", description: "Get in touch with our team for inquiries and support." },
-]
+import { siteConfig } from "@/lib/data"
 
 export function QuickLinks() {
   return (
     <section className="section-padding bg-white">
       <div className="container-wide">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {links.map((link) => (
+          {[
+            { title: "About NRI", href: "/about", description: "Learn about our purpose, vision, mission, and core values." },
+            { title: "Governance", href: "/governance", description: "Meet our Board of Directors, leadership team, and advisory council." },
+            { title: "Become a Partner", href: "/partnerships", description: "Collaborate with us to drive innovation and real-world impact." },
+            { title: "Contact Us", href: "/contact", description: "Get in touch with our team for enquiries and support." },
+          ].map((link) => (
             <Link
               key={link.title}
               href={link.href}

@@ -20,18 +20,25 @@ export default function NewsPage() {
       </section>
 
       <Section>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {newsItems.map((item) => (
-            <article key={item.title} className="bg-white rounded-xl border border-border p-6 hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-xs font-semibold uppercase tracking-wider text-accent">{item.category}</span>
-                <span className="text-xs text-muted">{item.date}</span>
-              </div>
-              <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-              <p className="text-muted leading-relaxed">{item.summary}</p>
-            </article>
-          ))}
-        </div>
+        {newsItems.length === 0 ? (
+          <div className="text-center py-16">
+            <h3 className="text-xl font-semibold text-primary mb-2">Stay tuned</h3>
+            <p className="text-muted">News and event announcements will be published here soon.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {newsItems.map((item) => (
+              <article key={item.title} className="bg-white rounded-xl border border-border p-6 hover:shadow-lg transition-shadow">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-accent">{item.category}</span>
+                  <span className="text-xs text-muted">{item.date}</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                <p className="text-muted leading-relaxed">{item.summary}</p>
+              </article>
+            ))}
+          </div>
+        )}
       </Section>
     </>
   )

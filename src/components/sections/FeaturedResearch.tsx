@@ -1,22 +1,8 @@
-const featured = [
-  {
-    title: "Climate-Resilient Agriculture",
-    category: "Food Security",
-    description: "Developing drought-resistant crop varieties and sustainable farming practices for changing climates.",
-  },
-  {
-    title: "Digital Health Systems",
-    category: "Public Health",
-    description: "Leveraging mobile technology to improve healthcare access and patient outcomes in rural areas.",
-  },
-  {
-    title: "Renewable Energy Solutions",
-    category: "Sustainable Energy",
-    description: "Affordable solar and biomass energy systems designed for off-grid communities and small businesses.",
-  },
-]
+const featured: { title: string; category: string; description: string }[] = []
 
 export function FeaturedResearch() {
+  if (featured.length === 0) return null
+
   return (
     <section className="section-padding bg-white">
       <div className="container-wide">
