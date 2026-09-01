@@ -55,12 +55,8 @@ export default function ForgotPasswordPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-white font-bold text-lg">NRI</div>
-            <div className="text-left">
-              <div className="text-sm font-semibold text-primary leading-tight">Northern Research</div>
-              <div className="text-sm font-semibold text-primary leading-tight">Institute</div>
-            </div>
+          <div className="flex justify-center mb-4">
+            <img src="/nri-logo.svg" alt="Northern Research Institute" className="h-16 w-auto rounded-lg" />
           </div>
           <h1 className="text-2xl font-bold">Forgot Password</h1>
           <p className="text-muted text-sm mt-1">Enter your email and we'll send you a reset link</p>

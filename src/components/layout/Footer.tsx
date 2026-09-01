@@ -18,12 +18,8 @@ export function Footer() {
       <div className="container-wide py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-white/20 text-white font-bold text-lg">NRI</div>
-              <div>
-                <div className="text-sm font-semibold leading-tight">Northern Research</div>
-                <div className="text-sm font-semibold leading-tight">Institute</div>
-              </div>
+            <div className="mb-4">
+              <img src="/nri-logo.svg" alt="Northern Research Institute" className="h-14 w-auto" />
             </div>
             <p className="text-sm text-white/80 leading-relaxed">{siteConfig.description.slice(0, 160)}...</p>
           </div>

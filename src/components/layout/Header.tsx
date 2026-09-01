@@ -51,11 +51,8 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
       <div className="container-wide">
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <div id="nri-logo" className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary text-white font-bold text-sm">NRI</div>
-            <div className="hidden sm:block leading-tight">
-              <span className="text-sm font-semibold text-primary whitespace-nowrap">Northern Research Institute</span>
-            </div>
+          <Link href="/" className="flex items-center shrink-0">
+            <img src="/nri-logo.svg" alt="Northern Research Institute" className="h-11 w-auto" />
           </Link>
 
           <nav className="hidden lg:flex items-center">
