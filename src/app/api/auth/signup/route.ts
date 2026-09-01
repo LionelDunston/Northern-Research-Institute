@@ -21,7 +21,7 @@ export async function POST(request: Request) {
       id: authData.user.id,
       email,
       full_name: fullName,
-      role: "student",
+      role: "author",
       organization,
     })
     if (profileError) {

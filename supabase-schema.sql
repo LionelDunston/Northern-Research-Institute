@@ -5,7 +5,7 @@ CREATE TABLE profiles (
   id UUID REFERENCES auth.users PRIMARY KEY,
   email TEXT,
   full_name TEXT,
-  role TEXT CHECK (role IN ('admin', 'mentor', 'student')) DEFAULT 'student',
+  role TEXT CHECK (role IN ('admin', 'mentor', 'author')) DEFAULT 'author',
   organization TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );

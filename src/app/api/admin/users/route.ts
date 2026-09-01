@@ -41,7 +41,7 @@ export async function GET() {
     id: u.id,
     email: u.email,
     full_name: profileMap[u.id]?.full_name || u.user_metadata?.full_name || "",
-    role: profileMap[u.id]?.role || "student",
+    role: profileMap[u.id]?.role || "author",
   }))
 
   return NextResponse.json(users)
@@ -56,7 +56,7 @@ export async function PATCH(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   }
 
-  if (!["student", "mentor", "admin"].includes(role)) {
+  if (!["author", "mentor", "admin"].includes(role)) {
     return NextResponse.json({ error: "Invalid role" }, { status: 400 })
   }
 

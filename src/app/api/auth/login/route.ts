@@ -28,13 +28,13 @@ export async function POST(request: Request) {
       id: data.user.id,
       email: data.user.email ?? email,
       full_name: data.user.user_metadata?.full_name,
-      role: "student",
+      role: "author",
     })
     if (insertErr) {
       console.error("Profile insert error:", insertErr)
     } else {
-      role = "student"
-      console.log("Profile created successfully with role: student")
+      role = "author"
+      console.log("Profile created successfully with role: author")
     }
   }
 

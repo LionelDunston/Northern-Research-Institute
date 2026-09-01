@@ -28,9 +28,9 @@ export async function updateSession(request: NextRequest) {
 
   const isAdminRoute = request.nextUrl.pathname.startsWith("/admin")
   const isMentorRoute = request.nextUrl.pathname.startsWith("/mentor")
-  const isStudentRoute = request.nextUrl.pathname.startsWith("/student")
+  const isAuthorRoute = request.nextUrl.pathname.startsWith("/author")
 
-  if (!user && (isAdminRoute || isMentorRoute || isStudentRoute)) {
+  if (!user && (isAdminRoute || isMentorRoute || isAuthorRoute)) {
     const url = request.nextUrl.clone()
     url.pathname = "/auth/login"
     url.searchParams.set("redirect", request.nextUrl.pathname)
@@ -56,7 +56,7 @@ export async function updateSession(request: NextRequest) {
       return NextResponse.redirect(url)
     }
 
-    if (isStudentRoute && profile?.role !== "student" && profile?.role !== "mentor" && profile?.role !== "admin") {
+    if (isAuthorRoute && profile?.role !== "author" && profile?.role !== "mentor" && profile?.role !== "admin") {
       const url = request.nextUrl.clone()
       url.pathname = "/"
       return NextResponse.redirect(url)

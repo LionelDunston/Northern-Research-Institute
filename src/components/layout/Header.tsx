@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { mainNav } from "@/lib/navigation"
 
-const dashboardPaths = ["/admin", "/mentor", "/student", "/partner"]
+const dashboardPaths = ["/admin", "/mentor", "/author", "/partner"]
 
 export function Header() {
   const router = useRouter()
@@ -35,7 +35,7 @@ export function Header() {
       })
   }, [])
 
-  const dashboardHref = user?.role === "admin" ? "/admin" : user?.role === "mentor" ? "/mentor" : user?.role === "partner" ? "/partner" : "/student"
+  const dashboardHref = user?.role === "admin" ? "/admin" : user?.role === "mentor" ? "/mentor" : user?.role === "partner" ? "/partner" : "/author"
 
   async function handleLogout() {
     await fetch("/api/auth/logout", { method: "POST" })

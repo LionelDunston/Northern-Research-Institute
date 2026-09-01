@@ -4,12 +4,12 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { useState } from "react"
 
-const studentNav = [
-  { label: "Dashboard", href: "/student" },
-  { label: "My Research", href: "/student/research" },
+const authorNav = [
+  { label: "Dashboard", href: "/author" },
+  { label: "My Research", href: "/author/research" },
 ]
 
-export default function StudentLayout({ children }: { children: React.ReactNode }) {
+export default function AuthorLayout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const router = useRouter()
 
@@ -27,7 +27,7 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          <Link href="/student" className="font-semibold text-lg">Student Dashboard</Link>
+          <Link href="/author" className="font-semibold text-lg">Author Dashboard</Link>
         </div>
         <button onClick={handleLogout} className="text-sm text-white/80 hover:text-white flex items-center gap-1">
           Sign Out
@@ -36,7 +36,7 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
       <div className="flex">
         <aside className={`${sidebarOpen ? "block" : "hidden"} lg:block w-64 bg-white border-r border-border min-h-[calc(100vh-4rem)] shrink-0`}>
           <nav className="p-4 space-y-1">
-            {studentNav.map((item) => (
+            {authorNav.map((item) => (
               <Link key={item.href} href={item.href}
                 className="block px-4 py-2.5 rounded-lg text-sm font-medium text-foreground/70 hover:text-primary hover:bg-primary/5 transition-colors"
                 onClick={() => setSidebarOpen(false)}>

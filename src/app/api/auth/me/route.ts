@@ -16,7 +16,7 @@ export async function GET() {
     .eq("id", user.id)
     .maybeSingle()
 
-  let role = profile?.role === "admin" ? "admin" : profile?.role === "mentor" ? "mentor" : profile?.role === "partner" ? "partner" : profile?.role === "student" ? "student" : null
+  let role = profile?.role === "admin" ? "admin" : profile?.role === "mentor" ? "mentor" : profile?.role === "partner" ? "partner" : profile?.role === "author" ? "author" : profile?.role === "student" ? "author" : null
 
   return NextResponse.json({ user: { id: user.id, email: user.email }, role })
 }
