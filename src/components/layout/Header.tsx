@@ -15,10 +15,6 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
 
-  if (dashboardPaths.some((p) => pathname.startsWith(p))) {
-    return null
-  }
-
   useEffect(() => {
     const hasSessionCookie = () =>
       document.cookie.split(";").some((c) => c.trim().startsWith("sb-") && c.includes("auth-token"))
@@ -45,6 +41,10 @@ export function Header() {
     await fetch("/api/auth/logout", { method: "POST" })
     setUser(null)
     router.push("/")
+  }
+
+  if (dashboardPaths.some((p) => pathname.startsWith(p))) {
+    return null
   }
 
   return (
