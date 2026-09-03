@@ -5,7 +5,7 @@ CREATE TABLE profiles (
   id UUID REFERENCES auth.users PRIMARY KEY,
   email TEXT,
   full_name TEXT,
-  role TEXT CHECK (role IN ('admin', 'mentor', 'author')) DEFAULT 'author',
+  role TEXT CHECK (role IN ('admin', 'mentor', 'author', 'student')) DEFAULT 'author',
   organization TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -136,3 +136,8 @@ CREATE POLICY "Partners can view own organization" ON partners FOR SELECT USING 
 CREATE POLICY "Admins can manage partners" ON partners FOR ALL USING (
   EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin')
 );
+
+-- Migration: rename student -> author (run once on existing databases)
+-- ALTER TABLE profiles DROP CONSTRAINT IF EXISTS profiles_role_check;
+-- ALTER TABLE profiles ADD CONSTRAINT profiles_role_check CHECK (role IN ('admin', 'mentor', 'author', 'student'));
+-- UPDATE profiles SET role = 'author' WHERE role = 'student';
