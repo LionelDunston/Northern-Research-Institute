@@ -18,8 +18,8 @@ export function Footer() {
       <div className="container-wide py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <div className="mb-4">
-              <img src="/nri-logo.svg" alt="Northern Research Institute" className="h-14 w-auto" />
+            <div className="mb-4 overflow-visible">
+              <img src="/nri-logo.svg" alt="Northern Research Institute" className="w-full max-w-[260px] h-auto object-contain" />
             </div>
             <p className="text-sm text-white/80 leading-relaxed">{siteConfig.description.slice(0, 160)}...</p>
           </div>

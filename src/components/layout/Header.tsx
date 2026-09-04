@@ -52,8 +52,8 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
       <div className="container-wide">
         <div className="flex h-20 items-center justify-between gap-4">
-          <Link href="/" className="flex items-center shrink-0">
-            <img src="/nri-logo-header.svg" alt="Northern Research Institute" className="h-14 sm:h-[62px] w-auto object-contain shrink-0" />
+          <Link href="/" className="flex items-center shrink-0 min-w-0">
+            <img src="/nri-logo-header.svg" alt="Northern Research Institute" className="h-12 sm:h-[58px] w-auto max-w-[58vw] sm:max-w-none object-contain shrink-0" />
           </Link>
 
           <nav className="hidden lg:flex items-center">
