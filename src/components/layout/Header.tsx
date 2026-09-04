@@ -43,16 +43,17 @@ export function Header() {
     router.push("/")
   }
 
-  if (dashboardPaths.some((p) => pathname.startsWith(p))) {
+  const isDashboard = dashboardPaths.some((p) => pathname === p || pathname.startsWith(p + "/"))
+  if (isDashboard) {
     return null
   }
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
       <div className="container-wide">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center shrink-0 py-1">
-            <img src="/nri-logo-header.svg" alt="Northern Research Institute" className="h-12 sm:h-[52px] w-auto object-contain shrink-0" />
+        <div className="flex h-20 items-center justify-between gap-4">
+          <Link href="/" className="flex items-center shrink-0">
+            <img src="/nri-logo-header.svg" alt="Northern Research Institute" className="h-14 sm:h-[62px] w-auto object-contain shrink-0" />
           </Link>
 
           <nav className="hidden lg:flex items-center">

@@ -9,7 +9,7 @@ const dashboardPaths = ["/admin", "/mentor", "/author", "/partner"]
 export function Footer() {
   const pathname = usePathname()
 
-  if (dashboardPaths.some((p) => pathname.startsWith(p))) {
+  if (dashboardPaths.some((p) => pathname === p || pathname.startsWith(p + "/"))) {
     return null
   }
 

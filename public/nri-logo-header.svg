@@ -13,13 +13,13 @@
     <path d="M26 14 L17 15.6 L15 14 L17 12.4 Z" fill="#0a2de0" stroke="none"/>
   </g>
   <!-- NRI -->
-  <text x="66" y="122" font-family="Inter, Arial Black, sans-serif" font-size="84" font-weight="900" fill="#0a2de0" letter-spacing="-2">NRI</text>
+  <text x="66" y="124" font-family="Inter, Arial Black, sans-serif" font-size="88" font-weight="900" fill="#0a2de0" letter-spacing="-2">NRI</text>
   <!-- NORTHERN -->
-  <text x="285" y="70" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="900" fill="#0a2de0" letter-spacing="0.5">NORTHERN</text>
+  <text x="285" y="72" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="900" fill="#0a2de0" letter-spacing="0.5">NORTHERN</text>
   <!-- RESEARCH INSTITUTE -->
-  <text x="285" y="104" font-family="Inter, Arial, sans-serif" font-size="29" font-weight="900" fill="#0a2de0" letter-spacing="0.4">RESEARCH INSTITUTE</text>
+  <text x="285" y="108" font-family="Inter, Arial, sans-serif" font-size="31" font-weight="900" fill="#0a2de0" letter-spacing="0.4">RESEARCH INSTITUTE</text>
   <!-- Tagline -->
-  <text x="287" y="132" font-family="Georgia, serif" font-size="11.5" font-weight="400" fill="#4a5568" letter-spacing="2.8">KNOWLEDGE.</text>
-  <text x="408" y="132" font-family="Georgia, serif" font-size="11.5" font-weight="400" fill="#4a5568" letter-spacing="2.8">INNOVATION.</text>
-  <text x="532" y="132" font-family="Georgia, serif" font-size="11.5" font-weight="400" fill="#4a5568" letter-spacing="2.8">IMPACT.</text>
+  <text x="287" y="138" font-family="Georgia, serif" font-size="14" font-weight="600" fill="#1e293b" letter-spacing="2.4">KNOWLEDGE.</text>
+  <text x="416" y="138" font-family="Georgia, serif" font-size="14" font-weight="600" fill="#1e293b" letter-spacing="2.4">INNOVATION.</text>
+  <text x="554" y="138" font-family="Georgia, serif" font-size="14" font-weight="600" fill="#1e293b" letter-spacing="2.4">IMPACT.</text>
 </svg>
