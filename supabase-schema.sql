@@ -141,3 +141,8 @@ CREATE POLICY "Admins can manage partners" ON partners FOR ALL USING (
 -- ALTER TABLE profiles DROP CONSTRAINT IF EXISTS profiles_role_check;
 -- ALTER TABLE profiles ADD CONSTRAINT profiles_role_check CHECK (role IN ('admin', 'mentor', 'researcher', 'author', 'student'));
 -- UPDATE profiles SET role = 'researcher' WHERE role IN ('author', 'student');
+
+-- Extended fields for 6-step researcher submission form
+-- ALTER TABLE research_projects ADD COLUMN IF NOT EXISTS form_data JSONB;
+-- CREATE or replace storage bucket for research files (run in Supabase Storage or via SQL):
+-- INSERT INTO storage.buckets (id, name, public) VALUES ('research-files','research-files', false) ON CONFLICT DO NOTHING;
