@@ -23,7 +23,7 @@ export async function GET(request: Request) {
           .eq("id", user.id)
           .maybeSingle()
 
-        const redirectTo = profile?.role === "admin" ? "/admin" : profile?.role === "mentor" ? "/mentor" : profile?.role === "partner" ? "/partner" : "/author"
+        const redirectTo = profile?.role === "admin" ? "/admin" : profile?.role === "mentor" ? "/mentor" : profile?.role === "partner" ? "/partner" : "/researcher"
         return NextResponse.redirect(new URL(redirectTo, request.url))
       }
     }

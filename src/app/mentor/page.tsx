@@ -37,7 +37,7 @@ export default function MentorDashboard() {
       <div className="bg-white rounded-xl border border-border p-8 text-center">
         <h2 className="text-xl font-semibold mb-2">Review Author Research</h2>
         <p className="text-muted mb-6 max-w-md mx-auto">
-          Evaluate and provide feedback on submitted research projects from authors.
+          Evaluate and provide feedback on submitted research projects from researchers.
         </p>
         <Link
           href="/mentor/research"

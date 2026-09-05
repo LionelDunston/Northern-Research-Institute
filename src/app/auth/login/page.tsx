@@ -37,7 +37,7 @@ export default function LoginPage() {
     } else if (data.role === "mentor") {
       router.push("/mentor")
     } else {
-      router.push("/author")
+      router.push("/researcher")
     }
   }
 

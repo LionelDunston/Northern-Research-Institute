@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { siteConfig, contactInfo } from "@/lib/data"
 
-const dashboardPaths = ["/admin", "/mentor", "/author", "/partner"]
+const dashboardPaths = ["/admin", "/mentor", "/researcher", "/partner"]
 
 export function Footer() {
   const pathname = usePathname()

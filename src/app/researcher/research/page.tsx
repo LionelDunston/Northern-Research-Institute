@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-export default function AuthorResearchPage() {
+export default function ResearcherResearchPage() {
   const [projects, setProjects] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)

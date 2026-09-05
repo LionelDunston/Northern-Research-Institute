@@ -17,7 +17,7 @@ export async function GET() {
 
   let query = supabase.from("research_projects").select("*")
 
-  if (profile?.role === "author") {
+  if (profile?.role === "researcher" || profile?.role === "author" || profile?.role === "student") {
     query = query.eq("submitted_by", user.id)
   }
 
