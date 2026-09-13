@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { mainNav } from "@/lib/navigation"
 
-const dashboardPaths = ["/admin", "/mentor", "/researcher", "/partner"]
+const dashboardPaths = ["/admin", "/mentor", "/researcher", "/partner", "/auth"]
 
 export function Header() {
   const router = useRouter()
