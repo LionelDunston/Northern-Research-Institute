@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { mainNav } from "@/lib/navigation"
 
-const dashboardPaths = ["/admin", "/mentor", "/researcher", "/partner", "/auth"]
+const dashboardPaths = ["/admin", "/mentor", "/researcher", "/partner"]
 
 export function Header() {
   const router = useRouter()
@@ -45,6 +45,7 @@ export function Header() {
   }
 
   const isDashboard = dashboardPaths.some((p) => pathname === p || pathname.startsWith(p + "/"))
+  const isAuthPage = pathname.startsWith("/auth")
   if (isDashboard) {
     return null
   }
@@ -99,7 +100,7 @@ export function Header() {
                   Sign Out
                 </button>
               </>
-            ) : (
+            ) : isAuthPage ? null : (
               <Link href="/auth/login" className="hidden sm:inline-flex px-4 py-2 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-light transition-colors">
                 Sign In
               </Link>
@@ -156,7 +157,7 @@ export function Header() {
                   Sign Out
                 </button>
               </>
-            ) : (
+            ) : isAuthPage ? null : (
               <Link href="/auth/login" className="block px-3 py-2 text-sm font-medium text-accent hover:text-accent/80" onClick={() => setMobileOpen(false)}>
                 Sign In
               </Link>
