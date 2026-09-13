@@ -10,7 +10,8 @@ export default function PartnerLayout({ children }: { children: React.ReactNode 
 
   async function handleLogout() {
     await fetch("/api/auth/logout", { method: "POST" })
-    router.push("/auth/login")
+    router.push("/")
+    router.refresh()
   }
 
   return (

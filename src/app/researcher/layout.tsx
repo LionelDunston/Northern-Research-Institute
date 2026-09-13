@@ -15,7 +15,8 @@ export default function ResearcherLayout({ children }: { children: React.ReactNo
 
   async function handleLogout() {
     await fetch("/api/auth/logout", { method: "POST" })
-    router.push("/auth/login")
+    router.push("/")
+    router.refresh()
   }
 
   return (

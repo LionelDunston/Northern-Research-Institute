@@ -41,6 +41,7 @@ export function Header() {
     await fetch("/api/auth/logout", { method: "POST" })
     setUser(null)
     router.push("/")
+    router.refresh()
   }
 
   const isDashboard = dashboardPaths.some((p) => pathname === p || pathname.startsWith(p + "/"))
