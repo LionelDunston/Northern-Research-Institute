@@ -66,8 +66,10 @@ export async function POST(request: Request) {
       year: get("year"),
       authorAff: get("authorAff"),
       trl: get("trl"),
-      techDomain: get("techDomain"),
       srl: get("srl"),
+      location: get("location"),
+      // backward compat for old submissions
+      techDomain: get("techDomain"),
       focusComm: (()=>{ try{ return JSON.parse(get("focusComm")||"[]")}catch{return []}})(),
       targetDistricts: (()=>{ try{ return JSON.parse(get("targetDistricts")||"[]")}catch{return []}})(),
       problem: get("problem"),
@@ -100,9 +102,9 @@ export async function POST(request: Request) {
     description: body.problem || body.description || "",
     researcher_name: body.authorAff || body.researcher_name || "",
     university: body.journal || body.university || "",
-    subject: body.techDomain || body.subject || body.pathway || "",
+    subject: body.pathway || body.subject || "",
     sdg: body.srl || body.trl || body.sdg || "",
-    district: Array.isArray(body.targetDistricts) ? body.targetDistricts.join(", ") : body.targetDistricts || body.district || "",
+    district: body.location || (Array.isArray(body.targetDistricts) ? body.targetDistricts.join(", ") : body.targetDistricts) || body.district || "",
     status: "submitted",
     submitted_by: user.id,
     // Store full form as JSON for future use (requires form_data column; fallback to description if column missing)

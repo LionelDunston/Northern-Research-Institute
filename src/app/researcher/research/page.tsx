@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-const districts = ["Colombo","Gampaha","Kalutara","Kandy","Matale","Nuwara Eliya","Galle","Matara","Hambantota","Jaffna","Kilinochchi","Mannar","Vavuniya","Mullaitivu","Batticaloa","Ampara","Trincomalee","Kurunegala","Puttalam","Anuradhapura","Polonnaruwa","Badulla","Monaragala","Ratnapura","Kegalle"]
 const years = Array.from({length:11},(_,i)=> String(2026-i))
-const technicalDomains = ["IT & AI","Renewable Energy","Robotics","Chemical / Pharma","Food Engineering","Textile Technology","Material Science"]
 const resourceOptions = [
   "Specialized Laboratory Testing Equipment",
   "Industrial Machinery, CNC, Fabrication, or 3D Printing",
@@ -31,13 +29,11 @@ export default function ResearcherResearchPage() {
   const [journal,setJournal]=useState("")
   const [year,setYear]=useState("")
   const [authorAff,setAuthorAff]=useState("")
-  // Step 3A / 3B
+  // Step 3
   const [trl,setTrl]=useState("")
-  const [techDomain,setTechDomain]=useState("")
   const [srl,setSrl]=useState("")
-  const [focusComm,setFocusComm]=useState<string[]>([])
   // Step 4
-  const [targetDistricts,setTargetDistricts]=useState<string[]>([])
+  const [location,setLocation]=useState("")
   const [problem,setProblem]=useState("")
   const [valueProp,setValueProp]=useState("")
   // Step 5
@@ -63,7 +59,6 @@ export default function ResearcherResearchPage() {
 
   function validateFile(f:File|null, maxMB:number, types:string[]){
     if(!f) return null
-    const ext = f.name.split(".").pop()?.toLowerCase() || ""
     if(types.length && !types.some(t=> f.name.toLowerCase().endsWith(t) || f.type.includes(t))) return `Invalid file type for ${f.name}`
     if(f.size > maxMB*1024*1024) return `${f.name} exceeds ${maxMB}MB`
     return null
@@ -80,12 +75,10 @@ export default function ResearcherResearchPage() {
     if(!authorAff.trim()) return setError("Main Author & Affiliation is required.")
     if(pathway==="industrial"){
       if(!trl) return setError("Select a Technology Readiness Level.")
-      if(!techDomain) return setError("Select a Technical Domain.")
     } else {
       if(!srl) return setError("Select a Social Readiness Level.")
-      if(focusComm.length===0) return setError("Select at least one Focus Community.")
     }
-    if(targetDistricts.length===0) return setError("Select at least one Target District.")
+    if(!location.trim()) return setError("Location is required.")
     if(countWords(problem)===0) return setError("Describe the Real-World Problem.")
     if(countWords(problem)>250) return setError("Real-World Problem exceeds 250 words.")
     if(countWords(valueProp)===0) return setError("Describe the Value Proposition.")
@@ -115,10 +108,8 @@ export default function ResearcherResearchPage() {
       fd.append("year", year)
       fd.append("authorAff", authorAff)
       fd.append("trl", trl)
-      fd.append("techDomain", techDomain)
       fd.append("srl", srl)
-      fd.append("focusComm", JSON.stringify(focusComm))
-      fd.append("targetDistricts", JSON.stringify(targetDistricts))
+      fd.append("location", location)
       fd.append("problem", problem)
       fd.append("valueProp", valueProp)
       fd.append("resourceNeeds", JSON.stringify(resourceNeeds))
@@ -134,10 +125,8 @@ export default function ResearcherResearchPage() {
       if(!res.ok) throw new Error(data.error || "Submission failed")
       setSuccess(true)
       setShowForm(false)
-      // reset
       setPathway(""); setTitle(""); setDoi(""); setJournal(""); setYear(""); setAuthorAff("")
-      setTrl(""); setTechDomain(""); setSrl(""); setFocusComm([])
-      setTargetDistricts([]); setProblem(""); setValueProp("")
+      setTrl(""); setSrl(""); setLocation(""); setProblem(""); setValueProp("")
       setResourceNeeds([]); setInfraReq(""); setBudget(""); setCurrency("LKR")
       setFilePaper(null); setFileDeck(null); setFileAssets(null); setIpAgree(false)
       load()
@@ -222,58 +211,36 @@ export default function ResearcherResearchPage() {
             <h2 className="font-bold text-primary">Step 3: Core Implementation Data</h2>
             {!pathway && <p className="text-sm text-muted mt-2">Select a pathway in Step 1 to see the relevant fields.</p>}
             {pathway==="industrial" && (
-              <div className="space-y-4 mt-3">
-                <div className="bg-white rounded-lg border border-border p-4">
-                  <p className="text-sm font-semibold mb-2">3.A.1 Technology Readiness Level (TRL) *</p>
-                  <div className="space-y-2">
-                    {[
-                      ["TRL 3","Proof of Concept (Formulas, digital simulations, or software logic only)."],
-                      ["TRL 4","Laboratory Validation (A raw, non-functional bench model exists)."],
-                      ["TRL 5","Functional Prototype (Tested successfully strictly inside a lab environment)."],
-                    ].map(([v,desc])=> (
-                      <label key={v} className="flex gap-2 p-2 rounded hover:bg-gray-50 cursor-pointer">
-                        <input type="radio" name="trl" value={v} checked={trl===v} onChange={()=>setTrl(v)} />
-                        <span className="text-sm"><span className="font-medium">{v}:</span> {desc}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">3.A.2 Technical Domain *</label>
-                  <select value={techDomain} onChange={e=>setTechDomain(e.target.value)} className="w-full px-4 py-2.5 rounded-lg border border-border bg-white focus:border-accent outline-none">
-                    <option value="">Select domain</option>
-                    {technicalDomains.map(d=> <option key={d} value={d}>{d}</option>)}
-                  </select>
+              <div className="mt-3 bg-white rounded-lg border border-border p-4">
+                <p className="text-sm font-semibold mb-2">3.A.1 Technology Readiness Level (TRL) *</p>
+                <div className="space-y-2">
+                  {[
+                    ["TRL 3","Proof of Concept (Formulas, digital simulations, or software logic only)."],
+                    ["TRL 4","Laboratory Validation (A raw, non-functional bench model exists)."],
+                    ["TRL 5","Functional Prototype (Tested successfully strictly inside a lab environment)."],
+                  ].map(([v,desc])=> (
+                    <label key={v} className="flex gap-2 p-2 rounded hover:bg-gray-50 cursor-pointer">
+                      <input type="radio" name="trl" value={v} checked={trl===v} onChange={()=>setTrl(v)} />
+                      <span className="text-sm"><span className="font-medium">{v}:</span> {desc}</span>
+                    </label>
+                  ))}
                 </div>
               </div>
             )}
             {pathway==="rural" && (
-              <div className="space-y-4 mt-3">
-                <div className="bg-white rounded-lg border border-border p-4">
-                  <p className="text-sm font-semibold mb-2">3.B.1 Social Readiness Level (SRL) *</p>
-                  <div className="space-y-2">
-                    {[
-                      ["SRL 1","Survey & Policy Data (I have gathered data on a rural problem, but haven't tested a physical solution)."],
-                      ["SRL 2","Household Pilot (I have tested this tool/method with 1–5 local families)."],
-                      ["SRL 3","Cooperative Ready (Tested and ready to be deployed to an entire village)."],
-                    ].map(([v,desc])=> (
-                      <label key={v} className="flex gap-2 p-2 rounded hover:bg-gray-50 cursor-pointer">
-                        <input type="radio" name="srl" value={v} checked={srl===v} onChange={()=>setSrl(v)} />
-                        <span className="text-sm"><span className="font-medium">{v}:</span> {desc}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <p className="text-sm font-semibold mb-1">3.B.2 Focus Community *</p>
-                  <div className="grid sm:grid-cols-2 gap-2">
-                    {["Smallholder Farmers / Agritech","Rural Women’s Cooperatives","Traditional Artisans / Cottage Industries","Fisheries & Coastal Communities","Plantation / Estate Sector Workers"].map(c=> (
-                      <label key={c} className="flex items-center gap-2 p-2 rounded border border-border bg-white cursor-pointer">
-                        <input type="checkbox" checked={focusComm.includes(c)} onChange={()=> toggle(focusComm,c,setFocusComm)} />
-                        <span className="text-sm">{c}</span>
-                      </label>
-                    ))}
-                  </div>
+              <div className="mt-3 bg-white rounded-lg border border-border p-4">
+                <p className="text-sm font-semibold mb-2">3.B.1 Social Readiness Level (SRL) *</p>
+                <div className="space-y-2">
+                  {[
+                    ["SRL 1","Survey & Policy Data (I have gathered data on a rural problem, but haven't tested a physical solution)."],
+                    ["SRL 2","Household Pilot (I have tested this tool/method with 1–5 local families)."],
+                    ["SRL 3","Cooperative Ready (Tested and ready to be deployed to an entire village)."],
+                  ].map(([v,desc])=> (
+                    <label key={v} className="flex gap-2 p-2 rounded hover:bg-gray-50 cursor-pointer">
+                      <input type="radio" name="srl" value={v} checked={srl===v} onChange={()=>setSrl(v)} />
+                      <span className="text-sm"><span className="font-medium">{v}:</span> {desc}</span>
+                    </label>
+                  ))}
                 </div>
               </div>
             )}
@@ -284,16 +251,9 @@ export default function ResearcherResearchPage() {
             <h2 className="font-bold text-primary">Step 4: Regional Context & Impact Metrics</h2>
             <div className="mt-3 space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-1">4.1 Target Sri Lankan Districts *</label>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 max-h-48 overflow-auto p-2 border border-border rounded-lg bg-gray-50">
-                  {districts.map(d=> (
-                    <label key={d} className="flex items-center gap-1.5 text-sm cursor-pointer">
-                      <input type="checkbox" checked={targetDistricts.includes(d)} onChange={()=> toggle(targetDistricts,d,setTargetDistricts)} />
-                      {d}
-                    </label>
-                  ))}
-                </div>
-                {targetDistricts.length>0 && <p className="text-xs text-muted mt-1">{targetDistricts.join(", ")}</p>}
+                <label className="block text-sm font-medium mb-1">4.1 Location *</label>
+                <input value={location} onChange={e=>setLocation(e.target.value)} placeholder="e.g., Jaffna, Colombo, Kandy, or specific village / district" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
+                <p className="text-xs text-muted mt-1">Enter your target location — city, district, or village where this research will be implemented.</p>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1">4.2 The Real-World Problem * <span className="text-muted font-normal">({countWords(problem)}/250 words)</span></label>
@@ -392,8 +352,7 @@ export default function ResearcherResearchPage() {
               {p.doi && <p className="text-xs text-accent mt-1 break-all">{p.doi}</p>}
               {(p.problem || p.description) && <p className="text-sm text-muted mt-2 line-clamp-3">{p.problem || p.description}</p>}
               <div className="flex flex-wrap gap-2 mt-3">
-                {(p.targetDistricts||p.district) && <span className="px-2 py-0.5 bg-gray-100 rounded text-xs text-muted">{Array.isArray(p.targetDistricts)?p.targetDistricts.join(", "):p.targetDistricts||p.district}</span>}
-                {p.techDomain && <span className="px-2 py-0.5 bg-gray-100 rounded text-xs text-muted">{p.techDomain}</span>}
+                {(p.location || p.targetDistricts || p.district) && <span className="px-2 py-0.5 bg-gray-100 rounded text-xs text-muted">{p.location || (Array.isArray(p.targetDistricts)?p.targetDistricts.join(", "):p.targetDistricts) || p.district}</span>}
                 {p.srl && <span className="px-2 py-0.5 bg-gray-100 rounded text-xs text-muted">{p.srl}</span>}
                 {p.trl && <span className="px-2 py-0.5 bg-gray-100 rounded text-xs text-muted">{p.trl}</span>}
               </div>
