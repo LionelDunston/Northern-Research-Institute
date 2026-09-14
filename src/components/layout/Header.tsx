@@ -43,6 +43,7 @@ export function Header() {
   }
 
   const isAuthPage = pathname.startsWith("/auth")
+  const isDashboard = ["/admin","/mentor","/researcher","/partner"].some((p) => pathname === p || pathname.startsWith(p + "/"))
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
@@ -85,7 +86,7 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            {user ? (
+            {user || isDashboard ? (
               <span className="hidden sm:inline-flex h-9 w-12" aria-hidden="true" />
             ) : loading ? (
               <span className="hidden sm:inline-flex h-9 w-20 bg-gray-100 rounded-lg animate-pulse" />
@@ -137,7 +138,7 @@ export function Header() {
                 )}
               </div>
             ))}
-            {user ? null : isAuthPage ? null : (
+            {user || isDashboard ? null : isAuthPage ? null : (
               <Link href="/auth/login" className="block px-3 py-2 text-sm font-medium text-accent hover:text-accent/80" onClick={() => setMobileOpen(false)}>
                 Sign In
               </Link>
