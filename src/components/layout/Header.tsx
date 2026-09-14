@@ -84,18 +84,20 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-3">
-            {!loading && user ? (
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {user ? (
               <>
-                <Link href={dashboardHref} className="hidden sm:inline-flex items-center justify-center h-9 px-5 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-light transition-colors">
+                <Link href={dashboardHref} className="hidden sm:inline-flex items-center justify-center h-9 px-5 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-light transition-colors whitespace-nowrap shrink-0">
                   Dashboard
                 </Link>
-                <button onClick={handleLogout} className="hidden sm:inline-flex items-center justify-center h-9 px-4 text-sm font-medium text-muted hover:text-foreground transition-colors">
+                <button onClick={handleLogout} className="hidden sm:inline-flex items-center justify-center h-9 px-4 text-sm font-medium text-muted hover:text-foreground transition-colors whitespace-nowrap shrink-0">
                   Sign Out
                 </button>
               </>
+            ) : loading ? (
+              <span className="hidden sm:inline-flex h-9 w-20 bg-gray-100 rounded-lg animate-pulse" />
             ) : isAuthPage ? null : (
-              <Link href="/auth/login" className="hidden sm:inline-flex items-center justify-center h-9 px-5 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-light transition-colors">
+              <Link href="/auth/login" className="hidden sm:inline-flex items-center justify-center h-9 px-5 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-light transition-colors whitespace-nowrap shrink-0">
                 Sign In
               </Link>
             )}
