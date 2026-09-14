@@ -3,14 +3,6 @@
 import { useEffect, useState } from "react"
 
 const years = Array.from({length:11},(_,i)=> String(2026-i))
-const resourceOptions = [
-  "Specialized Laboratory Testing Equipment",
-  "Industrial Machinery, CNC, Fabrication, or 3D Printing",
-  "Raw Materials, Chemical Reagents, or Agricultural Seed / Soil Kits",
-  "High-Performance Computing / Cloud GPU Clusters",
-  "Grassroots Training Facilities / Translation into Sinhala & Tamil",
-  "Field Testing Grounds / Access to local village land",
-]
 
 function countWords(s:string){ return s.trim() ? s.trim().split(/\s+/).length : 0 }
 
@@ -37,8 +29,7 @@ export default function ResearcherResearchPage() {
   const [problem,setProblem]=useState("")
   const [valueProp,setValueProp]=useState("")
   // Step 5
-  const [resourceNeeds,setResourceNeeds]=useState<string[]>([])
-  const [infraReq,setInfraReq]=useState("")
+  const [resourceReq,setResourceReq]=useState("")
   const [budget,setBudget]=useState("")
   const [currency,setCurrency]=useState("LKR")
   // Step 6
@@ -52,10 +43,6 @@ export default function ResearcherResearchPage() {
     fetch("/api/research").then(r=>r.json()).then(d=>{ setProjects(Array.isArray(d)?d:[]); setLoading(false)}).catch(()=>setLoading(false))
   }
   useEffect(()=>{ load() },[])
-
-  function toggle(arr:string[], val:string, setter:(v:string[])=>void){
-    setter(arr.includes(val) ? arr.filter(x=>x!==val) : [...arr, val])
-  }
 
   function validateFile(f:File|null, maxMB:number, types:string[]){
     if(!f) return null
@@ -83,8 +70,7 @@ export default function ResearcherResearchPage() {
     if(countWords(problem)>250) return setError("Real-World Problem exceeds 250 words.")
     if(countWords(valueProp)===0) return setError("Describe the Value Proposition.")
     if(countWords(valueProp)>250) return setError("Value Proposition exceeds 250 words.")
-    if(resourceNeeds.length===0) return setError("Select at least one Resource Need.")
-    if(!infraReq.trim()) return setError("Specific Infrastructure Request is required.")
+    if(!resourceReq.trim()) return setError("Describe your Resource Requirements.")
     if(!budget.trim() || isNaN(Number(budget))) return setError("Enter a valid Estimated Launch Budget.")
     if(!filePaper) return setError("Full Published Paper (PDF) is required.")
     if(!fileDeck) return setError("Slide Deck / Video Pitch is required.")
@@ -112,8 +98,7 @@ export default function ResearcherResearchPage() {
       fd.append("location", location)
       fd.append("problem", problem)
       fd.append("valueProp", valueProp)
-      fd.append("resourceNeeds", JSON.stringify(resourceNeeds))
-      fd.append("infraReq", infraReq)
+      fd.append("resourceNeeds", resourceReq)
       fd.append("budget", budget)
       fd.append("currency", currency)
       if(filePaper) fd.append("filePaper", filePaper)
@@ -127,7 +112,7 @@ export default function ResearcherResearchPage() {
       setShowForm(false)
       setPathway(""); setTitle(""); setDoi(""); setJournal(""); setYear(""); setAuthorAff("")
       setTrl(""); setSrl(""); setLocation(""); setProblem(""); setValueProp("")
-      setResourceNeeds([]); setInfraReq(""); setBudget(""); setCurrency("LKR")
+      setResourceReq(""); setBudget(""); setCurrency("LKR")
       setFilePaper(null); setFileDeck(null); setFileAssets(null); setIpAgree(false)
       load()
       setTimeout(()=> setSuccess(false), 4000)
@@ -270,25 +255,15 @@ export default function ResearcherResearchPage() {
           {/* Step 5 */}
           <section className="border border-border rounded-xl p-5 bg-gray-50/50">
             <h2 className="font-bold text-primary">Step 5: Resource Requirements (The Implementation Gap)</h2>
+            <p className="text-sm text-muted mb-3">Briefly tell us what you need — we’ll provide examples, no need to be highly specific.</p>
             <div className="mt-3 space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-1">5.1 Resource Needs *</label>
-                <div className="space-y-2">
-                  {resourceOptions.map(r=> (
-                    <label key={r} className="flex items-center gap-2 p-2 rounded border border-border bg-white cursor-pointer">
-                      <input type="checkbox" checked={resourceNeeds.includes(r)} onChange={()=> toggle(resourceNeeds,r,setResourceNeeds)} />
-                      <span className="text-sm">{r}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">5.2 Specific Infrastructure Request *</label>
-                <textarea value={infraReq} onChange={e=>setInfraReq(e.target.value)} rows={3} placeholder="List exact specifications of machinery, tools, or resources you currently lack." className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
+                <label className="block text-sm font-medium mb-1">5.1 Resource Requirements *</label>
+                <textarea value={resourceReq} onChange={e=>setResourceReq(e.target.value)} rows={3} placeholder="e.g., lab testing equipment, CNC/3D printer, raw materials or seeds, GPU cluster, training hall, field land — briefly list what you need" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
               </div>
               <div className="grid sm:grid-cols-3 gap-4">
                 <div className="sm:col-span-2">
-                  <label className="block text-sm font-medium mb-1">5.3 Estimated Launch Budget *</label>
+                  <label className="block text-sm font-medium mb-1">5.2 Estimated Launch Budget *</label>
                   <input type="number" value={budget} onChange={e=>setBudget(e.target.value)} placeholder="e.g., 500000" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
                 </div>
                 <div>

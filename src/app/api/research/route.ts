@@ -74,7 +74,7 @@ export async function POST(request: Request) {
       targetDistricts: (()=>{ try{ return JSON.parse(get("targetDistricts")||"[]")}catch{return []}})(),
       problem: get("problem"),
       valueProp: get("valueProp"),
-      resourceNeeds: (()=>{ try{ return JSON.parse(get("resourceNeeds")||"[]")}catch{return []}})(),
+      resourceNeeds: get("resourceNeeds"),
       infraReq: get("infraReq"),
       budget: get("budget"),
       currency: get("currency"),
