@@ -59,12 +59,14 @@ export async function POST(request: Request) {
       return typeof v === "string" ? v : v ? (v as File).name : ""
     }
     body = {
+      researchStatus: get("researchStatus"),
       pathway: get("pathway"),
       title: get("title"),
       doi: get("doi"),
       journal: get("journal"),
       year: get("year"),
       authorAff: get("authorAff"),
+      unpubDesc: get("unpubDesc"),
       trl: get("trl"),
       srl: get("srl"),
       location: get("location"),
