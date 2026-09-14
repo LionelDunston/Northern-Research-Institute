@@ -89,9 +89,9 @@ export function Header() {
             {user || isDashboard ? (
               <span className="hidden sm:inline-flex h-9 w-12" aria-hidden="true" />
             ) : loading ? (
-              <span className="hidden sm:inline-flex h-9 w-20 bg-gray-100 rounded-lg animate-pulse" />
+              <span className="inline-flex h-9 w-20 bg-gray-100 rounded-lg animate-pulse" />
             ) : isAuthPage ? null : (
-              <Link href="/auth/login" className="hidden sm:inline-flex items-center justify-center h-9 px-5 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-light transition-colors whitespace-nowrap shrink-0">
+              <Link href="/auth/login" className="inline-flex items-center justify-center h-9 px-5 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-light transition-colors whitespace-nowrap shrink-0">
                 Sign In
               </Link>
             )}
