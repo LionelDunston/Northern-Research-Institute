@@ -5,8 +5,6 @@ import { usePathname, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { mainNav } from "@/lib/navigation"
 
-const dashboardPaths = ["/admin", "/mentor", "/researcher", "/partner"]
-
 export function Header() {
   const router = useRouter()
   const pathname = usePathname()
@@ -44,11 +42,7 @@ export function Header() {
     router.refresh()
   }
 
-  const isDashboard = dashboardPaths.some((p) => pathname === p || pathname.startsWith(p + "/"))
   const isAuthPage = pathname.startsWith("/auth")
-  if (isDashboard) {
-    return null
-  }
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
@@ -90,18 +84,18 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 sm:gap-3">
             {!loading && user ? (
               <>
-                <Link href={dashboardHref} className="hidden sm:inline-flex px-4 py-2 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-light transition-colors">
+                <Link href={dashboardHref} className="hidden sm:inline-flex items-center justify-center h-9 px-5 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-light transition-colors">
                   Dashboard
                 </Link>
-                <button onClick={handleLogout} className="px-4 py-2 text-sm font-medium text-muted hover:text-foreground transition-colors">
+                <button onClick={handleLogout} className="hidden sm:inline-flex items-center justify-center h-9 px-4 text-sm font-medium text-muted hover:text-foreground transition-colors">
                   Sign Out
                 </button>
               </>
             ) : isAuthPage ? null : (
-              <Link href="/auth/login" className="hidden sm:inline-flex px-4 py-2 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-light transition-colors">
+              <Link href="/auth/login" className="hidden sm:inline-flex items-center justify-center h-9 px-5 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-light transition-colors">
                 Sign In
               </Link>
             )}

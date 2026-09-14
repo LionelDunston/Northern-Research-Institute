@@ -1,17 +1,9 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 import { siteConfig, contactInfo } from "@/lib/data"
 
-const dashboardPaths = ["/admin", "/mentor", "/researcher", "/partner"]
-
 export function Footer() {
-  const pathname = usePathname()
-
-  if (dashboardPaths.some((p) => pathname === p || pathname.startsWith(p + "/"))) {
-    return null
-  }
 
   return (
     <footer className="bg-primary text-white">
