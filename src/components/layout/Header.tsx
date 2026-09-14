@@ -86,9 +86,7 @@ export function Header() {
 
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {user ? (
-              <button onClick={handleLogout} className="hidden sm:inline-flex items-center justify-center h-9 px-5 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-light transition-colors whitespace-nowrap shrink-0">
-                Sign Out
-              </button>
+              <span className="hidden sm:inline-flex h-9 w-12" aria-hidden="true" />
             ) : loading ? (
               <span className="hidden sm:inline-flex h-9 w-20 bg-gray-100 rounded-lg animate-pulse" />
             ) : isAuthPage ? null : (
@@ -139,11 +137,7 @@ export function Header() {
                 )}
               </div>
             ))}
-            {user ? (
-              <button onClick={() => { handleLogout(); setMobileOpen(false) }} className="block w-full text-left px-3 py-2 text-sm font-medium text-muted hover:text-foreground">
-                Sign Out
-              </button>
-            ) : isAuthPage ? null : (
+            {user ? null : isAuthPage ? null : (
               <Link href="/auth/login" className="block px-3 py-2 text-sm font-medium text-accent hover:text-accent/80" onClick={() => setMobileOpen(false)}>
                 Sign In
               </Link>
