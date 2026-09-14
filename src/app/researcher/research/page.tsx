@@ -15,8 +15,8 @@ export default function ResearcherResearchPage() {
 
   // Step 1 - Published status
   const [researchStatus,setResearchStatus]=useState<""|"published"|"unpublished">("")
-  // Step 1b - pathway (kept for implementation routing)
-  const [pathway,setPathway]=useState<""|"industrial"|"rural">("")
+  // Step 3 - pathway: commercial vs social impact (both can be industrial or rural)
+  const [pathway,setPathway]=useState<""|"commercial"|"social"|"industrial"|"rural">("")
   // Step 2
   const [title,setTitle]=useState("")
   const [doi,setDoi]=useState("")
@@ -75,7 +75,7 @@ export default function ResearcherResearchPage() {
       }
     }
     if(!pathway) return setError("Select an Implementation Pathway (Step 3).")
-    if(pathway==="industrial"){
+    if(pathway==="commercial"){
       if(!trl) return setError("Select a Technology Readiness Level.")
     } else {
       if(!srl) return setError("Select a Social Readiness Level.")
@@ -223,24 +223,27 @@ export default function ResearcherResearchPage() {
             )}
           </section>
 
-          {/* Step 3 - Implementation Pathway */}
+          {/* Step 3 - Implementation Pathway - corrected: commercial vs social */}
           <section className="border border-border rounded-xl p-5 bg-accent/5">
             <h2 className="font-bold text-primary">Step 3: Implementation Pathway</h2>
-            <p className="text-sm text-muted mb-3">How should your research be implemented?</p>
+            <p className="text-sm text-muted mb-1">Choose based on <span className="font-semibold">commercial intent</span>, not just topic.</p>
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-3">
+              <p className="text-xs text-blue-800"><span className="font-semibold">Note:</span> Rural livelihood projects that will <em>sell products/services for income</em> (e.g., agritech startup, cottage enterprise) → choose <strong>Enterprise & Commercial</strong>. Technology projects that are <em>free / open-source for public good</em> (e.g., health AI for clinics) → choose <strong>Social Impact</strong>.</p>
+            </div>
             <div className="grid sm:grid-cols-2 gap-3 mb-4">
-              <label className={`p-4 rounded-lg border-2 cursor-pointer ${pathway==="industrial"?"border-primary bg-primary/5":"border-border bg-white"}`}>
-                <input type="radio" name="pathway" value="industrial" checked={pathway==="industrial"} onChange={()=>setPathway("industrial")} className="mr-2" />
-                <span className="font-medium">Industrial & Commercial Scaling</span>
-                <p className="text-xs text-muted mt-1">Tech, AI, manufacturing, biochemistry, factory scaling</p>
+              <label className={`p-4 rounded-lg border-2 cursor-pointer ${pathway==="commercial"?"border-primary bg-primary/5":"border-border bg-white"}`}>
+                <input type="radio" name="pathway" value="commercial" checked={pathway==="commercial"} onChange={()=>setPathway("commercial")} className="mr-2" />
+                <span className="font-medium">Enterprise & Commercial Track</span>
+                <p className="text-xs text-muted mt-1">For-profit: market, revenue, enterprise creation — can be industrial, tech, <em>or</em> rural cottage/farm products that are sold</p>
               </label>
-              <label className={`p-4 rounded-lg border-2 cursor-pointer ${pathway==="rural"?"border-primary bg-primary/5":"border-border bg-white"}`}>
-                <input type="radio" name="pathway" value="rural" checked={pathway==="rural"} onChange={()=>setPathway("rural")} className="mr-2" />
-                <span className="font-medium">Rural Livelihood & Community</span>
-                <p className="text-xs text-muted mt-1">Grassroots tech, agriculture, crafts, rural impact</p>
+              <label className={`p-4 rounded-lg border-2 cursor-pointer ${pathway==="social"?"border-primary bg-primary/5":"border-border bg-white"}`}>
+                <input type="radio" name="pathway" value="social" checked={pathway==="social"} onChange={()=>setPathway("social")} className="mr-2" />
+                <span className="font-medium">Social Impact & Community Track</span>
+                <p className="text-xs text-muted mt-1">Non-profit: public good, open-access, community benefit — can be high-tech <em>or</em> grassroots, not primarily for profit</p>
               </label>
             </div>
             {!pathway && <p className="text-sm text-muted">Select a pathway to see readiness levels.</p>}
-            {pathway==="industrial" && (
+            {pathway==="commercial" && (
               <div className="bg-white rounded-lg border border-border p-4">
                 <p className="text-sm font-semibold mb-2">Technology Readiness Level (TRL) *</p>
                 <div className="space-y-2">
@@ -257,7 +260,7 @@ export default function ResearcherResearchPage() {
                 </div>
               </div>
             )}
-            {pathway==="rural" && (
+            {pathway==="social" && (
               <div className="bg-white rounded-lg border border-border p-4">
                 <p className="text-sm font-semibold mb-2">Social Readiness Level (SRL) *</p>
                 <div className="space-y-2">
@@ -291,7 +294,7 @@ export default function ResearcherResearchPage() {
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1">Value Proposition * <span className="text-muted font-normal">({countWords(valueProp)}/250 words)</span></label>
-                <p className="text-xs text-muted mb-1">{pathway==="rural" ? "How does this increase or stabilize a rural household's monthly income?" : pathway==="industrial" ? "How does this save money or increase production for a factory?" : "Describe the economic / social value."}</p>
+                <p className="text-xs text-muted mb-1">{pathway==="social" || pathway==="rural" ? "How does this increase or stabilize community well-being or household income without primary profit?" : pathway==="commercial" || pathway==="industrial" ? "How does this save money, increase production, or generate revenue/returns?" : "Describe the economic / social value."}</p>
                 <textarea value={valueProp} onChange={e=>setValueProp(e.target.value)} rows={4} placeholder="Describe value..." className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
               </div>
             </div>
