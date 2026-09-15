@@ -19,19 +19,21 @@ export function Header() {
 
     if (hasSessionCookie()) {
       setUser({ role: null })
+    } else {
+      setLoading(false)
     }
 
-    fetch("/api/auth/me")
+    fetch("/api/auth/me", { credentials: "include" })
       .then((r) => r.json())
       .then((data) => {
-        setUser(data.user ? { role: data.role } : null)
+        setUser(data.user ? { role: data.role } : hasSessionCookie() ? { role: null } : null)
         setLoading(false)
       })
       .catch(() => {
         setUser(hasSessionCookie() ? { role: null } : null)
         setLoading(false)
       })
-  }, [])
+  }, [pathname])
 
   const dashboardHref = user?.role === "admin" ? "/admin" : user?.role === "mentor" ? "/mentor" : user?.role === "partner" ? "/partner" : "/researcher"
 
