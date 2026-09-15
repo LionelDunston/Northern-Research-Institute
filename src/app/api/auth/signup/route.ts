@@ -17,13 +17,24 @@ export async function POST(request: Request) {
 
   if (authData.user) {
     const admin = createAdminClient()
-    const { error: profileError } = await admin.from("profiles").insert({
+    let { error: profileError } = await admin.from("profiles").insert({
       id: authData.user.id,
       email,
       full_name: fullName,
       role: "researcher",
       organization,
     })
+    if (profileError && profileError.message.includes("profiles_role_check")) {
+      console.log("Retrying signup profile insert with student")
+      const retry = await admin.from("profiles").insert({
+        id: authData.user.id,
+        email,
+        full_name: fullName,
+        role: "student",
+        organization,
+      })
+      profileError = retry.error
+    }
     if (profileError) {
       console.error("Profile insert error:", profileError)
     }

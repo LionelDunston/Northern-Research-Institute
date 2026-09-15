@@ -37,13 +37,17 @@ export async function GET() {
     profiles.forEach((p: any) => { profileMap[p.id] = p })
   }
 
-  const users = (authUsers.users || []).map((u: any) => ({
-    id: u.id,
-    email: u.email,
-    full_name: profileMap[u.id]?.full_name || u.user_metadata?.full_name || "",
-    role: profileMap[u.id]?.role || "researcher",
-    organization: profileMap[u.id]?.organization || "",
-  }))
+  const users = (authUsers.users || []).map((u: any) => {
+    const raw = profileMap[u.id]?.role || "researcher"
+    const displayRole = raw === "student" || raw === "author" ? "researcher" : raw
+    return {
+      id: u.id,
+      email: u.email,
+      full_name: profileMap[u.id]?.full_name || u.user_metadata?.full_name || "",
+      role: displayRole,
+      organization: profileMap[u.id]?.organization || "",
+    }
+  })
 
   return NextResponse.json(users)
 }

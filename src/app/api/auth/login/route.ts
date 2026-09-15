@@ -24,17 +24,30 @@ export async function POST(request: Request) {
   if (!profile && !profileErr) {
     console.log("No profile found, creating one for user:", data.user.id)
     const admin = createAdminClient()
-    const { error: insertErr } = await admin.from("profiles").insert({
+    let insertRole: string = "researcher"
+    let { error: insertErr } = await admin.from("profiles").insert({
       id: data.user.id,
       email: data.user.email ?? email,
       full_name: data.user.user_metadata?.full_name,
-      role: "researcher",
+      role: insertRole,
     })
+    // Fallback for DBs that still only allow student/author
+    if (insertErr && insertErr.message.includes("profiles_role_check")) {
+      console.log("Retrying profile insert with fallback role student")
+      const retry = await admin.from("profiles").insert({
+        id: data.user.id,
+        email: data.user.email ?? email,
+        full_name: data.user.user_metadata?.full_name,
+        role: "student",
+      })
+      insertErr = retry.error
+      if (!insertErr) insertRole = "student"
+    }
     if (insertErr) {
       console.error("Profile insert error:", insertErr)
     } else {
-      role = "researcher"
-      console.log("Profile created successfully with role: researcher")
+      role = insertRole
+      console.log("Profile created successfully with role:", insertRole)
     }
   }
 
