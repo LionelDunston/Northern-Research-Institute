@@ -27,13 +27,24 @@ export async function GET() {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 
-  const mapped = (data || []).map((row: any) => ({
-    ...row,
-    ...(row.form_data || {}),
-    // keep file names at top level for UI
-    filePaperName: row.form_data?.filePaperName || null,
-    fileDeckName: row.form_data?.fileDeckName || null,
-  }))
+  const mapped = (data || []).map((row: any) => {
+    let extra: any = row.form_data || {}
+    // Fallback: decode from description if form_data column missing
+    if (!row.form_data && row.description && row.description.includes("__FORM_JSON__")) {
+      try {
+        const jsonPart = row.description.split("__FORM_JSON__")[1]
+        extra = JSON.parse(jsonPart)
+        row.description = row.description.split("__FORM_JSON__")[0].trim()
+      } catch {}
+    }
+    return {
+      ...row,
+      ...extra,
+      filePaperName: extra.filePaperName || null,
+      fileDeckName: extra.fileDeckName || null,
+      fileAssetsName: extra.fileAssetsName || null,
+    }
+  })
 
   return NextResponse.json(mapped)
 }
@@ -118,9 +129,11 @@ export async function POST(request: Request) {
 
   let { data, error } = await supabase.from("research_projects").insert(insertPayload).select().single()
 
-  // Fallback if form_data column does not exist yet
+  // Fallback if form_data column does not exist yet - encode into description
   if (error && error.message?.includes("form_data")) {
     const { form_data, ...rest } = insertPayload
+    const encoded = JSON.stringify(form_data)
+    rest.description = rest.description ? `${rest.description}\n\n__FORM_JSON__${encoded}` : `__FORM_JSON__${encoded}`
     const retry = await supabase.from("research_projects").insert(rest).select().single()
     data = retry.data
     error = retry.error

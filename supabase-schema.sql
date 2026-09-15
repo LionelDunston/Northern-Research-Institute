@@ -22,6 +22,7 @@ CREATE TABLE research_projects (
   district TEXT,
   status TEXT DEFAULT 'submitted',
   submitted_by UUID REFERENCES profiles(id),
+  form_data JSONB,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
@@ -135,6 +136,15 @@ CREATE POLICY "Partners can view own organization" ON partners FOR SELECT USING 
 );
 CREATE POLICY "Admins can manage partners" ON partners FOR ALL USING (
   EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin')
+);
+
+-- 7. Page contents for admin Pages editor
+CREATE TABLE IF NOT EXISTS page_contents (
+  slug TEXT PRIMARY KEY,
+  title TEXT,
+  description TEXT,
+  updated_by UUID REFERENCES profiles(id),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
 -- Migration: rename student -> author -> researcher (run once on existing databases)

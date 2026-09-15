@@ -6,11 +6,15 @@ import { useState } from "react"
 
 const adminNav = [
   { label: "Dashboard", href: "/admin" },
+  { label: "Researchers", href: "/admin/researchers" },
+  { label: "Mentors", href: "/admin/mentors" },
   { label: "Research", href: "/admin/research" },
   { label: "News", href: "/admin/news" },
   { label: "Publications", href: "/admin/publications" },
   { label: "Partners", href: "/admin/partners" },
   { label: "Submissions", href: "/admin/submissions" },
+  { label: "Pages", href: "/admin/pages" },
+  { label: "Users", href: "/admin/users" },
 ]
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
