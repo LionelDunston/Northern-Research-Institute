@@ -89,9 +89,9 @@ export function Header() {
 
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {user ? (
-              <button onClick={handleLogout} className="inline-flex items-center justify-center h-9 px-5 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-light transition-colors whitespace-nowrap shrink-0">
-                Sign Out
-              </button>
+              <Link href={dashboardHref} className="inline-flex items-center justify-center h-9 px-5 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-light transition-colors whitespace-nowrap shrink-0">
+                Dashboard
+              </Link>
             ) : isDashboard ? (
               <span className="hidden sm:inline-flex h-9 w-12" aria-hidden="true" />
             ) : loading ? (
@@ -145,9 +145,9 @@ export function Header() {
               </div>
             ))}
             {user ? (
-              <button onClick={() => { handleLogout(); setMobileOpen(false) }} className="block w-full text-left px-3 py-2 text-sm font-medium text-muted hover:text-foreground">
-                Sign Out
-              </button>
+              <Link href={dashboardHref} className="block px-3 py-2 text-sm font-medium text-accent hover:text-accent/80" onClick={() => setMobileOpen(false)}>
+                Dashboard
+              </Link>
             ) : isDashboard || isAuthPage ? null : (
               <Link href="/auth/login" className="block px-3 py-2 text-sm font-medium text-accent hover:text-accent/80" onClick={() => setMobileOpen(false)}>
                 Sign In
