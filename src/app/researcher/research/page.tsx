@@ -33,8 +33,6 @@ export default function ResearcherResearchPage() {
   const [valueProp,setValueProp]=useState("")
   // Step 5
   const [resourceReq,setResourceReq]=useState("")
-  const [budget,setBudget]=useState("")
-  const [currency,setCurrency]=useState("LKR")
   // Step 6
   const [filePaper,setFilePaper]=useState<File|null>(null)
   const [fileDeck,setFileDeck]=useState<File|null>(null)
@@ -69,6 +67,7 @@ export default function ResearcherResearchPage() {
       if(e1) return setError(e1)
     } else {
       if(!unpubDesc.trim()) return setError("Brief description of your unpublished research is required.")
+      if(!year) return setError("Research Date is required.")
       if(filePaper){
         const e1 = validateFile(filePaper,10,[".pdf"])
         if(e1) return setError(e1)
@@ -86,7 +85,6 @@ export default function ResearcherResearchPage() {
     if(countWords(valueProp)===0) return setError("Describe the Value Proposition.")
     if(countWords(valueProp)>250) return setError("Value Proposition exceeds 250 words.")
     if(!resourceReq.trim()) return setError("Describe your Resource Requirements.")
-    if(!budget.trim() || isNaN(Number(budget))) return setError("Enter a valid Estimated Launch Budget.")
     if(!fileDeck) return setError("Slide Deck / Video Pitch is required.")
     if(!ipAgree) return setError("You must agree to the IP Declaration.")
     const e2 = validateFile(fileDeck,50,[".pdf",".ppt",".pptx",".mp4"])
@@ -113,8 +111,6 @@ export default function ResearcherResearchPage() {
       fd.append("problem", problem)
       fd.append("valueProp", valueProp)
       fd.append("resourceNeeds", resourceReq)
-      fd.append("budget", budget)
-      fd.append("currency", currency)
       if(filePaper) fd.append("filePaper", filePaper)
       if(fileDeck) fd.append("fileDeck", fileDeck)
       if(fileAssets) fd.append("fileAssets", fileAssets)
@@ -126,7 +122,7 @@ export default function ResearcherResearchPage() {
       setShowForm(false)
       setResearchStatus(""); setPathway(""); setTitle(""); setDoi(""); setJournal(""); setYear(""); setAuthorAff(""); setUnpubDesc("")
       setTrl(""); setSrl(""); setLocation(""); setProblem(""); setValueProp("")
-      setResourceReq(""); setBudget(""); setCurrency("LKR")
+      setResourceReq("");
       setFilePaper(null); setFileDeck(null); setFileAssets(null); setIpAgree(false)
       load()
       setTimeout(()=> setSuccess(false), 4000)
@@ -210,14 +206,23 @@ export default function ResearcherResearchPage() {
                   <label className="block text-sm font-medium mb-1">Research Title *</label>
                   <input value={title} onChange={e=>setTitle(e.target.value)} placeholder="Working title of your research" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
                 </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">Main Author & Affiliation *</label>
-                  <input value={authorAff} onChange={e=>setAuthorAff(e.target.value)} placeholder="Your name and institution" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Main Author & Affiliation *</label>
+                    <input value={authorAff} onChange={e=>setAuthorAff(e.target.value)} placeholder="Your name and institution" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Research Date *</label>
+                    <select value={year} onChange={e=>setYear(e.target.value)} className="w-full px-4 py-2.5 rounded-lg border border-border bg-white focus:border-accent outline-none">
+                      <option value="">Select date</option>
+                      {years.map(y=> <option key={y} value={y}>{y}</option>)}
+                    </select>
+                  </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-1">Brief Description *</label>
                   <textarea value={unpubDesc} onChange={e=>setUnpubDesc(e.target.value)} rows={4} placeholder="Briefly describe your research, objectives and current stage." className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
-                  <p className="text-xs text-muted mt-1">For unpublished work, just the author info and a short description is enough.</p>
+                  <p className="text-xs text-muted mt-1">For unpublished work, just the author info, date and a short description is enough.</p>
                 </div>
               </div>
             )}
@@ -304,24 +309,9 @@ export default function ResearcherResearchPage() {
           <section className="border border-border rounded-xl p-5 bg-gray-50/50">
             <h2 className="font-bold text-primary">Step 5: Resource Requirements (The Implementation Gap)</h2>
             <p className="text-sm text-muted mb-3">Briefly tell us what you need — we’ll provide examples, no need to be highly specific.</p>
-            <div className="mt-3 space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-1">Resource Requirements *</label>
-                <textarea value={resourceReq} onChange={e=>setResourceReq(e.target.value)} rows={3} placeholder="e.g., lab testing equipment, CNC/3D printer, raw materials or seeds, GPU cluster, training hall, field land — briefly list what you need" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
-              </div>
-              <div className="grid sm:grid-cols-3 gap-4">
-                <div className="sm:col-span-2">
-                  <label className="block text-sm font-medium mb-1">Estimated Launch Budget *</label>
-                  <input type="number" value={budget} onChange={e=>setBudget(e.target.value)} placeholder="e.g., 500000" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">Currency</label>
-                  <select value={currency} onChange={e=>setCurrency(e.target.value)} className="w-full px-4 py-2.5 rounded-lg border border-border bg-white focus:border-accent outline-none">
-                    <option value="LKR">LKR</option>
-                    <option value="USD">USD</option>
-                  </select>
-                </div>
-              </div>
+            <div>
+              <label className="block text-sm font-medium mb-1">Resource Requirements *</label>
+              <textarea value={resourceReq} onChange={e=>setResourceReq(e.target.value)} rows={3} placeholder="e.g., lab testing equipment, CNC/3D printer, raw materials or seeds, GPU cluster, training hall, field land — briefly list what you need" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
             </div>
           </section>
 
