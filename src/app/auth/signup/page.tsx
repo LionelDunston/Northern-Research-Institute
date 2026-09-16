@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 
 export default function SignupPage() {
-  const [form, setForm] = useState({ email: "", password: "", fullName: "", organization: "" })
+  const [form, setForm] = useState({ email: "", password: "", fullName: "", telephone: "" })
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -61,7 +61,7 @@ export default function SignupPage() {
             <img src="/nri-logo.svg" alt="Northern Research Institute" className="w-full max-w-[320px] h-auto object-contain rounded-lg" />
           </div>
           <h1 className="text-2xl font-bold">Create Account</h1>
-          <p className="text-muted text-sm mt-1">Register as a partner organization</p>
+          <p className="text-muted text-sm mt-1"></p>
         </div>
 
         <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-border p-8 space-y-4 shadow-sm">
@@ -74,9 +74,9 @@ export default function SignupPage() {
               className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none" placeholder="Your name" />
           </div>
           <div>
-            <label htmlFor="org" className="block text-sm font-medium mb-1">Organization</label>
-            <input id="org" type="text" required value={form.organization} onChange={(e) => setForm({ ...form, organization: e.target.value })}
-              className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none" placeholder="Your organization" />
+            <label htmlFor="tel" className="block text-sm font-medium mb-1">Telephone Number</label>
+            <input id="tel" type="tel" required value={form.telephone} onChange={(e) => setForm({ ...form, telephone: e.target.value })}
+              className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none" placeholder="+94 7XX XXX XXX" />
           </div>
           <div>
             <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>

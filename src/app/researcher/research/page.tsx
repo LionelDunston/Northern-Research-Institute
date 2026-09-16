@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-const years = Array.from({length:11},(_,i)=> String(2026-i))
+const years = Array.from({length:37},(_,i)=> String(2026-i))
 
 function countWords(s:string){ return s.trim() ? s.trim().split(/\s+/).length : 0 }
 
@@ -15,7 +15,7 @@ export default function ResearcherResearchPage() {
 
   // Step 1 - Published status
   const [researchStatus,setResearchStatus]=useState<""|"published"|"unpublished">("")
-  // Step 3 - pathway: commercial vs social impact (both can be industrial or rural)
+  // Step 3 - pathway: commercial vs social impact (both can be industrial or community)
   const [pathway,setPathway]=useState<""|"commercial"|"social"|"industrial"|"rural">("")
   // Step 2
   const [title,setTitle]=useState("")
@@ -66,7 +66,7 @@ export default function ResearcherResearchPage() {
       const e1 = validateFile(filePaper,10,[".pdf"])
       if(e1) return setError(e1)
     } else {
-      if(!unpubDesc.trim()) return setError("Brief description of your unpublished research is required.")
+      if(!unpubDesc.trim()) return setError("Abstract is required for unpublished research.")
       if(!year) return setError("Research Date is required.")
       if(filePaper){
         const e1 = validateFile(filePaper,10,[".pdf"])
@@ -220,9 +220,9 @@ export default function ResearcherResearchPage() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Brief Description *</label>
-                  <textarea value={unpubDesc} onChange={e=>setUnpubDesc(e.target.value)} rows={4} placeholder="Briefly describe your research, objectives and current stage." className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
-                  <p className="text-xs text-muted mt-1">For unpublished work, just the author info, date and a short description is enough.</p>
+                  <label className="block text-sm font-medium mb-1">Abstract *</label>
+                  <textarea value={unpubDesc} onChange={e=>setUnpubDesc(e.target.value)} rows={4} placeholder="Provide the abstract of your unpublished research — objectives, methods, key findings." className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
+                  <p className="text-xs text-muted mt-1">For unpublished work, just the author info, date and abstract is enough.</p>
                 </div>
               </div>
             )}
@@ -233,13 +233,13 @@ export default function ResearcherResearchPage() {
             <h2 className="font-bold text-primary">Step 3: Implementation Pathway</h2>
             <p className="text-sm text-muted mb-1">Choose based on <span className="font-semibold">commercial intent</span>, not just topic.</p>
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-3">
-              <p className="text-xs text-blue-800"><span className="font-semibold">Note:</span> Rural livelihood projects that will <em>sell products/services for income</em> (e.g., agritech startup, cottage enterprise) → choose <strong>Enterprise & Commercial</strong>. Technology projects that are <em>free / open-source for public good</em> (e.g., health AI for clinics) → choose <strong>Social Impact</strong>.</p>
+              <p className="text-xs text-blue-800"><span className="font-semibold">Note:</span> Community livelihood projects that will <em>sell products/services for income</em> (e.g., agritech startup, cottage enterprise) → choose <strong>Enterprise & Commercial</strong>. Technology projects that are <em>free / open-source for public good</em> (e.g., health AI for clinics) → choose <strong>Social Impact</strong>.</p>
             </div>
             <div className="grid sm:grid-cols-2 gap-3 mb-4">
               <label className={`p-4 rounded-lg border-2 cursor-pointer ${pathway==="commercial"?"border-primary bg-primary/5":"border-border bg-white"}`}>
                 <input type="radio" name="pathway" value="commercial" checked={pathway==="commercial"} onChange={()=>setPathway("commercial")} className="mr-2" />
                 <span className="font-medium">Enterprise & Commercial Track</span>
-                <p className="text-xs text-muted mt-1">For-profit: market, revenue, enterprise creation — can be industrial, tech, <em>or</em> rural cottage/farm products that are sold</p>
+                <p className="text-xs text-muted mt-1">For-profit: market, revenue, enterprise creation — can be industrial, tech, <em>or</em> community cottage/farm products that are sold</p>
               </label>
               <label className={`p-4 rounded-lg border-2 cursor-pointer ${pathway==="social"?"border-primary bg-primary/5":"border-border bg-white"}`}>
                 <input type="radio" name="pathway" value="social" checked={pathway==="social"} onChange={()=>setPathway("social")} className="mr-2" />
@@ -270,7 +270,7 @@ export default function ResearcherResearchPage() {
                 <p className="text-sm font-semibold mb-2">Social Readiness Level (SRL) *</p>
                 <div className="space-y-2">
                   {[
-                    ["SRL 1","Survey & Policy Data (Gathered data on a rural problem, no physical solution yet)."],
+                    ["SRL 1","Survey & Policy Data (Gathered data on a community problem, no physical solution yet)."],
                     ["SRL 2","Household Pilot (Tested with 1–5 local families)."],
                     ["SRL 3","Cooperative Ready (Tested and ready for entire village)."],
                   ].map(([v,desc])=> (
@@ -295,7 +295,7 @@ export default function ResearcherResearchPage() {
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1">The Real-World Problem * <span className="text-muted font-normal">({countWords(problem)}/250 words)</span></label>
-                <textarea value={problem} onChange={e=>setProblem(e.target.value)} rows={4} placeholder="What urgent industry problem or rural community challenge does your research solve?" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
+                <textarea value={problem} onChange={e=>setProblem(e.target.value)} rows={4} placeholder="What urgent industry problem or community challenge does your research solve?" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1">Value Proposition * <span className="text-muted font-normal">({countWords(valueProp)}/250 words)</span></label>

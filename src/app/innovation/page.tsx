@@ -8,14 +8,14 @@ export const metadata: Metadata = {
 
 const contributors = ["Undergraduate students","Postgraduate researchers","University lecturers","Public research institutions","NGOs","Community organisations","Government departments","Professional practitioners","Development consultants","International research partners"]
 const themes = [
-  { t: "Poverty Reduction", d: "Livelihoods, income generation, financial inclusion, social protection, rural development." },
+  { t: "Poverty Reduction", d: "Livelihoods, income generation, financial inclusion, social protection, community development." },
   { t: "Education", d: "School improvement, teacher development, digital education, inclusive education, career guidance." },
   { t: "Health", d: "Community health, nutrition, mental health, ageing, disability, maternal and child health." },
   { t: "Environment", d: "Climate change, biodiversity, waste management, water conservation, renewable energy." },
   { t: "Women's Empowerment", d: "Leadership, entrepreneurship, economic participation, gender equality, financial inclusion." },
   { t: "Disability Inclusion", d: "Accessibility, assistive technology, inclusive employment, independent living." },
   { t: "Youth Development", d: "Employment, leadership, entrepreneurship, civic engagement." },
-  { t: "Rural Development", d: "Agriculture, fisheries, tourism, infrastructure, local governance, digital villages." },
+  { t: "Community Development", d: "Agriculture, fisheries, tourism, infrastructure, local governance, digital villages." },
 ]
 const steps = ["Research Submission","Evidence Review","Community Validation","Project Design","Partner Identification","Funding Approval","Pilot Implementation","Monitoring and Evaluation","Scaling Through Government, NGOs or Communities"]
 const activities = ["Community consultations","Baseline surveys","Training programmes","Awareness campaigns","Pilot projects","Demonstration sites","Community enterprises","Policy dialogue","Monitoring and evaluation","Capacity building","Digital service delivery","Volunteer mobilisation"]

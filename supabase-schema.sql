@@ -7,6 +7,7 @@ CREATE TABLE profiles (
   full_name TEXT,
   role TEXT CHECK (role IN ('admin', 'mentor', 'researcher', 'author', 'student')) DEFAULT 'researcher',
   organization TEXT,
+  telephone TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
