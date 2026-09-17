@@ -19,7 +19,7 @@ export default function ResearcherDashboard() {
           <div className="text-sm text-muted mt-1">My Research Submissions</div>
         </div>
         <div className="bg-white rounded-xl border border-border p-6">
-          <div className="text-2xl font-bold">✓</div>
+          <div className="text-2xl font-bold"></div>
           <div className="text-sm text-muted mt-1">Account Active</div>
         </div>
       </div>

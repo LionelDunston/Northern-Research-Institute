@@ -41,28 +41,28 @@ export default function ContactPage() {
             <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent shrink-0">📍</div>
+                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent shrink-0"></div>
                 <div>
                   <h3 className="font-semibold">Head Office</h3>
                   <p className="text-muted">Jaffna, Sri Lanka</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent shrink-0">📧</div>
+                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent shrink-0"></div>
                 <div>
                   <h3 className="font-semibold">Email</h3>
                   <a href="mailto:northernresearchinstitute@gmail.com" className="text-muted hover:text-primary transition-colors">northernresearchinstitute@gmail.com</a>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent shrink-0">📞</div>
+                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent shrink-0"></div>
                 <div>
                   <h3 className="font-semibold">Telephone</h3>
                   <a href="tel:+94713539992" className="text-muted hover:text-primary transition-colors">+94 71 353 9992</a>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent shrink-0">🌐</div>
+                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent shrink-0"></div>
                 <div>
                   <h3 className="font-semibold">Social Media</h3>
                   <div className="flex gap-3 mt-1">
@@ -90,7 +90,7 @@ export default function ContactPage() {
             <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
             {done ? (
               <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
-                <div className="text-3xl mb-2">✓</div>
+                <div className="text-3xl mb-2"></div>
                 <h3 className="font-semibold text-green-800 mb-1">Message Sent!</h3>
                 <p className="text-green-700 text-sm">Thank you for contacting NRI. We'll respond within 48 hours.</p>
                 <button onClick={() => setDone(false)} className="mt-4 text-sm text-accent font-medium hover:underline">Send another</button>

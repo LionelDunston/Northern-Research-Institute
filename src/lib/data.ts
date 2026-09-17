@@ -31,32 +31,32 @@ export const knowledgeResources: ResourceItem[] = [
   {
     title: "Proposal Templates",
     description: "Structured templates for research proposals, funding applications, and project plans.",
-    icon: "📄",
+    icon: "",
   },
   {
     title: "Business Plan Templates",
     description: "Comprehensive business plan templates for research commercialization and startups.",
-    icon: "📊",
+    icon: "",
   },
   {
     title: "Grant Writing Guides",
     description: "Step-by-step guides for writing successful grant applications and securing funding.",
-    icon: "✍️",
+    icon: "",
   },
   {
     title: "Training Videos",
     description: "Video library covering research methods, innovation processes, and entrepreneurial skills.",
-    icon: "🎥",
+    icon: "",
   },
   {
     title: "Policy Brief Templates",
     description: "Templates for translating research findings into actionable policy recommendations.",
-    icon: "📋",
+    icon: "",
   },
   {
     title: "Toolkits",
     description: "Practical toolkits for research evaluation, impact assessment, and project management.",
-    icon: "🧰",
+    icon: "",
   },
 ]
 

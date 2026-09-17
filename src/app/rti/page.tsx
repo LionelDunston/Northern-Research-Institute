@@ -11,37 +11,37 @@ const pathwayCategories = [
     title: "Business",
     items: ["Startups", "New products", "Commercial services"],
     color: "bg-blue-50 border-blue-200",
-    icon: "💼",
+    icon: "",
   },
   {
     title: "Government",
     items: ["Public policy", "Ministries", "Local government", "Public services"],
     color: "bg-green-50 border-green-200",
-    icon: "🏛️",
+    icon: "",
   },
   {
     title: "Community",
     items: ["Poverty", "Education", "Health", "Environment", "Livelihoods"],
     color: "bg-orange-50 border-orange-200",
-    icon: "🤝",
+    icon: "",
   },
   {
     title: "Industry",
     items: ["Manufacturing", "ICT", "Productivity", "Technology adoption"],
     color: "bg-purple-50 border-purple-200",
-    icon: "🏭",
+    icon: "",
   },
   {
     title: "Environmental & Climate Solutions",
     items: ["Climate Change Adaptation", "Renewable Energy", "Environmental Conservation", "Sustainable Agriculture", "Waste Management", "Water & Resource Management", "Green Technologies"],
     color: "bg-emerald-50 border-emerald-200",
-    icon: "🌱",
+    icon: "",
   },
   {
     title: "Other & Emerging Sectors",
     items: ["Tourism", "Agriculture", "Culture", "Education", "Technology", "Economy", "Emerging fields"],
     color: "bg-amber-50 border-amber-200",
-    icon: "🔮",
+    icon: "",
   },
 ]
 

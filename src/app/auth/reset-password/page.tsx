@@ -55,7 +55,7 @@ export default function ResetPasswordPage() {
       <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
         <div className="w-full max-w-md bg-white rounded-xl border border-border p-8 text-center shadow-sm">
           <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
-            <span className="text-3xl">✓</span>
+            <span className="text-3xl"></span>
           </div>
           <h1 className="text-2xl font-bold mb-2">Password Updated</h1>
           <p className="text-muted mb-6">Your password has been changed successfully.</p>

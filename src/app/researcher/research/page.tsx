@@ -143,7 +143,7 @@ export default function ResearcherResearchPage() {
         </button>
       </div>
 
-      {success && <div className="bg-green-50 border border-green-200 text-green-800 rounded-xl p-4 mb-6">✓ Submission received — our team will review and contact you.</div>}
+      {success && <div className="bg-green-50 border border-green-200 text-green-800 rounded-xl p-4 mb-6"> Submission received — our team will review and contact you.</div>}
 
       {showForm && (
         <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-border p-6 sm:p-8 mb-8 space-y-8">
