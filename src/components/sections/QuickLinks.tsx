@@ -27,9 +27,18 @@ export function QuickLinks() {
   return (
     <section className="section-padding bg-gradient-to-b from-white to-slate-50">
       <div className="container-wide">
-        <div className="max-w-2xl mx-auto text-center mb-10">
+        <div className="max-w-2xl mx-auto text-center mb-6">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">Where do you want to start?</h2>
           <p className="mt-3 text-muted leading-relaxed">Pick a path and we’ll take it from there.</p>
+        </div>
+        <div className="flex justify-center mb-10">
+          <Link
+            href="/researcher/research"
+            className="group inline-flex items-center px-6 py-3 rounded-lg bg-primary text-white font-semibold shadow-sm hover:bg-primary-light transition-all hover:-translate-y-0.5 focus:ring-2 focus:ring-primary/20 focus:outline-none"
+          >
+            Submit Your Research
+            <span className="ml-2 transition-transform group-hover:translate-x-0.5">→</span>
+          </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {links.map((link, i) => (
