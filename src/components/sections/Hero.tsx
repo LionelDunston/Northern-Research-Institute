@@ -1,7 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import { siteConfig } from "@/lib/data"
 
 export function Hero() {
   const [liveCount, setLiveCount] = useState<number | null>(null)

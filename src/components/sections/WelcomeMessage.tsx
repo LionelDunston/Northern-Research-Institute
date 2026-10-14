@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 
 export function WelcomeMessage() {
@@ -54,6 +55,15 @@ export function WelcomeMessage() {
               innovation, developing businesses and industries, creating employment, and addressing real social and
               development challenges.
             </p>
+            <div className="mt-6">
+              <Link
+                href="/researcher/research"
+                className="group inline-flex items-center px-5 py-2.5 rounded-lg bg-primary text-white font-semibold shadow-sm hover:bg-primary-light transition-all hover:-translate-y-0.5 focus:ring-2 focus:ring-primary/20 focus:outline-none"
+              >
+                Submit Your Research
+                <span className="ml-2 transition-transform group-hover:translate-x-0.5">→</span>
+              </Link>
+            </div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 items-stretch">
