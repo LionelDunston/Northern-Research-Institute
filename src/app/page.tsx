@@ -1,7 +1,6 @@
 import { Hero } from "@/components/sections/Hero"
 import { StatsBar } from "@/components/sections/StatsBar"
 import { WelcomeMessage } from "@/components/sections/WelcomeMessage"
-import { NorthernPriorities } from "@/components/sections/NorthernPriorities"
 import { FeaturedResearch } from "@/components/sections/FeaturedResearch"
 import { SuccessStories } from "@/components/sections/SuccessStories"
 import { NewsSection } from "@/components/sections/NewsSection"
@@ -13,7 +12,6 @@ export default function Home() {
       <Hero />
       <StatsBar />
       <WelcomeMessage />
-      <NorthernPriorities />
       <FeaturedResearch />
       <SuccessStories />
       <NewsSection />
