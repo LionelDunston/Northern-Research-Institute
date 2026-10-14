@@ -57,16 +57,6 @@ export function WelcomeMessage() {
             </p>
           </div>
 
-          <div className="flex justify-center mb-10">
-            <Link
-              href="/researcher/research"
-              className="group inline-flex items-center px-6 py-3 rounded-lg bg-primary text-white font-semibold shadow-sm hover:bg-primary-light transition-all hover:-translate-y-0.5 focus:ring-2 focus:ring-primary/20 focus:outline-none"
-            >
-              Submit Your Research
-              <span className="ml-2 transition-transform group-hover:translate-x-0.5">→</span>
-            </Link>
-          </div>
-
           <div className="grid lg:grid-cols-2 gap-8 items-stretch">
             <div className="rounded-2xl border border-border shadow-sm hover:shadow-md transition-shadow">
               <div className="p-6 sm:p-8">
