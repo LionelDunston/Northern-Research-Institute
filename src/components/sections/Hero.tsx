@@ -1,8 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useRef, useState } from "react"
-import { siteConfig } from "@/lib/data"
+import { useEffect, useState } from "react"
 
 export function Hero() {
   const [liveCount, setLiveCount] = useState<number | null>(null)
@@ -46,13 +45,6 @@ export function Hero() {
             employment, and community development to turn knowledge into measurable impact.
           </p>
           <div className="mt-10 flex flex-wrap gap-3 sm:gap-4 justify-center">
-            <Link
-              href="/researcher/research"
-              className="group inline-flex items-center px-6 py-3 rounded-lg bg-white text-primary font-semibold shadow-lg hover:bg-white/95 transition-all hover:-translate-y-0.5 focus:ring-2 focus:ring-white/40 focus:outline-none"
-            >
-              Submit Your Research
-              <span className="ml-2 transition-transform group-hover:translate-x-0.5">→</span>
-            </Link>
             <Link
               href="/research-programmes"
               className="group inline-flex items-center px-6 py-3 rounded-lg border-2 border-white/40 text-white font-semibold hover:bg-white/10 transition-all hover:-translate-y-0.5 focus:ring-2 focus:ring-white/40 focus:outline-none"
