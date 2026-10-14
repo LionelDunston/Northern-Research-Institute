@@ -29,6 +29,17 @@ export function WelcomeMessage() {
     { title: "You see it happen", desc: "Submissions, reviews and pilots stay visible so you always know where you stand." },
   ]
 
+  const flow = [
+    "Research",
+    "Identify Problems & Opportunities",
+    "Generate Evidence & Solutions",
+    "Policy / Project / Business / Enterprise",
+    "Training & Skills Development",
+    "Funding & Partnerships",
+    "Employment / Self-Employment",
+    "Community Impact",
+  ]
+
   return (
     <section className="section-padding bg-white">
       <div className="container-wide">
@@ -73,29 +84,21 @@ export function WelcomeMessage() {
               <div className="p-6 sm:p-8 flex-1">
                 <h3 className="text-xl font-semibold text-foreground">Translating Knowledge into Action</h3>
                 <p className="mt-3 text-base text-muted leading-relaxed">
-                  Rooted in the Northern Province, connected nationally and internationally, NRI assesses research
-                  for real-world potential, draws on regional evidence, and links it to partners for measurable
-                  development outcomes.
+                  NRI connects intellectual thinking, research, skills, and knowledge with real-world opportunities.
+                  We help turn research findings into practical solutions for employment, entrepreneurship, business,
+                  projects, and community development.
                 </p>
-                <div className="mt-6 grid sm:grid-cols-2 gap-3 text-sm text-muted">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-2">
-                    Policy & Planning
-                  </span>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-2">
-                    Business & Enterprise
-                  </span>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-2">
-                    Social Innovation
-                  </span>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-2">
-                    Community Development
-                  </span>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-2">
-                    Employment Creation
-                  </span>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-2">
-                    Sustainable Development
-                  </span>
+                <div className="mt-6">
+                  <ol className="relative border-l border-border ml-3">
+                    {flow.map((item, i) => (
+                      <li key={item} className="mb-5 ml-6 last:mb-0">
+                        <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-semibold text-white shadow-sm">
+                          {i + 1}
+                        </span>
+                        <p className="text-sm text-foreground leading-relaxed">{item}</p>
+                      </li>
+                    ))}
+                  </ol>
                 </div>
               </div>
               {recent.length > 0 && (
