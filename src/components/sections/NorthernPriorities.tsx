@@ -73,16 +73,7 @@ export function NorthernPriorities() {
   return (
     <section className="section-padding bg-white">
       <div className="container-wide">
-        <div className="max-w-3xl mx-auto text-center mb-6">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">Northern Development Priorities</h2>
-          <p className="mt-4 text-lg text-muted leading-relaxed">
-            NRI's research and development agenda is grounded in the social, economic, environmental, and
-            institutional realities of the Northern Province, while remaining connected to national and global
-            development priorities.
-          </p>
-        </div>
-
-        <div className="flex justify-center mb-10">
+        <div className="flex justify-center mb-6">
           <Link
             href="/researcher/research"
             className="group inline-flex items-center px-6 py-3 rounded-lg bg-primary text-white font-semibold shadow-sm hover:bg-primary-light transition-all hover:-translate-y-0.5 focus:ring-2 focus:ring-primary/20 focus:outline-none"
@@ -90,6 +81,15 @@ export function NorthernPriorities() {
             Submit Your Research
             <span className="ml-2 transition-transform group-hover:translate-x-0.5">→</span>
           </Link>
+        </div>
+
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">Northern Development Priorities</h2>
+          <p className="mt-4 text-lg text-muted leading-relaxed">
+            NRI's research and development agenda is grounded in the social, economic, environmental, and
+            institutional realities of the Northern Province, while remaining connected to national and global
+            development priorities.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
