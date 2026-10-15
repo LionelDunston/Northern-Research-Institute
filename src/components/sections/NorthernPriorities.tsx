@@ -73,7 +73,7 @@ export function NorthernPriorities() {
   return (
     <section className="section-padding bg-white">
       <div className="container-wide">
-        <div className="flex justify-center mb-4">
+        <div className="flex justify-center -mt-6 mb-12">
           <Link
             href="/researcher/research"
             className="group inline-flex items-center px-6 py-3 rounded-lg bg-primary text-white font-semibold shadow-sm hover:bg-primary-light transition-all hover:-translate-y-0.5 focus:ring-2 focus:ring-primary/20 focus:outline-none"
