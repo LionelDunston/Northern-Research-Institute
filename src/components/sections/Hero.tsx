@@ -26,24 +26,25 @@ export function Hero() {
   }, [])
 
   return (
-    <section className="relative overflow-hidden bg-[#050b1f] text-white">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_65%_80%_at_50%_-10%,#0a2de0_0%,transparent_70%)]" />
-      <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)", backgroundSize: "56px 56px" }} />
-      <div className="absolute inset-x-0 top-0 h-px bg-white/10" />
+    <section className="relative overflow-hidden bg-[#0a2de0] text-white">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0a2de0] via-[#1233f0] to-[#061a8f]" />
+      <div className="pointer-events-none absolute -top-40 -left-24 h-[28rem] w-[28rem] rounded-full bg-white/10 blur-3xl animate-pulse" />
+      <div className="pointer-events-none absolute -bottom-40 right-0 h-[26rem] w-[26rem] rounded-full bg-cyan-300/10 blur-3xl animate-pulse" style={{ animationDuration: "6s" }} />
+      <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)", backgroundSize: "56px 56px" }} />
 
       <div className="container-wide relative py-20 sm:py-28 lg:py-32">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex flex-wrap items-center justify-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/5 text-sm text-white/80 mb-7">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+          <div className="inline-flex flex-wrap items-center justify-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-white/10 text-sm text-white/85 mb-7 backdrop-blur-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
             {now || "Jaffna, Sri Lanka"}
-            {liveCount !== null && <span className="text-white/50">• {liveCount} submissions</span>}
+            {liveCount !== null && <span className="text-white/60">• {liveCount} submissions</span>}
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
             From Knowledge to Action
           </h1>
 
-          <p className="mt-6 text-lg text-white/60 max-w-3xl mx-auto leading-relaxed">
+          <p className="mt-6 text-lg text-white/75 max-w-3xl mx-auto leading-relaxed">
             The Northern Research Institute transforms evidence-based, multidisciplinary research into practical
             solutions that benefit society — connecting research, policy, innovation, business, employment, and
             community development.
@@ -52,27 +53,27 @@ export function Hero() {
           <div className="mt-9 flex flex-wrap gap-3 justify-center">
             <Link
               href="/research-programmes"
-              className="inline-flex items-center px-6 py-3 rounded-md border border-white/20 text-sm font-semibold text-white/90 hover:bg-white/5 hover:border-white/30 transition-colors"
+              className="inline-flex items-center px-6 py-3 rounded-md border border-white/25 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
             >
               See How It Works
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center px-6 py-3 rounded-md border border-white/20 text-sm font-semibold text-white/90 hover:bg-white/5 hover:border-white/30 transition-colors"
+              className="inline-flex items-center px-6 py-3 rounded-md border border-white/25 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
             >
               Contact Us
             </Link>
           </div>
 
-          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 justify-center text-sm text-white/50">
-            <span className="inline-flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-white/40" />Researchers welcome</span>
-            <span className="inline-flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-white/40" />Mentors on board</span>
-            <span className="inline-flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-white/40" />Reply within 48 hours</span>
+          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 justify-center text-sm text-white/60">
+            <span className="inline-flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-white/50" />Researchers welcome</span>
+            <span className="inline-flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-white/50" />Mentors on board</span>
+            <span className="inline-flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-white/50" />Reply within 48 hours</span>
           </div>
         </div>
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 h-px bg-white/10" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-white/15" />
     </section>
   )
 }
