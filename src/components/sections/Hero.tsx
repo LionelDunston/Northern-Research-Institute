@@ -52,13 +52,13 @@ export function Hero() {
           <div className="mt-9 flex flex-wrap gap-3 justify-center">
             <Link
               href="/research-programmes"
-              className="inline-flex items-center px-6 py-3 rounded-md border border-white/25 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+              className="inline-flex items-center px-6 py-3 rounded-md bg-white text-[#0a2de0] text-sm font-semibold hover:bg-white/90 transition-colors"
             >
               See How It Works
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center px-6 py-3 rounded-md border border-white/25 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+              className="inline-flex items-center px-6 py-3 rounded-md border-2 border-white text-sm font-semibold text-white hover:bg-white/15 transition-colors"
             >
               Contact Us
             </Link>
