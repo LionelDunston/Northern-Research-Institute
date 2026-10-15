@@ -26,46 +26,53 @@ export function Hero() {
   }, [])
 
   return (
-    <section className="relative bg-gradient-to-br from-primary via-primary-light to-accent text-white overflow-hidden">
-      <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle at 25% 50%, rgba(255,255,255,0.05) 0%, transparent 50%)" }} />
-      <div className="absolute inset-x-0 bottom-0 h-px bg-white/10" />
-      <div className="container-wide relative py-20 sm:py-28 lg:py-36">
+    <section className="relative overflow-hidden bg-[#050b1f] text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_65%_80%_at_50%_-10%,#0a2de0_0%,transparent_70%)]" />
+      <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)", backgroundSize: "56px 56px" }} />
+      <div className="absolute inset-x-0 top-0 h-px bg-white/10" />
+
+      <div className="container-wide relative py-20 sm:py-28 lg:py-32">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-sm font-medium mb-6 shadow-sm backdrop-blur-sm transition-transform hover:scale-[1.01]">
-            <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse" />
+          <div className="inline-flex flex-wrap items-center justify-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/5 text-sm text-white/80 mb-7">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
             {now || "Jaffna, Sri Lanka"}
-            {liveCount !== null && ` • ${liveCount} submissions so far`}
+            {liveCount !== null && <span className="text-white/50">• {liveCount} submissions</span>}
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
+
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
             From Knowledge to Action
           </h1>
-          <p className="mt-6 text-lg sm:text-xl text-white/85 max-w-3xl mx-auto leading-relaxed">
-            The Northern Research Institute (NRI) transforms evidence-based, multidisciplinary research into practical
-            solutions that benefit society. Connecting research, policy, innovation, business, entrepreneurship,
-            employment, and community development to turn knowledge into measurable impact.
+
+          <p className="mt-6 text-lg text-white/60 max-w-3xl mx-auto leading-relaxed">
+            The Northern Research Institute transforms evidence-based, multidisciplinary research into practical
+            solutions that benefit society — connecting research, policy, innovation, business, employment, and
+            community development.
           </p>
-          <div className="mt-10 flex flex-wrap gap-3 sm:gap-4 justify-center">
+
+          <div className="mt-9 flex flex-wrap gap-3 justify-center">
             <Link
               href="/research-programmes"
-              className="group inline-flex items-center px-6 py-3 rounded-lg border-2 border-white/40 text-white font-semibold hover:bg-white/10 transition-all hover:-translate-y-0.5 focus:ring-2 focus:ring-white/40 focus:outline-none"
+              className="inline-flex items-center px-6 py-3 rounded-md border border-white/20 text-sm font-semibold text-white/90 hover:bg-white/5 hover:border-white/30 transition-colors"
             >
               See How It Works
             </Link>
             <Link
               href="/contact"
-              className="group inline-flex items-center px-6 py-3 rounded-lg border-2 border-white/40 text-white font-semibold hover:bg-white/10 transition-all hover:-translate-y-0.5 focus:ring-2 focus:ring-white/40 focus:outline-none"
+              className="inline-flex items-center px-6 py-3 rounded-md border border-white/20 text-sm font-semibold text-white/90 hover:bg-white/5 hover:border-white/30 transition-colors"
             >
               Contact Us
             </Link>
           </div>
-          <div className="mt-10 flex flex-wrap gap-2 sm:gap-3 justify-center text-xs font-medium uppercase tracking-wider">
-            <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/20 shadow-sm">Researchers welcome</span>
-            <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/20 shadow-sm">Mentors on board</span>
-            <span className="px-3 py-1.5 rounded-full bg-white text-primary font-semibold normal-case tracking-normal shadow-sm">We reply within 48 hours</span>
+
+          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 justify-center text-sm text-white/50">
+            <span className="inline-flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-white/40" />Researchers welcome</span>
+            <span className="inline-flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-white/40" />Mentors on board</span>
+            <span className="inline-flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-white/40" />Reply within 48 hours</span>
           </div>
         </div>
       </div>
-      <div className="absolute inset-x-0 -bottom-1 h-10 bg-gradient-to-b from-transparent to-white" />
+
+      <div className="absolute inset-x-0 bottom-0 h-px bg-white/10" />
     </section>
   )
 }
