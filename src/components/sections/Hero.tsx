@@ -30,7 +30,6 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-[#0a2de0] via-[#1233f0] to-[#061a8f]" />
       <div className="pointer-events-none absolute -top-40 -left-24 h-[28rem] w-[28rem] rounded-full bg-white/10 blur-3xl animate-pulse" />
       <div className="pointer-events-none absolute -bottom-40 right-0 h-[26rem] w-[26rem] rounded-full bg-cyan-300/10 blur-3xl animate-pulse" style={{ animationDuration: "6s" }} />
-      <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)", backgroundSize: "56px 56px" }} />
 
       <div className="container-wide relative py-20 sm:py-28 lg:py-32">
         <div className="max-w-4xl mx-auto text-center">
