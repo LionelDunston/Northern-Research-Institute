@@ -32,8 +32,7 @@ export const mainNav: NavItem[] = [
       { label: "Impact Dashboard", href: "/rti#impact" },
     ],
   },
-  { label: "Business Opportunities", href: "/research-programmes" },
-  { label: "Community Development", href: "/innovation" },
+
   { label: "News & Events", href: "/news" },
   { label: "Partnerships", href: "/partnerships" },
   { label: "Contact", href: "/contact" },
