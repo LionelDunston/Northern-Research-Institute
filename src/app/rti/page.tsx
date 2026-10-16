@@ -113,7 +113,7 @@ export default function RTIPage() {
       <Section
         id="repository"
         title="Research Repository"
-        subtitle="Enables researchers to submit, discover, and showcase research with potential for further development and practical application."
+        subtitle="NRI develops an integrated Data & Knowledge Centre that collects, processes, analyses, and disseminates data and knowledge from diverse sectors, disciplines, and geographic contexts. The Centre transforms data and information into knowledge, evidence, and actionable insights to support research, policy, innovation, business, projects, and sustainable development."
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="bg-gray-50 rounded-xl border border-border p-8">
@@ -134,12 +134,39 @@ export default function RTIPage() {
             </ul>
           </div>
           <div className="bg-gray-50 rounded-xl border border-border p-8">
-            <h3 className="text-xl font-semibold mb-4">Search Research By</h3>
+            <h3 className="text-xl font-semibold mb-4">Data &amp; Knowledge Centre Coverage</h3>
+            <div className="flex flex-wrap gap-2">
+              {[
+                "Demographic data",
+                "Economic data",
+                "Social data",
+                "Environmental data",
+                "Health data",
+                "Education data",
+                "Labour-market data",
+                "Governance data",
+                "Business and industry data",
+                "Development data",
+                "Spatial/geographical data",
+                "Survey data",
+                "Administrative data",
+                "Research datasets",
+                "Community-generated/local knowledge",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="px-3 py-1.5 rounded-full bg-white border border-border text-sm font-medium text-primary"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+            <h3 className="text-xl font-semibold mt-6 mb-4">Search Research By</h3>
             <div className="flex flex-wrap gap-2">
               {["University", "Subject", "Sector / Field", "SDG", "District", "Keyword", "Submission Date", "Publication Date"].map((item) => (
                 <span
                   key={item}
-                  className="px-4 py-2 rounded-full bg-white border border-border text-sm font-medium text-primary"
+                  className="px-3 py-1.5 rounded-full bg-white border border-border text-sm font-medium text-primary"
                 >
                   {item}
                 </span>
