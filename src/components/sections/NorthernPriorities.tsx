@@ -13,7 +13,7 @@ const priorities = [
   {
     title: "02. Youth Development",
     desc: "Youth livelihoods, leadership, skills, participation, entrepreneurship, migration, and social inclusion.",
-    image: "https://images.unsplash.com/photo-1508776914442-9d10d303cd09?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/priorities/youth.jpg",
   },
   {
     title: "03. Rural Development & Livelihoods",
@@ -23,17 +23,17 @@ const priorities = [
   {
     title: "04. Women's Economic Empowerment",
     desc: "Women's employment, entrepreneurship, economic participation, access to resources, and livelihood development.",
-    image: "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/priorities/women.jpg",
   },
   {
     title: "05. Education & Skills Development",
     desc: "Education quality, higher education, vocational training, skill development, and the transition from education to employment.",
-    image: "https://images.unsplash.com/photo-1588072432836-e100327743c2?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/priorities/education.jpg",
   },
   {
     title: "06. Population & Migration",
     desc: "Population change, demographic trends, internal and international migration, ageing, displacement, and their social and economic impacts.",
-    image: "https://images.unsplash.com/photo-1464037866556-4405639afbf5?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/priorities/migration.jpg",
   },
   {
     title: "07. Environment & Climate Change",
@@ -53,7 +53,7 @@ const priorities = [
   {
     title: "10. Local Governance",
     desc: "Local government, public services, participatory governance, institutional capacity, decentralisation, and community participation.",
-    image: "https://images.unsplash.com/photo-1541976592127-d8c06afc40a5?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/priorities/governance.jpg",
   },
   {
     title: "11. Agriculture & Rural Economy",
