@@ -24,12 +24,18 @@ export const mainNav: NavItem[] = [
       { label: "Development Pathways", href: "/rti#pathways" },
       { label: "Training & Capacity", href: "/rti#training" },
       { label: "Research Portal", href: "/rti#research-portal" },
+      { label: "Impact Dashboard", href: "/rti#impact" },
+    ],
+  },
+  {
+    label: "Alliance Connect",
+    href: "/rti",
+    children: [
       { label: "Investor Portal", href: "/rti#investor-portal" },
       { label: "Government Portal", href: "/rti#government-portal" },
       { label: "NGO Portal", href: "/rti#ngo-portal" },
       { label: "Business Portal", href: "/rti#business-portal" },
       { label: "Funding Portal", href: "/rti#funding-portal" },
-      { label: "Impact Dashboard", href: "/rti#impact" },
     ],
   },
 
