@@ -16,8 +16,8 @@ const priorities = [
     image: "/priorities/youth.jpg",
   },
   {
-    title: "03. Rural Development & Livelihoods",
-    desc: "Rural economies, household livelihoods, community development, poverty reduction, and sustainable income opportunities.",
+    title: "03. Community Development & Livelihoods",
+    desc: "Community economies, household livelihoods, community development, poverty reduction, and sustainable income opportunities.",
     image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
@@ -56,8 +56,8 @@ const priorities = [
     image: "/priorities/governance.jpg",
   },
   {
-    title: "11. Agriculture & Rural Economy",
-    desc: "Agriculture, fisheries, livestock, value addition, food security, rural enterprises, markets, and sustainable production.",
+    title: "11. Agriculture & Community Economy",
+    desc: "Agriculture, fisheries, livestock, value addition, food security, community enterprises, markets, and sustainable production.",
     image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
