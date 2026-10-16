@@ -153,30 +153,60 @@ export default function RTIPage() {
         id="evaluation"
         variant="muted"
         title="Research Evaluation"
-        subtitle="Experts assess submitted research against rigorous criteria to identify practical potential."
+        subtitle="Experts assess submitted research through a structured evaluation process to identify practical potential and implementation pathways."
       >
-        <div className="max-w-3xl mx-auto">
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-            {[
-              { label: "Innovation", desc: "Novelty and originality" },
-              { label: "Feasibility", desc: "Practical viability" },
-              { label: "Social Impact", desc: "Community benefit" },
-              { label: "Commercial Potential", desc: "Market opportunity" },
-              { label: "Sustainability", desc: "Long-term viability" },
-              { label: "Scalability", desc: "Growth potential" },
-            ].map((criterion) => (
-              <div
-                key={criterion.label}
-                className="bg-white p-4 rounded-lg border border-border text-center hover:shadow-md transition-shadow"
-              >
-                <div className="text-sm font-semibold text-primary">{criterion.label}</div>
-                <div className="text-xs text-muted mt-1">{criterion.desc}</div>
+        <div className="max-w-4xl mx-auto">
+          <div className="space-y-6">
+            <div className="bg-white rounded-xl border border-border p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-primary mb-3">1. Research Quality Review</h3>
+              <p className="text-muted leading-relaxed">Is the research credible and methodologically sound?</p>
+            </div>
+            <div className="flex justify-center">
+              <div className="w-0.5 h-6 bg-border" />
+            </div>
+            <div className="bg-white rounded-xl border border-border p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-primary mb-3">2. Problem &amp; Opportunity Assessment</h3>
+              <p className="text-muted leading-relaxed">What real-world problem or opportunity does it identify?</p>
+            </div>
+            <div className="flex justify-center">
+              <div className="w-0.5 h-6 bg-border" />
+            </div>
+            <div className="bg-white rounded-xl border border-border p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-primary mb-3">3. Impact &amp; Feasibility Assessment</h3>
+              <p className="text-muted leading-relaxed">Can the findings create practical, social, economic, policy, or environmental value?</p>
+            </div>
+            <div className="flex justify-center">
+              <div className="w-0.5 h-6 bg-border" />
+            </div>
+            <div className="bg-white rounded-xl border border-border p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-primary mb-3">4. Application Pathway</h3>
+              <p className="text-muted leading-relaxed mb-3">What is the most appropriate pathway?</p>
+              <div className="flex flex-wrap gap-2">
+                {["Policy", "Project", "Business", "Social Enterprise", "Innovation", "Employment", "Community Development", "Further Research"].map((path) => (
+                  <span
+                    key={path}
+                    className="px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary"
+                  >
+                    {path}
+                  </span>
+                ))}
               </div>
-            ))}
+            </div>
+            <div className="flex justify-center">
+              <div className="w-0.5 h-6 bg-border" />
+            </div>
+            <div className="bg-white rounded-xl border border-border p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-primary mb-3">5. Implementation Readiness</h3>
+              <p className="text-muted leading-relaxed">Can it be piloted, measured, improved, and scaled?</p>
+            </div>
+            <div className="flex justify-center">
+              <div className="w-0.5 h-6 bg-border" />
+            </div>
+            <div className="bg-white rounded-xl border border-border p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-primary mb-3">6. Impact Measurement &amp; Scaling</h3>
+              <p className="text-muted leading-relaxed">Defining measurable indicators and scaling strategies.</p>
+            </div>
           </div>
-          <p className="text-center text-muted mt-6 text-sm">
-            Projects receive scores and recommendations based on these criteria.
-          </p>
         </div>
       </Section>
 
