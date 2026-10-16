@@ -161,17 +161,7 @@ export default function RTIPage() {
                 </span>
               ))}
             </div>
-            <h3 className="text-xl font-semibold mt-6 mb-4">Search Research By</h3>
-            <div className="flex flex-wrap gap-2">
-              {["University", "Subject", "Sector / Field", "SDG", "District", "Keyword", "Submission Date", "Publication Date"].map((item) => (
-                <span
-                  key={item}
-                  className="px-3 py-1.5 rounded-full bg-white border border-border text-sm font-medium text-primary"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
+
           </div>
         </div>
       </Section>
