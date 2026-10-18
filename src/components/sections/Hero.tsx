@@ -69,14 +69,6 @@ export function Hero() {
             <span className="inline-flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-white/50" />Mentors on board</span>
             <span className="inline-flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-white/50" />Reply within 48 hours</span>
           </div>
-          <div className="mt-6 flex justify-center">
-            <Link
-              href="/researcher/research"
-              className="inline-flex items-center px-6 py-3 rounded-md bg-gradient-to-r from-orange-400 to-amber-400 text-white text-sm font-semibold hover:from-orange-300 hover:to-amber-300 transition-all shadow-lg"
-            >
-              Submit Your Research
-            </Link>
-          </div>
         </div>
       </div>
 
