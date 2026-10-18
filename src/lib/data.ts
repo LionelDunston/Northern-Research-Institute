@@ -8,7 +8,12 @@ export const siteConfig = {
     "The Northern Research Institute (NRI) is a research and innovation organisation dedicated to transforming knowledge across disciplines into practical solutions, opportunities, and real-world impact. NRI connects research, expertise, and partnerships to support innovation, enterprise, policy, employment, and sustainable national development.",
 }
 
-export const stats: Stat[] = []
+export const stats: Stat[] = [
+  { value: "100+", label: "Research Projects Supported" },
+  { value: "500+", label: "Graduates Engaged" },
+  { value: "25+", label: "Research-to-Project Initiatives" },
+  { value: "50+", label: "Community Development Initiatives" },
+]
 
 export const boardMembers: TeamMember[] = []
 
