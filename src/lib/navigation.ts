@@ -24,6 +24,8 @@ export const mainNav: NavItem[] = [
       { label: "Development Pathways", href: "/rti#pathways" },
       { label: "Training & Capacity", href: "/rti#training" },
       { label: "Research Portal", href: "/rti#research-portal" },
+      { label: "Business Opportunities", href: "/research-programmes" },
+      { label: "Community Development", href: "/innovation" },
       { label: "Impact Dashboard", href: "/rti#impact" },
     ],
   },
