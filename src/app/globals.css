@@ -1,40 +1,273 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Erode";
+  src: url("/fonts/erode-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Erode";
+  src: url("/fonts/erode-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Erode";
+  src: url("/fonts/erode-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --primary: #0a2de0;
-  --primary-light: #1a3cff;
-  --accent: #0a2de0;
-  --accent-light: #2a4bff;
-  --muted: #64748b;
-  --border: #e2e8f0;
+  --paper: #ffffff;
+  --ink: #0b0b0c;
+  --ink-soft: #4c4c46;
+  --field: #f0f0ee;
+  --mint: #d9f0de;
+  --brand: #0a2de0;
+  --brand-deep: #061c9e;
+  --brand-lift: #2a4bff;
+  --accent: #ff5a1f;
+
+  --t-display: clamp(2.75rem, 7vw, 6.25rem);
+  --t-head: clamp(1.75rem, 3.4vw, 2.75rem);
+  --t-sub: clamp(1.25rem, 1.9vw, 1.625rem);
+  --t-lead: 1.1875rem;
+  --t-body: 1rem;
+  --t-meta: 0.9375rem;
+  --t-small: 0.8125rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-light: var(--primary-light);
+  --color-background: var(--paper);
+  --color-paper: var(--paper);
+  --color-foreground: var(--ink);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--ink-soft);
+  --color-field: var(--field);
+  --color-surface: var(--field);
+  --color-mint: var(--mint);
+  --color-primary: var(--brand);
+  --color-primary-light: var(--brand-lift);
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
   --color-accent: var(--accent);
-  --color-accent-light: var(--accent-light);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-border: #e3e3df;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Erode", Georgia, "Times New Roman", serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: var(--t-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
 }
 
 @layer utilities {
   .container-wide {
-    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+    @apply mx-auto max-w-7xl px-5 sm:px-8 lg:px-10;
   }
+
   .section-padding {
     @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  /* --- the scale: seven sizes, no more --- */
+  .t-display {
+    font-family: var(--font-serif);
+    font-size: var(--t-display);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+  }
+
+  .t-head {
+    font-family: var(--font-serif);
+    font-size: var(--t-head);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+  }
+
+  .t-sub {
+    font-family: var(--font-serif);
+    font-size: var(--t-sub);
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+
+  .t-lead {
+    font-family: var(--font-serif);
+    font-size: var(--t-lead);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .t-body {
+    font-family: var(--font-serif);
+    font-size: var(--t-body);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  /* interface and secondary matter: the sans layer */
+  .t-meta {
+    font-family: var(--font-sans);
+    font-size: var(--t-meta);
+    line-height: 1.5;
+  }
+
+  .t-small {
+    font-family: var(--font-sans);
+    font-size: var(--t-small);
+    line-height: 1.45;
+  }
+
+  .link-rule {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+    transition: color 160ms ease, text-decoration-color 160ms ease;
+  }
+
+  .link-rule:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .btn-solid {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 48px;
+    padding: 0.75rem 1.5rem;
+    background: var(--brand);
+    color: #ffffff;
+    font-family: var(--font-sans);
+    font-size: var(--t-meta);
+    font-weight: 500;
+    letter-spacing: 0.005em;
+    transition: background-color 180ms ease, transform 180ms ease;
+  }
+
+  .btn-solid:hover {
+    background: var(--brand-deep);
+  }
+
+  .btn-solid:active {
+    transform: translateY(1px);
+  }
+
+  .btn-invert {
+    background: #ffffff;
+    color: var(--brand);
+  }
+
+  .btn-invert:hover {
+    background: var(--mint);
+    color: var(--brand-deep);
+  }
+
+  /* --- real ordered lists: the numbers belong to the list, not to the copy --- */
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .steps > li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 3.25rem;
+  }
+
+  .steps > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0.05em;
+    font-family: var(--font-serif);
+    font-size: var(--t-sub);
+    line-height: 1;
+    font-weight: 500;
+    color: var(--brand);
+  }
+
+  /* --- motion: transform and opacity only, and only when motion is welcome --- */
+  @media (prefers-reduced-motion: no-preference) {
+    html.motion-on [data-reveal] {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 620ms cubic-bezier(0.2, 0.7, 0.2, 1),
+        transform 620ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    html.motion-on [data-reveal].is-in {
+      opacity: 1;
+      transform: none;
+    }
+
+    .rise {
+      animation: nri-rise 640ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+
+    .drift {
+      animation: nri-drift 26s ease-in-out infinite alternate;
+    }
+  }
+
+  @keyframes nri-rise {
+    from {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes nri-drift {
+    from {
+      transform: scale(1.02);
+    }
+    to {
+      transform: scale(1.1);
+    }
   }
 }

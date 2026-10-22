@@ -1,7 +1,15 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+
+const mosaic = [
+  { src: "/priorities/youth.jpg", alt: "Young people in a training workshop", className: "row-span-2" },
+  { src: "/priorities/women.jpg", alt: "Women traders at a local market", className: "" },
+  { src: "/priorities/education.jpg", alt: "Students in a classroom session", className: "" },
+  { src: "/priorities/migration.jpg", alt: "A family arriving with their belongings", className: "col-span-2" },
+]
 
 export function Hero() {
   const [liveCount, setLiveCount] = useState<number | null>(null)
@@ -12,11 +20,12 @@ export function Hero() {
       .then((r) => r.json())
       .then((d) => setLiveCount(Array.isArray(d) ? d.length : 0))
       .catch(() => {})
+
     const clock = () => {
       const t = new Date()
       setNow(
         t.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" }) +
-          " • Jaffna " +
+          " · Jaffna · " +
           t.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })
       )
     }
@@ -25,54 +34,86 @@ export function Hero() {
     return () => clearInterval(id)
   }, [])
 
+  const figures = [
+    { value: liveCount === null ? "—" : String(liveCount), label: "Live research submissions" },
+    { value: "12", label: "Northern development priorities" },
+    { value: "8", label: "Steps from research to impact" },
+  ]
+
   return (
-    <section className="relative overflow-hidden bg-[#0a2de0] text-white">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0a2de0] via-[#1233f0] to-[#061a8f]" />
-      <div className="pointer-events-none absolute -top-40 -left-24 h-[28rem] w-[28rem] rounded-full bg-white/10 blur-3xl animate-pulse" />
-      <div className="pointer-events-none absolute -bottom-40 right-0 h-[26rem] w-[26rem] rounded-full bg-cyan-300/10 blur-3xl animate-pulse" style={{ animationDuration: "6s" }} />
-
-      <div className="container-wide relative py-20 sm:py-28 lg:py-32">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex flex-wrap items-center justify-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-white/10 text-sm text-white/85 mb-7 backdrop-blur-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
-            {now || "Jaffna, Sri Lanka"}
-            {liveCount !== null && <span className="text-white/60">• {liveCount} submissions</span>}
-          </div>
-
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
-            From Knowledge to Action
+    <section className="bg-paper">
+      <div className="container-wide grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 pt-12 pb-12 sm:pt-16 lg:pt-20 lg:pb-16">
+        <div className="lg:col-span-7 flex flex-col justify-center">
+          <h1 className="t-display rise" style={{ animationDelay: "40ms" }}>
+            From Knowledge
+            <br />
+            to Action
           </h1>
 
-          <p className="mt-6 text-lg text-white/75 max-w-3xl mx-auto leading-relaxed">
-            The Northern Research Institute transforms evidence-based, multidisciplinary research into practical
-            solutions that benefit society — connecting research, policy, innovation, business, employment, and
-            community development.
+          <p
+            className="t-lead mt-7 max-w-xl text-ink-soft rise"
+            style={{ animationDelay: "140ms" }}
+          >
+            The Northern Research Institute turns multidisciplinary research into working solutions — shaping policy,
+            growing enterprise, creating employment, and strengthening the communities of the North.
           </p>
 
-          <div className="mt-9 flex flex-wrap gap-3 justify-center">
+          <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <Link href="/researcher/research" className="btn-solid rise" style={{ animationDelay: "220ms" }}>
+              Submit your research
+            </Link>
             <Link
               href="/research-programmes"
-              className="inline-flex items-center px-6 py-3 rounded-md bg-white text-[#0a2de0] text-sm font-semibold hover:bg-white/90 transition-colors"
+              className="link-rule t-meta font-medium text-ink hover:text-brand rise"
+              style={{ animationDelay: "280ms" }}
             >
-              See How It Works
+              See how it works
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center px-6 py-3 rounded-md border-2 border-white text-sm font-semibold text-white hover:bg-white/15 transition-colors"
+              className="link-rule t-meta font-medium text-ink-soft hover:text-brand rise"
+              style={{ animationDelay: "320ms" }}
             >
-              Contact Us
+              Contact the institute
             </Link>
           </div>
+        </div>
 
-          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 justify-center text-sm text-white/60">
-            <span className="inline-flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-white/50" />Researchers welcome</span>
-            <span className="inline-flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-white/50" />Mentors on board</span>
-            <span className="inline-flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-white/50" />Reply within 48 hours</span>
+        <div className="lg:col-span-5">
+          <div className="grid grid-cols-2 grid-rows-3 gap-2 h-full min-h-[22rem] lg:min-h-full">
+            {mosaic.map((m, i) => (
+              <div
+                key={m.src}
+                className={`relative overflow-hidden bg-field rise ${m.className}`}
+                style={{ animationDelay: `${120 + i * 70}ms` }}
+              >
+                <Image
+                  src={m.src}
+                  alt={m.alt}
+                  fill
+                  priority={i === 0}
+                  className={`object-cover ${i === 0 ? "drift" : ""}`}
+                  sizes="(max-width: 1024px) 50vw, 30vw"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 h-px bg-white/15" />
+      <div className="bg-field">
+        <div className="container-wide grid grid-cols-1 sm:grid-cols-3">
+          {figures.map((f, i) => (
+            <div key={f.label} className={`py-6 ${i > 0 ? "sm:pl-8" : ""} ${i < 2 ? "sm:pr-8" : ""}`}>
+              <p className="t-head text-brand leading-none">{f.value}</p>
+              <p className="t-small text-ink-soft mt-2">{f.label}</p>
+            </div>
+          ))}
+        </div>
+        <div className="container-wide pb-6">
+          <p className="t-small text-ink-soft">{now || "Northern Province, Sri Lanka"}</p>
+        </div>
+      </div>
     </section>
   )
 }

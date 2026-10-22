@@ -3,55 +3,92 @@
 import Link from "next/link"
 import { siteConfig, contactInfo } from "@/lib/data"
 
-export function Footer() {
+const quickLinks = [
+  { label: "About Us", href: "/about" },
+  { label: "RTI Programme", href: "/rti" },
+  { label: "Research Programmes", href: "/research-programmes" },
+  { label: "News & Events", href: "/news" },
+  { label: "Partnerships", href: "/partnerships" },
+]
 
+const stakeholders = [
+  { label: "Researchers", href: "/rti#research-portal" },
+  { label: "Investors", href: "/rti#investor-portal" },
+  { label: "Government", href: "/rti#government-portal" },
+  { label: "NGOs", href: "/rti#ngo-portal" },
+  { label: "Businesses", href: "/rti#business-portal" },
+]
+
+export function Footer() {
   return (
-    <footer className="bg-primary text-white">
-      <div className="container-wide py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div>
-            <div className="mb-4 overflow-visible">
-              <img src="/nri-logo.svg" alt="Northern Research Institute" className="w-full max-w-[260px] h-auto object-contain" />
+    <footer className="bg-brand text-white">
+      <div className="container-wide py-16 lg:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-5">
+            <h2 className="t-head">
+              Northern
+              <br />
+              Research Institute
+            </h2>
+            <p className="t-body mt-6 max-w-sm text-white/85">{siteConfig.description}</p>
+            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 t-meta text-white/85">
+              <span>{contactInfo.address}</span>
+              <a href={`tel:${contactInfo.phone.replace(/\s/g, "")}`} className="link-rule hover:text-white">
+                {contactInfo.phone}
+              </a>
+              <a href={`mailto:${contactInfo.email}`} className="link-rule hover:text-white">
+                {contactInfo.email}
+              </a>
             </div>
-            <p className="text-sm text-white/80 leading-relaxed">{siteConfig.description.slice(0, 160)}...</p>
           </div>
-          <div>
-            <h3 className="font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><Link href="/about" className="text-sm text-white/70 hover:text-white transition-colors">About Us</Link></li>
-              <li><Link href="/rti" className="text-sm text-white/70 hover:text-white transition-colors">RTI Programme</Link></li>
-              <li><Link href="/research-programmes" className="text-sm text-white/70 hover:text-white transition-colors">Research</Link></li>
-              <li><Link href="/news" className="text-sm text-white/70 hover:text-white transition-colors">News & Events</Link></li>
-              <li><Link href="/partnerships" className="text-sm text-white/70 hover:text-white transition-colors">Partnerships</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold mb-4">For Stakeholders</h3>
-            <ul className="space-y-2">
-              <li><Link href="/rti#research-portal" className="text-sm text-white/70 hover:text-white transition-colors">Researchers</Link></li>
-              <li><Link href="/rti#investor-portal" className="text-sm text-white/70 hover:text-white transition-colors">Investors</Link></li>
-              <li><Link href="/rti#government-portal" className="text-sm text-white/70 hover:text-white transition-colors">Government</Link></li>
-              <li><Link href="/rti#business-portal" className="text-sm text-white/70 hover:text-white transition-colors">Businesses</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold mb-4">Contact</h3>
-            <ul className="space-y-2 text-sm text-white/70">
-              <li>Jaffna, Sri Lanka</li>
-              <li>{contactInfo.phone}</li>
-              <li>{contactInfo.email}</li>
-            </ul>
+
+          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-10">
+            <div>
+              <h3 className="t-small text-white/70">Navigate</h3>
+              <ul className="mt-5 space-y-2.5">
+                {quickLinks.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} className="link-rule t-meta text-white/85 hover:text-white">
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="t-small text-white/70">For stakeholders</h3>
+              <ul className="mt-5 space-y-2.5">
+                {stakeholders.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} className="link-rule t-meta text-white/85 hover:text-white">
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="col-span-2 sm:col-span-1">
+              <h3 className="t-small text-white/70">Connect</h3>
+              <ul className="mt-5 space-y-2.5">
+                {["LinkedIn", "Twitter", "Facebook", "YouTube"].map((platform) => (
+                  <li key={platform}>
+                    <Link href="#" className="link-rule t-meta text-white/85 hover:text-white">
+                      {platform}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-        <div className="border-t border-white/20 mt-8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-white/60">&copy; {new Date().getFullYear()} Northern Research Institute. All rights reserved.</p>
-          <div className="flex gap-4">
-            {["LinkedIn", "Twitter", "Facebook", "YouTube"].map((platform) => (
-              <Link key={platform} href="#" className="text-white/60 hover:text-white transition-colors text-sm">
-                {platform}
-              </Link>
-            ))}
-          </div>
+      </div>
+
+      <div className="bg-brand-deep">
+        <div className="container-wide py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <p className="t-small text-white/80">&copy; {new Date().getFullYear()} Northern Research Institute. All rights reserved.</p>
+          <p className="t-small text-white/70">Research · Policy · Enterprise · Community</p>
         </div>
       </div>
     </footer>

@@ -4,13 +4,13 @@ export function StatsBar() {
   if (stats.length === 0) return null
 
   return (
-    <section className="bg-accent text-white">
-      <div className="container-wide py-12">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+    <section className="bg-paper">
+      <div className="container-wide py-14">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
           {stats.map((stat) => (
             <div key={stat.label}>
-              <div className="text-3xl sm:text-4xl font-bold">{stat.value}</div>
-              <div className="mt-1 text-sm text-white/80 font-medium uppercase tracking-wider">{stat.label}</div>
+              <div className="t-head text-brand leading-none">{stat.value}</div>
+              <div className="t-small text-ink-soft mt-2">{stat.label}</div>
             </div>
           ))}
         </div>
