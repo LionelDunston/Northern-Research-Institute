@@ -42,41 +42,41 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-field px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4 overflow-visible px-2">
             <img src="/nri-logo.svg" alt="Northern Research Institute" className="w-full max-w-[320px] h-auto object-contain rounded-lg" />
           </div>
-          <h1 className="text-2xl font-bold">Sign In</h1>
-          <p className="text-muted text-sm mt-1">Access your dashboard</p>
+          <h1 className="text-[26px] font-semibold">Sign In</h1>
+          <p className="text-muted text-[16px] mt-1">Access your dashboard</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-border p-8 space-y-4 shadow-sm">
+        <form onSubmit={handleSubmit} className="bg-paper p-8 space-y-6">
           {error && (
-            <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm">{error}</div>
+            <div className="p-3 rounded-lg bg-red-50 border border-red-300 text-red-800 text-[16px]">{error}</div>
           )}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
+            <label htmlFor="email" className="block text-[16px] font-medium mb-1">Email</label>
             <input
               id="email"
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none"
+              className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-brand focus:ring-1 focus:ring-brand outline-none"
               placeholder="you@example.com"
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium mb-1">Password</label>
+            <label htmlFor="password" className="block text-[16px] font-medium mb-1">Password</label>
             <input
               id="password"
               type="password"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent focus:ring-1 focus:ring-accent outline-none"
+              className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-brand focus:ring-1 focus:ring-brand outline-none"
               placeholder="••••••••"
             />
           </div>
@@ -87,14 +87,14 @@ export default function LoginPage() {
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
-          <p className="text-center text-sm">
-            <Link href="/auth/forgot-password" className="text-accent font-medium hover:underline">
+          <p className="text-center text-[16px]">
+            <Link href="/auth/forgot-password" className="text-brand font-medium hover:underline">
               Forgot password?
             </Link>
           </p>
-          <p className="text-center text-sm text-muted">
+          <p className="text-center text-[16px] text-muted">
             Don't have an account?{" "}
-            <Link href="/auth/signup" className="text-accent font-medium hover:underline">Sign up</Link>
+            <Link href="/auth/signup" className="text-brand font-medium hover:underline">Sign up</Link>
           </p>
         </form>
       </div>

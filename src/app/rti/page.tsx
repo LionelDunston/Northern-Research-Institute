@@ -1,4 +1,6 @@
 import { Section } from "@/components/layout/Section"
+import { PhotoStrip } from "@/components/sections/PhotoStrip"
+import { PageHero } from "@/components/layout/PageHero"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -7,42 +9,12 @@ export const metadata: Metadata = {
 }
 
 const pathwayCategories = [
-  {
-    title: "Business",
-    items: ["Startups", "New products", "Commercial services"],
-    color: "bg-blue-50 border-blue-200",
-    icon: "",
-  },
-  {
-    title: "Government",
-    items: ["Public policy", "Ministries", "Local government", "Public services"],
-    color: "bg-green-50 border-green-200",
-    icon: "",
-  },
-  {
-    title: "Community",
-    items: ["Poverty", "Education", "Health", "Environment", "Livelihoods"],
-    color: "bg-orange-50 border-orange-200",
-    icon: "",
-  },
-  {
-    title: "Industry",
-    items: ["Manufacturing", "ICT", "Productivity", "Technology adoption"],
-    color: "bg-purple-50 border-purple-200",
-    icon: "",
-  },
-  {
-    title: "Environmental & Climate Solutions",
-    items: ["Climate Change Adaptation", "Renewable Energy", "Environmental Conservation", "Sustainable Agriculture", "Waste Management", "Water & Resource Management", "Green Technologies"],
-    color: "bg-emerald-50 border-emerald-200",
-    icon: "",
-  },
-  {
-    title: "Other & Emerging Sectors",
-    items: ["Tourism", "Agriculture", "Culture", "Education", "Technology", "Economy", "Emerging fields"],
-    color: "bg-amber-50 border-amber-200",
-    icon: "",
-  },
+  { title: "Business", items: ["Startups", "New products", "Commercial services"] },
+  { title: "Government", items: ["Public policy", "Ministries", "Local government", "Public services"] },
+  { title: "Community", items: ["Poverty", "Education", "Health", "Environment", "Livelihoods"] },
+  { title: "Industry", items: ["Manufacturing", "ICT", "Productivity", "Technology adoption"] },
+  { title: "Environmental & Climate Solutions", items: ["Climate Change Adaptation", "Renewable Energy", "Environmental Conservation", "Sustainable Agriculture", "Waste Management", "Water & Resource Management", "Green Technologies"] },
+  { title: "Other & Emerging Sectors", items: ["Tourism", "Agriculture", "Culture", "Education", "Technology", "Economy", "Emerging fields"] },
 ]
 
 const trainingAreas = [
@@ -59,184 +31,178 @@ const portals = [
     title: "Research Portal",
     description: "Provides researchers with a personal space to manage their research profiles, submissions, publications, opportunities, and progress.",
     features: ["Researcher Profile", "Research Area / Subject", "Skills & CV", "Research Submissions", "Publications", "Employment Status", "Funding Received", "Research Impact / Project Status"],
-    color: "from-blue-500 to-blue-600",
   },
   {
     id: "investor-portal",
     title: "Investor Portal",
     description: "Connects investors with promising research and innovation opportunities that have potential for development, commercialisation, enterprise creation, and sustainable returns.",
     features: ["Industry", "Investment required", "Province", "Risk level", "Return potential"],
-    color: "from-green-500 to-green-600",
   },
   {
     id: "government-portal",
     title: "Government Portal",
     description: "Enables public institutions to discover research that can inform policy, improve public services, support development priorities, and address sector-specific challenges.",
     features: ["Agriculture", "Health", "Labour", "Tourism", "Education"],
-    color: "from-amber-500 to-amber-600",
   },
   {
     id: "ngo-portal",
     title: "NGO Portal",
     description: "Connects development organisations with research and projects that can support social, environmental, livelihood, and community-focused interventions.",
     features: ["Climate", "Women", "Children", "Poverty", "Livelihoods"],
-    color: "from-red-500 to-red-600",
   },
   {
     id: "business-portal",
     title: "Business Portal",
     description: "Connects businesses with research, technologies, researchers, and partnership opportunities that can support innovation, productivity, and business development.",
     features: ["New technologies", "Researchers", "Research partnerships", "Consulting opportunities"],
-    color: "from-purple-500 to-purple-600",
   },
   {
     id: "funding-portal",
     title: "Funding Portal",
     description: "Helps researchers and projects discover suitable funding opportunities to support research development, innovation, implementation, and scale.",
     features: ["Government", "Banks", "Investors", "CSR programmes", "Donors", "Foundations"],
-    color: "from-teal-500 to-teal-600",
   },
+]
+
+const evaluationSteps = [
+  { title: "Research Quality Review", body: "Is the research credible and methodologically sound?" },
+  { title: "Problem & Opportunity Assessment", body: "What real-world problem or opportunity does it identify?" },
+  { title: "Impact & Feasibility Assessment", body: "Can the findings create practical, social, economic, policy, or environmental value?" },
+  { title: "Application Pathway", body: "What is the most appropriate pathway?", options: ["Policy", "Project", "Business", "Social Enterprise", "Innovation", "Employment", "Community Development", "Further Research"] },
+  { title: "Implementation Readiness", body: "Can it be piloted, measured, improved, and scaled?" },
+  { title: "Impact Measurement & Scaling", body: "Defining measurable indicators and scaling strategies." },
+]
+
+const impactIndicators = [
+  "Research Uploaded",
+  "Universities",
+  "Projects Evaluated",
+  "Startups Created",
+  "Jobs Created",
+  "Funding Secured",
+  "Policies Adopted",
+  "Community Projects",
+  "Innovations Developed",
+  "Projects Implemented",
 ]
 
 export default function RTIPage() {
   return (
     <>
-      <section className="bg-gradient-to-r from-primary to-primary-light text-white py-20">
-        <div className="container-wide text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold">Research-to-Impact (RTI)</h1>
-          <p className="mt-4 text-lg text-white/80 max-w-2xl mx-auto">
-            NRI&apos;s flagship programme that transforms research across disciplines into practical solutions, innovation, opportunities, and real-world impact.
-          </p>
-        </div>
-      </section>
+      <PageHero title="Research-to-Impact (RTI)" lede="NRI&apos;s flagship programme that transforms research across disciplines into practical solutions, innovation, opportunities, and real-world impact." image={{ src: "/editorial/view-from-public-library.jpg", alt: "View over Jaffna city from the public library roof.", credit: "“View from Public Library” by Kanatonian, CC BY-SA 3.0, via Wikimedia Commons." }} action={{ label: "Development pathways", href: "/rti#pathways" }} />
 
       <Section
         id="repository"
+        layout="split"
         title="Research Repository"
-        subtitle="NRI develops an integrated Data & Knowledge Centre that collects, processes, analyses, and disseminates data and knowledge from diverse sectors, disciplines, and geographic contexts. The Centre transforms data and information into knowledge, evidence, and actionable insights to support research, policy, innovation, business, projects, and sustainable development."
+        subtitle="NRI develops an integrated Data &amp; Knowledge Centre that collects, processes, analyses, and disseminates data and knowledge from diverse sectors, disciplines, and geographic contexts. The Centre turns data and information into evidence and actionable insights for research, policy, innovation, business, projects, and sustainable development."
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="bg-gray-50 rounded-xl border border-border p-8">
-            <h3 className="text-xl font-semibold mb-4">Researchers Can Submit</h3>
-            <ul className="space-y-3">
-              {[
-                "Bachelor's theses",
-                "Master's theses",
-                "MPhil theses",
-                "PhD theses",
-                "Research summaries",
-                "Policy briefs",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3 text-muted">
-                  <span className="w-2 h-2 rounded-full bg-accent" /> {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="bg-gray-50 rounded-xl border border-border p-8">
-            <h3 className="text-xl font-semibold mb-4">Data &amp; Knowledge Centre Coverage</h3>
-            <div className="flex flex-wrap gap-2">
-              {[
-                "Demographic data",
-                "Economic data",
-                "Social data",
-                "Environmental data",
-                "Health data",
-                "Education data",
-                "Labour-market data",
-                "Governance data",
-                "Business and industry data",
-                "Development data",
-                "Spatial/geographical data",
-                "Survey data",
-                "Administrative data",
-                "Research datasets",
-                "Community-generated/local knowledge",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="px-3 py-1.5 rounded-full bg-white border border-border text-sm font-medium text-primary"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-
-          </div>
+        <div>
+          <h3 className="text-[19px] font-semibold text-primary mb-5">Researchers can submit</h3>
+          <ul className="space-y-2">
+            {[
+              "Bachelor's theses",
+              "Master's theses",
+              "MPhil theses",
+              "PhD theses",
+              "Research summaries",
+              "Policy briefs",
+            ].map((item) => (
+              <li key={item} className="text-[16px] text-muted">
+                <span className="text-brand mr-3">—</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <h3 className="text-[19px] font-semibold text-primary mt-10 mb-5">Data &amp; Knowledge Centre coverage</h3>
+          <ul className="space-y-2">
+            {[
+              "Demographic data",
+              "Economic data",
+              "Social data",
+              "Environmental data",
+              "Health data",
+              "Education data",
+              "Labour-market data",
+              "Governance data",
+              "Business and industry data",
+              "Development data",
+              "Spatial and geographical data",
+              "Survey data",
+              "Administrative data",
+              "Research datasets",
+              "Community-generated and local knowledge",
+            ].map((item) => (
+              <li key={item} className="text-[16px] text-muted">
+                <span className="text-brand mr-3">—</span>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </Section>
+
+      <PhotoStrip
+        title="The route to impact"
+        images={[
+          {
+            src: "/editorial/life-is-a-boat.jpg",
+            alt: "A fishing boat resting in a lagoon off Jaffna.",
+            caption: "Fishing boats rest in the lagoons that ring the peninsula.",
+            credit: "“Life is a boat!” by Navod Thathsara Kankanamge, CC BY-SA 4.0, via Wikimedia Commons.",
+          },
+          {
+            src: "/editorial/paddy-field-in-srilanka.jpg",
+            alt: "A paddy field in Sri Lanka at harvest time.",
+            caption: "The paddy fields that the programmes work with.",
+            credit: "“Paddy field in Sri Lanka” by Donald2019, CC BY-SA 4.0, via Wikimedia Commons.",
+          },
+          {
+            src: "/editorial/mullaitivu-mullaitivu-district-northern-province-sri-lanka.jpg",
+            alt: "Mullaitivu in the Northern Province, seen from space.",
+            caption: "Mullaitivu, in the Northern Province.",
+            credit: "“Mullaitivu, Mullaitivu District, Northern Province, Sri Lanka” by Capella Space, CC BY 4.0, via Wikimedia Commons.",
+          },
+        ]}
+      />
 
       <Section
         id="evaluation"
         variant="muted"
+        layout="split"
         title="Research Evaluation"
         subtitle="Experts assess submitted research through a structured evaluation process to identify practical potential and implementation pathways."
       >
-        <div className="max-w-4xl mx-auto">
-          <div className="space-y-6">
-            <div className="bg-white rounded-xl border border-border p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-primary mb-3">1. Research Quality Review</h3>
-              <p className="text-muted leading-relaxed">Is the research credible and methodologically sound?</p>
-            </div>
-            <div className="flex justify-center">
-              <div className="w-0.5 h-6 bg-border" />
-            </div>
-            <div className="bg-white rounded-xl border border-border p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-primary mb-3">2. Problem &amp; Opportunity Assessment</h3>
-              <p className="text-muted leading-relaxed">What real-world problem or opportunity does it identify?</p>
-            </div>
-            <div className="flex justify-center">
-              <div className="w-0.5 h-6 bg-border" />
-            </div>
-            <div className="bg-white rounded-xl border border-border p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-primary mb-3">3. Impact &amp; Feasibility Assessment</h3>
-              <p className="text-muted leading-relaxed">Can the findings create practical, social, economic, policy, or environmental value?</p>
-            </div>
-            <div className="flex justify-center">
-              <div className="w-0.5 h-6 bg-border" />
-            </div>
-            <div className="bg-white rounded-xl border border-border p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-primary mb-3">4. Application Pathway</h3>
-              <p className="text-muted leading-relaxed mb-3">What is the most appropriate pathway?</p>
-              <div className="flex flex-wrap gap-2">
-                {["Policy", "Project", "Business", "Social Enterprise", "Innovation", "Employment", "Community Development", "Further Research"].map((path) => (
-                  <span
-                    key={path}
-                    className="px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary"
-                  >
-                    {path}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="flex justify-center">
-              <div className="w-0.5 h-6 bg-border" />
-            </div>
-            <div className="bg-white rounded-xl border border-border p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-primary mb-3">5. Implementation Readiness</h3>
-              <p className="text-muted leading-relaxed">Can it be piloted, measured, improved, and scaled?</p>
-            </div>
-            <div className="flex justify-center">
-              <div className="w-0.5 h-6 bg-border" />
-            </div>
-            <div className="bg-white rounded-xl border border-border p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-primary mb-3">6. Impact Measurement &amp; Scaling</h3>
-              <p className="text-muted leading-relaxed">Defining measurable indicators and scaling strategies.</p>
-            </div>
-          </div>
-        </div>
+        <ol className="space-y-8">
+          {evaluationSteps.map((step, i) => (
+            <li key={step.title} className="flex items-start gap-6">
+              <span className="text-[26px] font-semibold text-brand tabular-nums leading-none shrink-0 w-8">
+                {i + 1}
+              </span>
+              <span>
+                <span className="text-[19px] font-semibold text-primary">{step.title}</span>
+                <p className="text-[16px] text-muted mt-1 leading-relaxed">{step.body}</p>
+                {step.options && (
+                  <p className="text-[16px] text-muted mt-2">
+                    <span className="text-brand mr-2">—</span>
+                    {step.options.join(" · ")}
+                  </p>
+                )}
+              </span>
+            </li>
+          ))}
+        </ol>
       </Section>
 
       <Section id="pathways" title="Development Pathways" subtitle="Research is matched with the most suitable pathway based on its potential and identified needs.">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
           {pathwayCategories.map((cat) => (
-            <div key={cat.title} className={`rounded-xl border p-6 ${cat.color}`}>
-              <span className="text-2xl">{cat.icon}</span>
-              <h3 className="text-lg font-semibold mt-3 mb-3">{cat.title}</h3>
-              <ul className="space-y-2">
+            <div key={cat.title}>
+              <h3 className="text-[19px] font-semibold text-primary mb-4">{cat.title}</h3>
+              <ul className="space-y-1.5">
                 {cat.items.map((item) => (
-                  <li key={item} className="text-sm text-muted flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary" /> {item}
+                  <li key={item} className="text-[16px] text-muted flex gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand mt-2 shrink-0" /> {item}
                   </li>
                 ))}
               </ul>
@@ -245,33 +211,27 @@ export default function RTIPage() {
         </div>
       </Section>
 
-      <Section id="training" variant="muted" title="Training & Capacity Development" subtitle="Training sessions equip researchers with practical skills to develop their research into viable projects, solutions, and opportunities.">
-        <div className="max-w-3xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {trainingAreas.map((area) => (
-              <div key={area} className="bg-white p-4 rounded-lg border border-border text-center">
-                <span className="text-sm font-medium text-primary">{area}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+      <Section id="training" variant="muted" layout="split" title="Training &amp; Capacity Development" subtitle="Training sessions equip researchers with practical skills to develop their research into viable projects, solutions, and opportunities.">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+          {trainingAreas.map((area) => (
+            <li key={area} className="text-[16px] font-medium text-ink">
+              <span className="text-brand mr-3">—</span>
+              {area}
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <Section variant="muted" title="Portals" subtitle="Specialised portals for different stakeholders.">
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-12">
           {portals.map((portal) => (
-            <div key={portal.id} id={portal.id} className="bg-white rounded-xl border border-border p-8 scroll-mt-20">
-              <div className={`inline-block px-4 py-1 rounded-full text-white text-xs font-semibold bg-gradient-to-r ${portal.color} mb-4`}>
-                {portal.title}
-              </div>
-              <p className="text-muted leading-relaxed max-w-2xl">{portal.description}</p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {portal.features.map((feature) => (
-                  <span key={feature} className="px-3 py-1.5 bg-gray-50 border border-border rounded-md text-sm text-muted">
-                    {feature}
-                  </span>
-                ))}
-              </div>
+            <div key={portal.id} id={portal.id} className="scroll-mt-20">
+              <h3 className="text-[19px] font-semibold text-primary">{portal.title}</h3>
+              <p className="text-[16px] text-muted leading-relaxed mt-2 max-w-[56ch]">{portal.description}</p>
+              <p className="text-[16px] text-muted mt-3">
+                <span className="text-brand mr-3">—</span>
+                {portal.features.join(" · ")}
+              </p>
             </div>
           ))}
         </div>
@@ -280,27 +240,16 @@ export default function RTIPage() {
       <Section
         id="impact"
         title="Impact Dashboard"
-        subtitle="Tracks and presents the measurable outcomes of NRI's research-to-impact activities."
+        subtitle="Tracks and presents the measurable outcomes of NRI's research-to-impact activities. Figures appear here as programmes report them."
       >
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-          {[
-            { value: "—", label: "Research Uploaded" },
-            { value: "—", label: "Universities" },
-            { value: "—", label: "Projects Evaluated" },
-            { value: "—", label: "Startups Created" },
-            { value: "—", label: "Jobs Created" },
-            { value: "—", label: "Funding Secured" },
-            { value: "—", label: "Policies Adopted" },
-            { value: "—", label: "Community Projects" },
-            { value: "—", label: "Innovations Developed" },
-            { value: "—", label: "Projects Implemented" },
-          ].map((item) => (
-            <div key={item.label} className="text-center p-6 bg-gray-50 rounded-xl border border-border">
-              <div className="text-2xl sm:text-3xl font-bold text-primary">{item.value}</div>
-              <div className="text-sm text-muted mt-1">{item.label}</div>
-            </div>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-4">
+          {impactIndicators.map((label) => (
+            <li key={label} className="text-[16px] text-muted">
+              <span className="text-brand mr-3">—</span>
+              {label}
+            </li>
           ))}
-        </div>
+        </ul>
       </Section>
     </>
   )

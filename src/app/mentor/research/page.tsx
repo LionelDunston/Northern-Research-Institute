@@ -6,8 +6,8 @@ function Detail({ label, value }: { label: string; value: any }) {
   if (value === undefined || value === null || value === "" || (Array.isArray(value) && value.length === 0)) return null
   const display = Array.isArray(value) ? value.join(", ") : String(value)
   return (
-    <div className="bg-gray-50 rounded-lg p-3">
-      <div className="text-xs font-semibold text-muted uppercase tracking-wider">{label}</div>
+    <div className="bg-field p-3">
+      <div className="t-small font-semibold text-muted uppercase tracking-wider">{label}</div>
       <div className="text-sm mt-1 break-words">{display}</div>
     </div>
   )
@@ -32,35 +32,35 @@ export default function MentorResearchPage() {
 
       <div className="space-y-4">
         {projects.map((p: any) => (
-          <div key={p.id} className="bg-white rounded-xl border border-border overflow-hidden">
+          <div key={p.id} className="bg-field overflow-hidden">
             <div className="p-5">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="font-semibold">{p.title}</h3>
                   <p className="text-sm text-muted">{p.researcher_name || p.authorAff} {p.journal ? `— ${p.journal}` : ""} • {p.researchStatus || p.pathway} • {p.location || p.district || ""}</p>
-                  <p className="text-xs text-muted mt-1">Researcher: {p.researcher_name || "—"} • {new Date(p.created_at).toLocaleDateString()}</p>
+                  <p className="t-small text-muted mt-1">Researcher: {p.researcher_name || "—"} • {new Date(p.created_at).toLocaleDateString()}</p>
                 </div>
-                <span className={`px-3 py-1 rounded-full text-xs font-medium shrink-0 ${p.status==="approved"?"bg-green-100 text-green-700":p.status==="rejected"?"bg-red-100 text-red-700":"bg-yellow-100 text-yellow-700"}`}>{p.status}</span>
+                <span className={`px-3 py-1 rounded-full t-small font-medium shrink-0 ${p.status==="approved"?"bg-green-100 text-green-700":p.status==="rejected"?"bg-red-100 text-red-700":"bg-yellow-100 text-yellow-700"}`}>{p.status}</span>
               </div>
 
               {(p.problem || p.description) && <p className="text-sm text-muted mt-3 line-clamp-2">{p.problem || p.description}</p>}
 
               <div className="flex flex-wrap gap-2 mt-3">
-                {p.researchStatus && <span className="px-2 py-0.5 bg-blue-50 border border-blue-200 rounded text-xs">{p.researchStatus}</span>}
-                {p.pathway && <span className="px-2 py-0.5 bg-purple-50 border border-purple-200 rounded text-xs">{p.pathway}</span>}
-                {p.trl && <span className="px-2 py-0.5 bg-gray-100 rounded text-xs">{p.trl}</span>}
-                {p.srl && <span className="px-2 py-0.5 bg-gray-100 rounded text-xs">{p.srl}</span>}
-                {(p.location || p.district) && <span className="px-2 py-0.5 bg-gray-100 rounded text-xs">{p.location || p.district}</span>}
+                {p.researchStatus && <span className="px-2 py-0.5 bg-blue-50 border border-blue-200 rounded t-small">{p.researchStatus}</span>}
+                {p.pathway && <span className="px-2 py-0.5 bg-purple-50 border border-purple-200 rounded t-small">{p.pathway}</span>}
+                {p.trl && <span className="px-2 py-0.5 bg-field rounded t-small">{p.trl}</span>}
+                {p.srl && <span className="px-2 py-0.5 bg-field rounded t-small">{p.srl}</span>}
+                {(p.location || p.district) && <span className="px-2 py-0.5 bg-field rounded t-small">{p.location || p.district}</span>}
               </div>
 
-              <button onClick={() => setExpanded(expanded === p.id ? null : p.id)} className="mt-4 px-3 py-1.5 rounded-lg border border-border text-xs font-medium hover:bg-gray-50">
+              <button onClick={() => setExpanded(expanded === p.id ? null : p.id)} className="mt-4 px-3 py-1.5 t-small font-medium hover:bg-field">
                 {expanded === p.id ? "Hide Full Details" : "View All Collected Details"}
               </button>
             </div>
 
             {expanded === p.id && (
-              <div className="border-t border-border bg-gray-50/50 p-5">
-                <p className="text-xs font-semibold text-primary mb-2">All fields for this researcher’s submission:</p>
+              <div className="border-t border-border bg-field/50 p-5">
+                <p className="t-small font-semibold text-primary mb-2">All fields for this researcher’s submission:</p>
                 <div className="grid md:grid-cols-2 gap-3">
                   <Detail label="Research Status" value={p.researchStatus} />
                   <Detail label="Pathway" value={p.pathway} />

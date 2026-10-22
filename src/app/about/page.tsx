@@ -1,4 +1,6 @@
 import { Section } from "@/components/layout/Section"
+import { PhotoStrip } from "@/components/sections/PhotoStrip"
+import { PageHero } from "@/components/layout/PageHero"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -28,18 +30,11 @@ const objectives = [
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-gradient-to-r from-primary to-primary-light text-white py-20">
-        <div className="container-wide text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold">About the Institute</h1>
-          <p className="mt-4 text-lg text-white/80 max-w-2xl mx-auto">
-            NRI's purpose, identity, strategic direction, vision, mission, and core values.
-          </p>
-        </div>
-      </section>
+      <PageHero title="About the Institute" lede="NRI&apos;s purpose, identity, strategic direction, vision, mission, and core values." image={{ src: "/editorial/early-morning-in-jaffna.jpg", alt: "A cyclist on an early morning street in Jaffna.", credit: "“Early morning in Jaffna” by Rudolph.A.furtado, CC0, via Wikimedia Commons." }} action={{ label: "Read our objectives", href: "/about#objectives" }} />
 
       <Section>
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-lg text-muted leading-relaxed">
+        <div className="max-w-3xl text-left">
+          <p className="text-[19px] text-muted leading-relaxed">
             The Northern Research Institute (NRI) is a research and innovation organisation dedicated
             to transforming knowledge across disciplines into practical solutions, opportunities, and
             real-world impact. NRI connects research, expertise, and partnerships to support innovation,
@@ -48,52 +43,70 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section variant="muted" title="Our Vision" subtitle="The Institute's long-term aspiration.">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-xl font-semibold text-primary italic">
-            "A prosperous nation where research across all disciplines is transformed into practical solutions, innovation, sustainable opportunities, and real-world impact."
-          </p>
-        </div>
+      <PhotoStrip
+        title="Jaffna and the North"
+        images={[
+          {
+            src: "/editorial/life-is-a-boat.jpg",
+            alt: "A fishing boat resting in a lagoon off Jaffna.",
+            caption: "Fishing boats rest in the lagoons that ring the peninsula.",
+            credit: "“Life is a boat!” by Navod Thathsara Kankanamge, CC BY-SA 4.0, via Wikimedia Commons.",
+          },
+          {
+            src: "/editorial/university-of-jaffna-sri-lanka.jpg",
+            alt: "The entrance of the University of Jaffna.",
+            caption: "The University of Jaffna, whose students join NRI programmes.",
+            credit: "“University of Jaffna, Sri Lanka” by Anton Croos, CC BY-SA 3.0, via Wikimedia Commons.",
+          },
+          {
+            src: "/editorial/jaffna-beauty.jpg",
+            alt: "A lagoon in the Jaffna peninsula.",
+            caption: "The lagoons along the edge of the peninsula.",
+            credit: "“Jaffna Beauty” by Vashni olivia, CC BY-SA 4.0, via Wikimedia Commons.",
+          },
+        ]}
+      />
+
+
+
+      <Section variant="muted" layout="split" title="Our Vision" subtitle="The Institute's long-term aspiration.">
+        <p className="text-[26px] font-semibold text-primary leading-snug">
+          "A prosperous nation where research across all disciplines is transformed into practical solutions, innovation, sustainable opportunities, and real-world impact."
+        </p>
       </Section>
 
-      <Section title="Our Mission" subtitle="What the Institute aims to achieve.">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-lg text-muted leading-relaxed">
-            To transform research across disciplines into practical solutions, innovation, sustainable
-            opportunities, and employment through collaboration, partnerships, and real-world application.
-          </p>
-        </div>
+      <Section layout="split" title="Our Mission" subtitle="What the Institute aims to achieve.">
+        <p className="text-[19px] text-muted leading-relaxed">
+          To transform research across disciplines into practical solutions, innovation, sustainable
+          opportunities, and employment through collaboration, partnerships, and real-world application.
+        </p>
       </Section>
 
       <Section variant="muted" title="Core Values">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
           {values.map((value) => (
-            <div key={value.title} className="bg-white p-6 rounded-xl border border-border">
-              <h3 className="text-lg font-semibold text-primary mb-2">{value.title}</h3>
-              <p className="text-muted leading-relaxed text-sm">{value.description}</p>
+            <div key={value.title}>
+              <h3 className="text-[19px] font-semibold text-primary mb-2">{value.title}</h3>
+              <p className="text-muted leading-relaxed text-[16px]">{value.description}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      <Section title="Strategic Objectives">
-        <div className="max-w-3xl mx-auto">
-          <ul className="space-y-4">
-            {objectives.map((obj, i) => (
-              <li key={i} className="p-5 rounded-lg bg-gray-50 border border-border">
-                <div className="flex items-start gap-3">
-                  <span className="flex items-center justify-center w-8 h-8 rounded-full bg-accent text-white text-sm font-bold shrink-0">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <span className="font-semibold text-primary">{obj.title}</span>
-                    <p className="text-muted leading-relaxed text-sm mt-1">{obj.description}</p>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <Section id="objectives" layout="split" title="Strategic Objectives">
+        <ol className="space-y-8 list-none">
+          {objectives.map((obj, i) => (
+            <li key={i} className="flex items-start gap-6">
+              <span className="text-[26px] font-semibold text-brand tabular-nums leading-none shrink-0 w-8">
+                {i + 1}
+              </span>
+              <span>
+                <span className="font-semibold text-primary text-[19px]">{obj.title}</span>
+                <p className="text-muted leading-relaxed text-[16px] mt-1">{obj.description}</p>
+              </span>
+            </li>
+          ))}
+        </ol>
       </Section>
     </>
   )

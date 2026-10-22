@@ -19,7 +19,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} motion-on h-full antialiased`}>
       <head>
         <noscript>
-          <style>{`[data-reveal]{opacity:1 !important;transform:none !important}`}</style>
+          <style>{`[data-reveal],.reveal-item{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
       </head>
       <body className="min-h-full flex flex-col bg-paper text-ink">

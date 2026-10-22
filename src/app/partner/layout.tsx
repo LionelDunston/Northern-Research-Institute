@@ -15,8 +15,8 @@ export default function PartnerLayout({ children }: { children: React.ReactNode 
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="flex h-16 items-center justify-between bg-accent text-white px-4 sm:px-6">
+    <div className="min-h-screen bg-field">
+      <div className="flex h-16 items-center justify-between bg-primary text-white px-4 sm:px-6">
         <div className="flex items-center gap-3">
           <button className="lg:hidden p-1" onClick={() => setSidebarOpen(!sidebarOpen)}>
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -25,17 +25,17 @@ export default function PartnerLayout({ children }: { children: React.ReactNode 
           </button>
           <Link href="/partner" className="font-semibold text-lg">Partner Portal</Link>
         </div>
-        <button onClick={handleLogout} className="text-sm text-white/80 hover:text-white flex items-center gap-1">
+        <button onClick={handleLogout} className="text-[16px] text-white/90 hover:text-white flex items-center gap-1">
           Sign Out
         </button>
       </div>
       <div className="flex">
         <aside className={`${sidebarOpen ? "block" : "hidden"} lg:block w-64 bg-white border-r border-border min-h-[calc(100vh-4rem)] shrink-0`}>
           <nav className="p-4 space-y-1">
-            <Link href="/partner" className="block px-4 py-2.5 rounded-lg text-sm font-medium text-foreground/70 hover:text-accent hover:bg-accent/5 transition-colors">
+            <Link href="/partner" className="block px-4 py-2.5 rounded-lg text-sm font-medium text-foreground/70 hover:text-primary hover:bg-primary/5 transition-colors">
               Dashboard
             </Link>
-            <Link href="/partner/research" className="block px-4 py-2.5 rounded-lg text-sm font-medium text-foreground/70 hover:text-accent hover:bg-accent/5 transition-colors">
+            <Link href="/partner/research" className="block px-4 py-2.5 rounded-lg text-sm font-medium text-foreground/70 hover:text-primary hover:bg-primary/5 transition-colors">
               My Research
             </Link>
           </nav>

@@ -1,4 +1,6 @@
 import { Section } from "@/components/layout/Section"
+import { PhotoStrip } from "@/components/sections/PhotoStrip"
+import { PageHero } from "@/components/layout/PageHero"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -31,76 +33,131 @@ const roles = [
 export default function BusinessOpportunitiesPage() {
   return (
     <>
-      <section className="bg-gradient-to-r from-primary to-primary-light text-white py-20">
-        <div className="container-wide text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold">Business Opportunities through Research</h1>
-          <p className="mt-4 text-lg text-white/80 max-w-3xl mx-auto">Identify research with commercial potential and transform it into sustainable enterprises, innovative products, technologies, and services that generate employment, investment, and economic growth.</p>
-        </div>
-      </section>
+      <PageHero title="Business Opportunities" lede="Identify research with commercial potential and transform it into sustainable enterprises, innovative products, technologies, and services that generate employment, investment, and economic growth." image={{ src: "/editorial/greenery-paddy-field.jpg", alt: "A rice-harvesting machine working in a paddy field in Sri Lanka.", credit: "“Greenery paddy field” by Theja D Senanayake, CC BY-SA 4.0, via Wikimedia Commons." }} action={{ label: "Who can contribute", href: "/research-programmes#contribute" }} />
 
       <Section title="Objective" subtitle="Unlike conventional incubation, NRI accepts research from graduates, lecturers, universities, institutes, industry and innovation partners — every output is evaluated for commercial viability and economic value.">
-        <div className="max-w-3xl mx-auto bg-primary/5 border border-primary/10 rounded-xl p-6 text-muted leading-relaxed">
-          To identify research with commercial potential and transform it into sustainable enterprises, innovative products, technologies, and services that generate employment, investment, and economic growth.
-        </div>
+        <p className="max-w-[68ch] text-[26px] font-semibold text-primary leading-snug">
+          To identify research with commercial potential and transform it into sustainable enterprises,
+          innovative products, technologies, and services that generate employment, investment, and
+          economic growth.
+        </p>
       </Section>
 
-      <Section variant="muted" title="Who Can Contribute?">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {contributors.map(c=> <div key={c} className="bg-white border border-border rounded-lg p-3 text-sm font-medium text-center">{c}</div>)}
+      <PhotoStrip
+        title="From idea to enterprise"
+        images={[
+          {
+            src: "/editorial/greenery-paddy-field.jpg",
+            alt: "A rice-harvesting machine working in a paddy field in Sri Lanka.",
+            caption: "Rice is harvested and milled on the island's farms.",
+            credit: "“Greenery paddy field” by Theja D Senanayake, CC BY-SA 4.0, via Wikimedia Commons.",
+          },
+          {
+            src: "/editorial/coconut-rope-production.jpg",
+            alt: "Village artisans weaving coconut rope on an industrial scale in Sri Lanka.",
+            caption: "Artisans weave coconut rope in a village workshop.",
+            credit: "“Coconut Rope Production” by Curved.kiwix, CC BY-SA 4.0, via Wikimedia Commons.",
+          },
+          {
+            src: "/editorial/university-of-jaffna-journalism-students-on-the.jpg",
+            alt: "Journalism students at the Media Resources and Training Centre, University of Jaffna.",
+            caption: "Journalism students at the Media Resources and Training Centre.",
+            credit: "“University of Jaffna journalism students on the final day” by David Brewer, CC BY-SA 2.0, via Wikimedia Commons.",
+          },
+        ]}
+      />
+
+      <Section id="contribute" variant="muted" title="Who Can Contribute?">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
+          {contributors.map((c) => (
+            <p key={c} className="text-[16px] font-medium text-ink">
+              <span className="text-brand mr-3">—</span>
+              {c}
+            </p>
+          ))}
         </div>
-        <p className="text-sm text-muted text-center mt-4">Multidisciplinary collaboration increases quality, diversity and applicability.</p>
+        <p className="text-[16px] text-muted mt-8 max-w-[68ch]">
+          Multidisciplinary collaboration increases quality, diversity and applicability.
+        </p>
       </Section>
 
       <Section title="Suitable Research Areas" subtitle="Any discipline with market potential — products, services, business models, platforms and methodologies.">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {areas.map(a=> (
-            <div key={a.cat} className="bg-white rounded-xl border border-border p-6">
-              <h3 className="font-semibold text-primary mb-3">{a.cat}</h3>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10">
+          {areas.map((a) => (
+            <div key={a.cat}>
+              <h3 className="text-[19px] font-semibold text-primary mb-3">{a.cat}</h3>
               <ul className="space-y-1.5">
-                {a.items.map(i=> <li key={i} className="text-sm text-muted flex gap-2"><span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"/> {i}</li>)}
+                {a.items.map((i) => (
+                  <li key={i} className="text-[16px] text-muted flex gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand mt-2 shrink-0" /> {i}
+                  </li>
+                ))}
               </ul>
             </div>
           ))}
         </div>
       </Section>
 
-      <Section variant="muted" title="Implementation Process">
-        <div className="max-w-xl mx-auto">
-          <ol className="relative border-l-2 border-primary/20 ml-4 space-y-0">
-            {steps.map(s=> (
-              <li key={s} className="ml-6 pb-6 relative">
-                <span className="absolute -left-[29px] w-4 h-4 rounded-full bg-primary border-4 border-white shadow"/>
-                <span className="text-sm font-medium">{s}</span>
-              </li>
-            ))}
-          </ol>
-          <p className="text-sm text-muted text-center mt-2">Each stage guided by experts in academia, industry, finance, law, marketing and entrepreneurship.</p>
-        </div>
+      <Section variant="muted" layout="split" title="Implementation Process" subtitle="Ten stages from a submitted idea to a business that grows without us.">
+        <ol className="space-y-5">
+          {steps.map((s, i) => (
+            <li key={s} className="flex items-baseline gap-5">
+              <span className="text-[19px] font-semibold text-brand tabular-nums w-6 shrink-0">{i + 1}</span>
+              <span className="text-[16px] font-medium text-ink">{s}</span>
+            </li>
+          ))}
+        </ol>
+        <p className="text-[16px] text-muted mt-8 max-w-[60ch]">
+          Each stage guided by experts in academia, industry, finance, law, marketing and entrepreneurship.
+        </p>
       </Section>
 
       <Section title="Activities" subtitle="Support across the full commercialisation journey.">
-        <div className="flex flex-wrap gap-2 justify-center max-w-3xl mx-auto">
-          {activities.map(a=> <span key={a} className="px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">{a}</span>)}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3">
+          {activities.map((a) => (
+            <p key={a} className="text-[16px] text-ink">
+              <span className="text-brand mr-3">—</span>
+              {a}
+            </p>
+          ))}
         </div>
       </Section>
 
       <Section variant="muted" title="Expected Outcomes">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-3xl mx-auto">
-          {outcomes.map(o=> <div key={o} className="bg-white border border-border rounded-lg p-3 text-sm font-medium text-center">{o}</div>)}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3">
+          {outcomes.map((o) => (
+            <p key={o} className="text-[16px] text-ink">
+              <span className="text-brand mr-3">—</span>
+              {o}
+            </p>
+          ))}
         </div>
       </Section>
 
       <Section title="Stakeholder Roles">
-        <div className="grid md:grid-cols-2 gap-4">
-          {roles.map(r=> <div key={r.r} className="bg-gray-50 border border-border rounded-xl p-5"><h4 className="font-semibold text-primary">{r.r}</h4><p className="text-sm text-muted mt-1">{r.d}</p></div>)}
+        <div className="grid md:grid-cols-2 gap-x-10 gap-y-8">
+          {roles.map((r) => (
+            <div key={r.r}>
+              <h4 className="text-[19px] font-semibold text-primary">{r.r}</h4>
+              <p className="text-[16px] text-muted mt-1 leading-relaxed">{r.d}</p>
+            </div>
+          ))}
         </div>
       </Section>
 
       <Section variant="muted" title="Long-Term Impact">
-        <div className="flex flex-wrap gap-2 justify-center">
-          {["Higher graduate employment","Increased innovation","New industries","Technology transfer","Increased exports","Foreign investment","Regional economic development","Stronger university–industry collaboration"].map(i=> <span key={i} className="px-4 py-2 rounded-full bg-white border border-border text-sm">{i}</span>)}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-3">
+          {["Higher graduate employment","Increased innovation","New industries","Technology transfer","Increased exports","Foreign investment","Regional economic development","Stronger university–industry collaboration"].map((i) => (
+            <p key={i} className="text-[16px] text-ink">
+              <span className="text-brand mr-3">—</span>
+              {i}
+            </p>
+          ))}
         </div>
-        <p className="text-center text-muted mt-6 max-w-3xl mx-auto">The ultimate objective is to transform research into sustainable businesses that contribute to national economic growth.</p>
+        <p className="text-left text-muted mt-8 max-w-[68ch]">
+          The ultimate objective is to transform research into sustainable businesses that contribute to
+          national economic growth.
+        </p>
       </Section>
     </>
   )

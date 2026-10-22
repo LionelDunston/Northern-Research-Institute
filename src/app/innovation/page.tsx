@@ -1,4 +1,6 @@
 import { Section } from "@/components/layout/Section"
+import { PhotoStrip } from "@/components/sections/PhotoStrip"
+import { PageHero } from "@/components/layout/PageHero"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -32,60 +34,119 @@ const roles = [
 export default function CommunityDevelopmentPage() {
   return (
     <>
-      <section className="bg-gradient-to-r from-primary to-primary-light text-white py-20">
-        <div className="container-wide text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold">Community Development through Research</h1>
-          <p className="mt-4 text-lg text-white/80 max-w-3xl mx-auto">Transform research into practical community programmes that improve quality of life, strengthen public services, reduce inequalities, and support sustainable development.</p>
-        </div>
-      </section>
+      <PageHero title="Community Development" lede="Transform research into practical community programmes that improve quality of life, strengthen public services, reduce inequalities, and support sustainable development." image={{ src: "/editorial/tea-factory-sri-lanka-female-working.jpg", alt: "Workers at a tea factory in Sri Lanka.", credit: "“Tea factory Sri Lanka female working” by Peter van der Sluijs, CC BY-SA 3.0, via Wikimedia Commons." }} action={{ label: "Who can contribute", href: "/innovation#contribute" }} />
 
       <Section title="Objective" subtitle="Many projects aim not for profit but to solve social, environmental and governance challenges — research becomes a practical tool for development.">
-        <div className="max-w-3xl mx-auto bg-primary/5 border border-primary/10 rounded-xl p-6 text-muted leading-relaxed">
-          To transform research into practical community development programmes that improve people's quality of life, strengthen public services, reduce inequalities, and support sustainable development.
-        </div>
+        <p className="max-w-[68ch] text-[26px] font-semibold text-primary leading-snug">
+          To transform research into practical community development programmes that improve
+          people&rsquo;s quality of life, strengthen public services, reduce inequalities, and support
+          sustainable development.
+        </p>
       </Section>
 
-      <Section variant="muted" title="Who Can Contribute?">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {contributors.map(c=> <div key={c} className="bg-white border border-border rounded-lg p-3 text-sm font-medium text-center">{c}</div>)}
+      <PhotoStrip
+        title="The work in the fields"
+        images={[
+          {
+            src: "/editorial/coconut-rope-production.jpg",
+            alt: "Village artisans weaving coconut rope on an industrial scale in Sri Lanka.",
+            caption: "Artisans weave coconut rope in a village workshop.",
+            credit: "“Coconut Rope Production” by Curved.kiwix, CC BY-SA 4.0, via Wikimedia Commons.",
+          },
+          {
+            src: "/editorial/greenery-paddy-field.jpg",
+            alt: "A rice-harvesting machine working in a paddy field in Sri Lanka.",
+            caption: "Rice is harvested and milled on the island's farms.",
+            credit: "“Greenery paddy field” by Theja D Senanayake, CC BY-SA 4.0, via Wikimedia Commons.",
+          },
+          {
+            src: "/editorial/life-is-a-boat.jpg",
+            alt: "A fishing boat resting in a lagoon off Jaffna.",
+            caption: "Fishing boats rest in the lagoons that ring the peninsula.",
+            credit: "“Life is a boat!” by Navod Thathsara Kankanamge, CC BY-SA 4.0, via Wikimedia Commons.",
+          },
+        ]}
+      />
+
+      <Section id="contribute" variant="muted" title="Who Can Contribute?">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
+          {contributors.map((c) => (
+            <p key={c} className="text-[16px] font-medium text-ink">
+              <span className="text-brand mr-3">—</span>
+              {c}
+            </p>
+          ))}
         </div>
-        <p className="text-sm text-muted text-center mt-4">Interdisciplinary collaboration — complex community challenges need multiple fields.</p>
+        <p className="text-[16px] text-muted mt-8 max-w-[68ch]">
+          Interdisciplinary collaboration — complex community challenges need multiple fields.
+        </p>
       </Section>
 
       <Section title="Priority Themes">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {themes.map(th=> <div key={th.t} className="bg-white rounded-xl border border-border p-6"><h3 className="font-semibold text-primary">{th.t}</h3><p className="text-sm text-muted mt-2">{th.d}</p></div>)}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
+          {themes.map((th) => (
+            <div key={th.t}>
+              <h3 className="text-[19px] font-semibold text-primary">{th.t}</h3>
+              <p className="text-[16px] text-muted mt-2 leading-relaxed">{th.d}</p>
+            </div>
+          ))}
         </div>
       </Section>
 
-      <Section variant="muted" title="Implementation Process">
-        <div className="max-w-xl mx-auto">
-          <ol className="relative border-l-2 border-primary/20 ml-4">
-            {steps.map(s=> <li key={s} className="ml-6 pb-6 relative"><span className="absolute -left-[29px] w-4 h-4 rounded-full bg-primary border-4 border-white shadow"/><span className="text-sm font-medium">{s}</span></li>)}
-          </ol>
-        </div>
+      <Section variant="muted" layout="split" title="Implementation Process" subtitle="Nine steps from a submitted idea to a programme that runs without us.">
+        <ol className="space-y-5">
+          {steps.map((s, i) => (
+            <li key={s} className="flex items-baseline gap-5">
+              <span className="text-[19px] font-semibold text-brand tabular-nums w-6 shrink-0">{i + 1}</span>
+              <span className="text-[16px] font-medium text-ink">{s}</span>
+            </li>
+          ))}
+        </ol>
       </Section>
 
       <Section title="Activities">
-        <div className="flex flex-wrap gap-2 justify-center max-w-3xl mx-auto">
-          {activities.map(a=> <span key={a} className="px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">{a}</span>)}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3">
+          {activities.map((a) => (
+            <p key={a} className="text-[16px] text-ink">
+              <span className="text-brand mr-3">—</span>
+              {a}
+            </p>
+          ))}
         </div>
       </Section>
 
       <Section variant="muted" title="Stakeholder Roles">
-        <div className="grid md:grid-cols-2 gap-4">
-          {roles.map(r=> <div key={r.r} className="bg-white border border-border rounded-xl p-5"><h4 className="font-semibold text-primary">{r.r}</h4><p className="text-sm text-muted mt-1">{r.d}</p></div>)}
+        <div className="grid md:grid-cols-2 gap-x-10 gap-y-8">
+          {roles.map((r) => (
+            <div key={r.r}>
+              <h4 className="text-[19px] font-semibold text-primary">{r.r}</h4>
+              <p className="text-[16px] text-muted mt-1 leading-relaxed">{r.d}</p>
+            </div>
+          ))}
         </div>
       </Section>
 
       <Section title="Expected Outcomes">
-        <div className="flex flex-wrap gap-2 justify-center">
-          {["Improved community well-being","Evidence-based programmes","Better public services","Employment opportunities","Stronger local institutions","Sustainable livelihoods","Women's economic empowerment","Inclusive communities","Climate resilience","Scalable development models"].map(o=> <span key={o} className="px-4 py-2 rounded-full bg-gray-50 border border-border text-sm">{o}</span>)}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3">
+          {["Improved community well-being","Evidence-based programmes","Better public services","Employment opportunities","Stronger local institutions","Sustainable livelihoods","Women's economic empowerment","Inclusive communities","Climate resilience","Scalable development models"].map((o) => (
+            <p key={o} className="text-[16px] text-ink">
+              <span className="text-brand mr-3">—</span>
+              {o}
+            </p>
+          ))}
         </div>
       </Section>
 
-      <Section variant="muted" title="Long-Term Impact">
-        <p className="text-muted leading-relaxed max-w-3xl mx-auto text-center">This pathway transforms universities into active partners in national development. Research no longer remains in libraries but becomes a practical tool for solving real-world problems. Graduates gain meaningful employment, lecturers see work translated into measurable impact, governments receive evidence for policy, NGOs strengthen programmes, and communities benefit from sustainable, locally relevant solutions. Together, Business Opportunities and Community Development demonstrate that research is a strategic national resource — generating enterprises, improving policy, strengthening communities, and driving inclusive development.</p>
+      <Section variant="muted" layout="split" title="Long-Term Impact">
+        <p className="text-muted leading-relaxed text-left">
+          This pathway transforms universities into active partners in national development. Research no
+          longer remains in libraries but becomes a practical tool for solving real-world problems.
+          Graduates gain meaningful employment, lecturers see work translated into measurable impact,
+          governments receive evidence for policy, NGOs strengthen programmes, and communities benefit
+          from sustainable, locally relevant solutions. Together, Business Opportunities and Community
+          Development demonstrate that research is a strategic national resource — generating
+          enterprises, improving policy, strengthening communities, and driving inclusive development.
+        </p>
       </Section>
     </>
   )
