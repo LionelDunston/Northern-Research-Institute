@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const items = [
   { href: "/research/repository", title: "Research Repository", desc: "Data & Knowledge Centre - explore datasets and knowledge resources." },
-  { href: "https://www.peerreview.eu/", title: "Research Evaluation", desc: "Standards for peer review and evaluation.", external: true },
+  { href: "/research-evaluation", title: "Research Evaluation", desc: "Standards for peer review and evaluation." },
   { href: "/business-opportunities", title: "Business Opportunities", desc: "Connecting ideas to enterprise and markets." },
   { href: "/community-development", title: "Community Development", desc: "Driving inclusive growth at community level." },
   { href: "/how-it-works/community-engagement", title: "Community Engagement and Participatory Research", desc: "Understanding Community Needs. Co-Creating Solutions." },
