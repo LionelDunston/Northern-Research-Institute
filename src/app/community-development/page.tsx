@@ -8,27 +8,27 @@ export const metadata: Metadata = {
 
 const contributors = ["Undergraduate students","Postgraduate researchers","University lecturers","Public research institutions","NGOs","Community organisations","Government departments","Professional practitioners","Development consultants","International research partners"]
 const themes = [
-  { cat: "Poverty Reduction", items: ["Livelihoods","Income generation","Financial inclusion","Social protection","Community development"] },
+  { cat: "Poverty Reduction", items: ["Livelihoods","Income generation","Financial inclusion","Social protection","Rural development"] },
   { cat: "Education", items: ["School improvement","Teacher development","Digital education","Inclusive education","Career guidance"] },
   { cat: "Health", items: ["Community health","Nutrition","Mental health","Ageing","Disability","Maternal and child health"] },
   { cat: "Environment", items: ["Climate change","Biodiversity","Waste management","Water conservation","Renewable energy"] },
   { cat: "Women's Empowerment", items: ["Leadership","Entrepreneurship","Economic participation","Gender equality","Financial inclusion"] },
   { cat: "Disability Inclusion", items: ["Accessibility","Assistive technology","Inclusive employment","Independent living"] },
   { cat: "Youth Development", items: ["Employment","Leadership","Entrepreneurship","Civic engagement"] },
-  { cat: "Community Development", items: ["Agriculture","Fisheries","Tourism","Infrastructure","Local governance","Digital villages"] },
+  { cat: "Rural Development", items: ["Agriculture","Fisheries","Tourism","Infrastructure","Local governance","Digital villages"] },
 ]
 const steps = ["Research Submission","Evidence Review","Community Validation","Project Design","Partner Identification","Funding Approval","Pilot Implementation","Monitoring and Evaluation","Scaling Through Government, NGOs or Communities"]
 const activities = ["Community consultations","Baseline surveys","Training programmes","Awareness campaigns","Pilot projects","Demonstration sites","Community enterprises","Policy dialogue","Monitoring and evaluation","Capacity building","Digital service delivery","Volunteer mobilisation"]
 const roles = [
-  { r: "Graduates", d: "Project coordinators, researchers, trainers, monitoring officers, and social entrepreneurs." },
-  { r: "Lecturers", d: "Technical guidance, mentoring, and quality assurance." },
+  { r: "Graduates", d: "Serve as project coordinators, researchers, trainers, monitoring officers, and social entrepreneurs." },
+  { r: "Lecturers", d: "Provide technical guidance, mentoring, and quality assurance." },
   { r: "Researchers", d: "Strengthen evidence, conduct impact evaluations, and improve project design." },
   { r: "NGOs", d: "Implement projects, mobilise communities, and manage donor-funded programmes." },
   { r: "Community Organisations", d: "Identify local priorities, participate in implementation, and ensure sustainability." },
-  { r: "Government", d: "Integrate successful pilots into public programmes and provide policy support." },
-  { r: "Development Partners", d: "Financial support, technical expertise, monitoring, and international best practices." },
+  { r: "Government", d: "Integrate successful pilot projects into public programmes and provide policy support." },
+  { r: "Development Partners", d: "Provide financial support, technical expertise, monitoring, and international best practices." },
 ]
-const outcomes = ["Improved community well-being","Evidence-based programmes","Better public services","Employment opportunities","Stronger local institutions","Sustainable livelihoods","Women's economic empowerment","Inclusive communities","Climate resilience","Scalable development models"]
+const outcomes = ["Improved community well-being","Evidence-based development programmes","Better public services","Increased employment opportunities","Stronger local institutions","Sustainable livelihoods","Women's economic empowerment","Inclusive communities","Climate resilience","Scalable development models"]
 
 export default function CommunityDevelopmentPage() {
   return (
@@ -45,6 +45,7 @@ export default function CommunityDevelopmentPage() {
       <Section title="Objective">
         <div className="max-w-4xl mx-auto space-y-4 text-muted leading-relaxed">
           <p>To transform research into practical community development programmes that improve people's quality of life, strengthen public services, reduce inequalities, and support sustainable development.</p>
+          <p>This pathway recognises that many research projects are designed not to generate commercial profit but to solve important social, environmental, and governance challenges.</p>
         </div>
       </Section>
 
@@ -52,7 +53,7 @@ export default function CommunityDevelopmentPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {contributors.map(c => <div key={c} className="bg-white border border-border rounded-lg p-3 text-sm font-medium text-center">{c}</div>)}
         </div>
-        <p className="text-sm text-muted text-center mt-4">Interdisciplinary collaboration — complex community challenges need multiple fields.</p>
+        <p className="text-sm text-muted text-center mt-4">The platform encourages interdisciplinary collaboration because complex community challenges require expertise from multiple fields.</p>
       </Section>
 
       <Section title="Priority Themes">
@@ -68,7 +69,7 @@ export default function CommunityDevelopmentPage() {
         </div>
       </Section>
 
-      <Section variant="muted" title="Implementation Process">
+      <Section variant="muted" title="Implementation Process" subtitle="This process ensures that research findings are translated into practical interventions with measurable results.">
         <div className="flex flex-wrap gap-2 justify-center">
           {steps.map((s, idx) => (
             <div key={s} className="flex items-center gap-2">
@@ -104,8 +105,8 @@ export default function CommunityDevelopmentPage() {
 
       <Section variant="muted" title="Long-Term Impact">
         <div className="max-w-4xl mx-auto text-center text-muted leading-relaxed space-y-4">
-          <p>This pathway transforms universities into active partners in national development. Research no longer remains in libraries but becomes a practical tool for solving real-world problems. Graduates gain meaningful employment, lecturers see work translated into measurable impact, governments receive evidence for policy, NGOs strengthen programmes, and communities benefit from sustainable, locally relevant solutions.</p>
-          <p>Together, Business Opportunities and Community Development demonstrate that research is a strategic national resource — generating enterprises, improving policy, strengthening communities, and driving inclusive development.</p>
+          <p>This pathway transforms universities into active partners in national development. Research no longer remains within academic libraries but becomes a practical tool for solving real-world problems. Graduates gain meaningful employment through implementation, lecturers and researchers see their work translated into measurable impact, governments receive evidence for policy decisions, NGOs strengthen programme effectiveness, and communities benefit from sustainable, locally relevant solutions.</p>
+          <p>Together, the Business Opportunities and Community Development pathways demonstrate that research is not an end in itself—it is a strategic national resource capable of generating enterprises, improving public policy, strengthening communities, and driving inclusive economic and social development.</p>
         </div>
       </Section>
     </>
