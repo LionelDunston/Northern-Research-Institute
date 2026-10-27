@@ -51,7 +51,7 @@ export function Hero() {
 
           <div className="mt-9 flex flex-wrap gap-3 justify-center">
             <Link
-              href="/research-programmes"
+              href="/how-it-works"
               className="inline-flex items-center px-6 py-3 rounded-md bg-white text-[#0a2de0] text-sm font-semibold hover:bg-white/90 transition-colors"
             >
               See How It Works
