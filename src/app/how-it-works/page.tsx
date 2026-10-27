@@ -10,7 +10,7 @@ const items = [
   { href: "/research/repository", title: "Research Repository", desc: "Data & Knowledge Centre - explore datasets and knowledge resources." },
   { href: "https://www.peerreview.eu/", title: "Research Evaluation", desc: "Standards for peer review and evaluation.", external: true },
   { href: "/business-opportunities", title: "Business Opportunities", desc: "Connecting ideas to enterprise and markets." },
-  { href: "https://www.un.org/development/desa/", title: "Community Development", desc: "Driving inclusive growth at community level.", external: true },
+  { href: "/community-development", title: "Community Development", desc: "Driving inclusive growth at community level." },
   { href: "/how-it-works/community-engagement", title: "Community Engagement and Participatory Research", desc: "Understanding Community Needs. Co-Creating Solutions." },
   { href: "/how-it-works/policy-research", title: "Policy Research and Government Advisory", desc: "Evidence for Better Decisions. Research for Better Public Services." },
   { href: "/how-it-works/research-to-opportunity", title: "Research-to-Opportunity and Innovation Development", desc: "Turning Knowledge into Practical Opportunities" },
