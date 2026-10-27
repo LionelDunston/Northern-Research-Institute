@@ -40,10 +40,7 @@ export default function AboutPage() {
       <Section>
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-lg text-muted leading-relaxed">
-            The Northern Research Institute (NRI) is a research and innovation organisation dedicated
-            to transforming knowledge across disciplines into practical solutions, opportunities, and
-            real-world impact. NRI connects research, expertise, and partnerships to support innovation,
-            enterprise, policy, employment, and sustainable national development.
+            NRI transforms research, data, and community knowledge into practical projects, businesses, policies, and development initiatives. Guided by evidence, community needs, emerging trends, stakeholder engagement, and the SDGs, we connect knowledge with the right partners to foster innovation, create employment, strengthen communities, and advance sustainable development.
           </p>
         </div>
       </Section>
