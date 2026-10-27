@@ -37,7 +37,7 @@ export default function HowItWorksPage() {
       <section className="section-padding bg-white">
         <div className="container-wide">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {items.map((item) => {
+            {items.map((item: any) => {
               if (item.external) {
                 return (
                   <a
