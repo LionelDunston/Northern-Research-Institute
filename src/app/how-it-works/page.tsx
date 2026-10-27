@@ -7,6 +7,10 @@ export const metadata: Metadata = {
 }
 
 const items = [
+  { href: "/research/repository", title: "Research Repository", desc: "Data & Knowledge Centre - explore datasets and knowledge resources." },
+  { href: "https://www.peerreview.eu/", title: "Research Evaluation", desc: "Standards for peer review and evaluation.", external: true },
+  { href: "https://www.ilo.org/", title: "Business Opportunities", desc: "Connecting ideas to enterprise and markets.", external: true },
+  { href: "https://www.un.org/development/desa/", title: "Community Development", desc: "Driving inclusive growth at community level.", external: true },
   { href: "/how-it-works/community-engagement", title: "01. Community Engagement and Participatory Research", desc: "Understanding Community Needs. Co-Creating Solutions." },
   { href: "/how-it-works/policy-research", title: "02. Policy Research and Government Advisory", desc: "Evidence for Better Decisions. Research for Better Public Services." },
   { href: "/how-it-works/research-to-opportunity", title: "03. Research-to-Opportunity and Innovation Development", desc: "Turning Knowledge into Practical Opportunities" },
@@ -33,17 +37,34 @@ export default function HowItWorksPage() {
       <section className="section-padding bg-white">
         <div className="container-wide">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {items.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="group block p-6 rounded-lg border border-gray-200 bg-white hover:border-[#0a2de0] hover:shadow-sm transition-all"
-              >
-                <h2 className="text-lg font-semibold text-foreground">{item.title}</h2>
-                <p className="mt-2 text-sm text-muted">{item.desc}</p>
-                <span className="mt-4 inline-flex text-sm font-semibold text-[#0a2de0] group-hover:underline">View details →</span>
-              </Link>
-            ))}
+            {items.map((item) => {
+              if (item.external) {
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block p-6 rounded-lg border border-gray-200 bg-white hover:border-[#0a2de0] hover:shadow-sm transition-all"
+                  >
+                    <h2 className="text-lg font-semibold text-foreground">{item.title}</h2>
+                    <p className="mt-2 text-sm text-muted">{item.desc}</p>
+                    <span className="mt-4 inline-flex text-sm font-semibold text-[#0a2de0] group-hover:underline">Open →</span>
+                  </a>
+                )
+              }
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="group block p-6 rounded-lg border border-gray-200 bg-white hover:border-[#0a2de0] hover:shadow-sm transition-all"
+                >
+                  <h2 className="text-lg font-semibold text-foreground">{item.title}</h2>
+                  <p className="mt-2 text-sm text-muted">{item.desc}</p>
+                  <span className="mt-4 inline-flex text-sm font-semibold text-[#0a2de0] group-hover:underline">View details →</span>
+                </Link>
+              )
+            })}
           </div>
         </div>
       </section>
