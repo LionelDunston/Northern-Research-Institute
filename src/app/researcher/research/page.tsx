@@ -29,8 +29,7 @@ export default function ResearcherResearchPage() {
   const [srl,setSrl]=useState("")
   // Step 4
   const [location,setLocation]=useState("")
-  const [problem,setProblem]=useState("")
-  const [valueProp,setValueProp]=useState("")
+  const [abstract,setAbstract]=useState("")
   // Step 5
   const [resourceReq,setResourceReq]=useState("")
   // Step 6
@@ -80,10 +79,8 @@ export default function ResearcherResearchPage() {
       if(!srl) return setError("Select a Social Readiness Level.")
     }
     if(!location.trim()) return setError("Location is required.")
-    if(countWords(problem)===0) return setError("Describe the Real-World Problem.")
-    if(countWords(problem)>250) return setError("Real-World Problem exceeds 250 words.")
-    if(countWords(valueProp)===0) return setError("Describe the Value Proposition.")
-    if(countWords(valueProp)>250) return setError("Value Proposition exceeds 250 words.")
+    if(countWords(abstract)===0) return setError("Describe the Abstract.")
+    if(countWords(abstract)>250) return setError("Abstract exceeds 250 words.")
     if(!resourceReq.trim()) return setError("Describe your Resource Requirements.")
     if(!fileDeck) return setError("Slide Deck / Video Pitch is required.")
     if(!ipAgree) return setError("You must agree to the IP Declaration.")
@@ -108,8 +105,10 @@ export default function ResearcherResearchPage() {
       fd.append("trl", trl)
       fd.append("srl", srl)
       fd.append("location", location)
-      fd.append("problem", problem)
-      fd.append("valueProp", valueProp)
+      fd.append("problem", abstract)
+      fd.append("abstract", abstract)
+      fd.append("description", abstract)
+      fd.append("valueProp", "")
       fd.append("resourceNeeds", resourceReq)
       if(filePaper) fd.append("filePaper", filePaper)
       if(fileDeck) fd.append("fileDeck", fileDeck)
@@ -121,7 +120,7 @@ export default function ResearcherResearchPage() {
       setSuccess(true)
       setShowForm(false)
       setResearchStatus(""); setPathway(""); setTitle(""); setDoi(""); setJournal(""); setYear(""); setAuthorAff(""); setUnpubDesc("")
-      setTrl(""); setSrl(""); setLocation(""); setProblem(""); setValueProp("")
+      setTrl(""); setSrl(""); setLocation(""); setAbstract("")
       setResourceReq("");
       setFilePaper(null); setFileDeck(null); setFileAssets(null); setIpAgree(false)
       load()
@@ -294,13 +293,8 @@ export default function ResearcherResearchPage() {
                 <p className="text-xs text-muted mt-1">Target location where this research will be implemented.</p>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">The Real-World Problem * <span className="text-muted font-normal">({countWords(problem)}/250 words)</span></label>
-                <textarea value={problem} onChange={e=>setProblem(e.target.value)} rows={4} placeholder="What urgent industry problem or community challenge does your research solve?" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Value Proposition * <span className="text-muted font-normal">({countWords(valueProp)}/250 words)</span></label>
-                <p className="text-xs text-muted mb-1">{pathway==="social" || pathway==="rural" ? "How does this increase or stabilize community well-being or household income without primary profit?" : pathway==="commercial" || pathway==="industrial" ? "How does this save money, increase production, or generate revenue/returns?" : "Describe the economic / social value."}</p>
-                <textarea value={valueProp} onChange={e=>setValueProp(e.target.value)} rows={4} placeholder="Describe value..." className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
+                <label className="block text-sm font-medium mb-1">Abstract * <span className="text-muted font-normal">({countWords(abstract)}/250 words)</span></label>
+                <textarea value={abstract} onChange={e=>setAbstract(e.target.value)} rows={4} placeholder="Provide a concise abstract of your research." className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
               </div>
             </div>
           </section>
