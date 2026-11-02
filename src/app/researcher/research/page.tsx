@@ -82,10 +82,11 @@ export default function ResearcherResearchPage() {
     if(countWords(abstract)===0) return setError("Describe the Abstract.")
     if(countWords(abstract)>250) return setError("Abstract exceeds 250 words.")
     if(!resourceReq.trim()) return setError("Describe your Resource Requirements.")
-    if(!fileDeck) return setError("Slide Deck / Video Pitch is required.")
     if(!ipAgree) return setError("You must agree to the IP Declaration.")
-    const e2 = validateFile(fileDeck,50,[".pdf",".ppt",".pptx",".mp4"])
-    if(e2) return setError(e2)
+    if(fileDeck){
+      const e2 = validateFile(fileDeck,50,[".pdf",".ppt",".pptx",".mp4"])
+      if(e2) return setError(e2)
+    }
     if(fileAssets){
       const e3 = validateFile(fileAssets,100,[".zip"])
       if(e3) return setError(e3)
@@ -319,7 +320,7 @@ export default function ResearcherResearchPage() {
                 {filePaper && <p className="text-xs text-muted mt-1">{filePaper.name} — {(filePaper.size/1024/1024).toFixed(2)} MB</p>}
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Slide Deck or Video Pitch (PPT, PDF, MP4, Max 50MB) *</label>
+                <label className="block text-sm font-medium mb-1">Slide Deck or Video Pitch (PPT, PDF, MP4, Max 50MB)</label>
                 <input type="file" accept=".pdf,.ppt,.pptx,.mp4" onChange={e=> setFileDeck(e.target.files?.[0]||null)} className="w-full text-sm" />
                 {fileDeck && <p className="text-xs text-muted mt-1">{fileDeck.name} — {(fileDeck.size/1024/1024).toFixed(2)} MB</p>}
               </div>
