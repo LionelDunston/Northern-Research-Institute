@@ -27,10 +27,10 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">For Stakeholders</h3>
             <ul className="space-y-2">
-              <li><Link href="/rti#research-portal" className="text-sm text-white/70 hover:text-white transition-colors">Researchers</Link></li>
-              <li><Link href="/rti#investor-portal" className="text-sm text-white/70 hover:text-white transition-colors">Investors</Link></li>
-              <li><Link href="/rti#government-portal" className="text-sm text-white/70 hover:text-white transition-colors">Government</Link></li>
-              <li><Link href="/rti#business-portal" className="text-sm text-white/70 hover:text-white transition-colors">Businesses</Link></li>
+              <li><Link href="/partnerships" className="text-sm text-white/70 hover:text-white transition-colors">Researchers</Link></li>
+              <li><Link href="/partnerships" className="text-sm text-white/70 hover:text-white transition-colors">Investors</Link></li>
+              <li><Link href="/partnerships" className="text-sm text-white/70 hover:text-white transition-colors">Government</Link></li>
+              <li><Link href="/partnerships" className="text-sm text-white/70 hover:text-white transition-colors">Businesses</Link></li>
             </ul>
           </div>
           <div>
