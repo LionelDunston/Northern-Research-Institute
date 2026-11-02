@@ -83,7 +83,6 @@ export default function ResearcherResearchPage() {
       if(countWords(abstract)===0) return setError("Describe the Abstract.")
       if(countWords(abstract)>250) return setError("Abstract exceeds 250 words.")
     }
-    if(!resourceReq.trim()) return setError("Describe your Resource Requirements.")
     if(!ipAgree) return setError("You must agree to the IP Declaration.")
     if(fileDeck){
       const e2 = validateFile(fileDeck,50,[".pdf",".ppt",".pptx",".mp4"])
@@ -114,7 +113,7 @@ export default function ResearcherResearchPage() {
         fd.append("description", abstract)
       }
       fd.append("valueProp", "")
-      fd.append("resourceNeeds", resourceReq)
+      if(resourceReq.trim()) fd.append("resourceNeeds", resourceReq)
       if(filePaper) fd.append("filePaper", filePaper)
       if(fileDeck) fd.append("fileDeck", fileDeck)
       if(fileAssets) fd.append("fileAssets", fileAssets)
@@ -311,7 +310,7 @@ export default function ResearcherResearchPage() {
             <h2 className="font-bold text-primary">Step 5: Resource Requirements (The Implementation Gap)</h2>
             <p className="text-sm text-muted mb-3">Briefly tell us what you need — we’ll provide examples, no need to be highly specific.</p>
             <div>
-              <label className="block text-sm font-medium mb-1">Resource Requirements *</label>
+              <label className="block text-sm font-medium mb-1">Resource Requirements</label>
               <textarea value={resourceReq} onChange={e=>setResourceReq(e.target.value)} rows={3} placeholder="e.g., NO IDEA, or lab testing equipment, CNC/3D printer, raw materials or seeds, GPU cluster, training hall, field land — briefly list what you need" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
             </div>
           </section>
