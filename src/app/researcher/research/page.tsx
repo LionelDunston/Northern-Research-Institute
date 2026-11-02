@@ -201,6 +201,10 @@ export default function ResearcherResearchPage() {
                     <input value={authorAff} onChange={e=>setAuthorAff(e.target.value)} placeholder="Dr. Perera, University of Peradeniya" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
                   </div>
                 </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Abstract * <span className="text-muted font-normal">({countWords(abstract)}/250 words)</span></label>
+                  <textarea value={abstract} onChange={e=>setAbstract(e.target.value)} rows={4} placeholder="Provide a concise abstract of your research." className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
+                </div>
               </div>
             )}
             {researchStatus==="unpublished" && (
@@ -296,12 +300,7 @@ export default function ResearcherResearchPage() {
                 <input value={location} onChange={e=>setLocation(e.target.value)} placeholder="e.g., Jaffna, Colombo, Kandy, or specific village / district" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
                 <p className="text-xs text-muted mt-1">Target location where this research will be implemented.</p>
               </div>
-              {researchStatus === "published" && (
-                <div>
-                  <label className="block text-sm font-medium mb-1">Abstract * <span className="text-muted font-normal">({countWords(abstract)}/250 words)</span></label>
-                  <textarea value={abstract} onChange={e=>setAbstract(e.target.value)} rows={4} placeholder="Provide a concise abstract of your research." className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
-                </div>
-              )}
+
             </div>
           </section>
 
