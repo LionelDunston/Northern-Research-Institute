@@ -84,7 +84,7 @@ export function NorthernPriorities() {
         </div>
 
         <div className="max-w-3xl mx-auto text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">Northern Development Priorities</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">Development Priorities</h2>
           <p className="mt-4 text-lg text-muted leading-relaxed">
             NRI's research and development agenda is grounded in the social, economic, environmental, and
             institutional realities of the Northern Province, while remaining connected to national and global
