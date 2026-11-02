@@ -79,8 +79,10 @@ export default function ResearcherResearchPage() {
       if(!srl) return setError("Select a Social Readiness Level.")
     }
     if(!location.trim()) return setError("Location is required.")
-    if(countWords(abstract)===0) return setError("Describe the Abstract.")
-    if(countWords(abstract)>250) return setError("Abstract exceeds 250 words.")
+    if(researchStatus === "published"){
+      if(countWords(abstract)===0) return setError("Describe the Abstract.")
+      if(countWords(abstract)>250) return setError("Abstract exceeds 250 words.")
+    }
     if(!resourceReq.trim()) return setError("Describe your Resource Requirements.")
     if(!ipAgree) return setError("You must agree to the IP Declaration.")
     if(fileDeck){
@@ -106,9 +108,11 @@ export default function ResearcherResearchPage() {
       fd.append("trl", trl)
       fd.append("srl", srl)
       fd.append("location", location)
-      fd.append("problem", abstract)
-      fd.append("abstract", abstract)
-      fd.append("description", abstract)
+      if(abstract.trim()){
+        fd.append("problem", abstract)
+        fd.append("abstract", abstract)
+        fd.append("description", abstract)
+      }
       fd.append("valueProp", "")
       fd.append("resourceNeeds", resourceReq)
       if(filePaper) fd.append("filePaper", filePaper)
@@ -293,10 +297,12 @@ export default function ResearcherResearchPage() {
                 <input value={location} onChange={e=>setLocation(e.target.value)} placeholder="e.g., Jaffna, Colombo, Kandy, or specific village / district" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
                 <p className="text-xs text-muted mt-1">Target location where this research will be implemented.</p>
               </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Abstract * <span className="text-muted font-normal">({countWords(abstract)}/250 words)</span></label>
-                <textarea value={abstract} onChange={e=>setAbstract(e.target.value)} rows={4} placeholder="Provide a concise abstract of your research." className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
-              </div>
+              {researchStatus === "published" && (
+                <div>
+                  <label className="block text-sm font-medium mb-1">Abstract * <span className="text-muted font-normal">({countWords(abstract)}/250 words)</span></label>
+                  <textarea value={abstract} onChange={e=>setAbstract(e.target.value)} rows={4} placeholder="Provide a concise abstract of your research." className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
+                </div>
+              )}
             </div>
           </section>
 
