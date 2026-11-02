@@ -311,7 +311,7 @@ export default function ResearcherResearchPage() {
             <p className="text-sm text-muted mb-3">Briefly tell us what you need — we’ll provide examples, no need to be highly specific.</p>
             <div>
               <label className="block text-sm font-medium mb-1">Resource Requirements *</label>
-              <textarea value={resourceReq} onChange={e=>setResourceReq(e.target.value)} rows={3} placeholder="e.g., lab testing equipment, CNC/3D printer, raw materials or seeds, GPU cluster, training hall, field land — briefly list what you need" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
+              <textarea value={resourceReq} onChange={e=>setResourceReq(e.target.value)} rows={3} placeholder="e.g., NO IDEA, or lab testing equipment, CNC/3D printer, raw materials or seeds, GPU cluster, training hall, field land — briefly list what you need" className="w-full px-4 py-2.5 rounded-lg border border-border focus:border-accent outline-none" />
             </div>
           </section>
 
