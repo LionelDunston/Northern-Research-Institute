@@ -15,6 +15,17 @@ export const mainNav: NavItem[] = [
       { label: "Mentor Network", href: "/governance#mentor-network" },
     ],
   },
+  {
+    label: "Alliance Connect",
+    href: "/rti",
+    children: [
+      { label: "Investor Portal", href: "/rti#investor-portal" },
+      { label: "Government Portal", href: "/rti#government-portal" },
+      { label: "NGO Portal", href: "/rti#ngo-portal" },
+      { label: "Business Portal", href: "/rti#business-portal" },
+      { label: "Funding Portal", href: "/rti#funding-portal" },
+    ],
+  },
   { label: "News & Events", href: "/news" },
   { label: "Partnerships", href: "/partnerships" },
   { label: "Contact", href: "/contact" },
