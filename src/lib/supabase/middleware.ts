@@ -8,6 +8,18 @@ export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request })
 
   if (!supabaseUrl || !supabaseKey) {
+    const isProtected =
+      request.nextUrl.pathname.startsWith("/admin") ||
+      request.nextUrl.pathname.startsWith("/mentor") ||
+      request.nextUrl.pathname.startsWith("/researcher") ||
+      request.nextUrl.pathname.startsWith("/author") ||
+      request.nextUrl.pathname.startsWith("/student") ||
+      request.nextUrl.pathname.startsWith("/partner")
+    if (isProtected) {
+      const url = request.nextUrl.clone()
+      url.pathname = "/auth/login"
+      return NextResponse.redirect(url)
+    }
     return supabaseResponse
   }
 
@@ -29,8 +41,9 @@ export async function updateSession(request: NextRequest) {
   const isAdminRoute = request.nextUrl.pathname.startsWith("/admin")
   const isMentorRoute = request.nextUrl.pathname.startsWith("/mentor")
   const isResearcherRoute = request.nextUrl.pathname.startsWith("/researcher") || request.nextUrl.pathname.startsWith("/author") || request.nextUrl.pathname.startsWith("/student")
+  const isPartnerRoute = request.nextUrl.pathname.startsWith("/partner")
 
-  if (!user && (isAdminRoute || isMentorRoute || isResearcherRoute)) {
+  if (!user && (isAdminRoute || isMentorRoute || isResearcherRoute || isPartnerRoute)) {
     const url = request.nextUrl.clone()
     url.pathname = "/auth/login"
     url.searchParams.set("redirect", request.nextUrl.pathname)
@@ -57,6 +70,12 @@ export async function updateSession(request: NextRequest) {
     }
 
     if (isResearcherRoute && profile?.role !== "researcher" && profile?.role !== "author" && profile?.role !== "student" && profile?.role !== "mentor" && profile?.role !== "admin") {
+      const url = request.nextUrl.clone()
+      url.pathname = "/"
+      return NextResponse.redirect(url)
+    }
+
+    if (isPartnerRoute && profile?.role !== "partner" && profile?.role !== "admin") {
       const url = request.nextUrl.clone()
       url.pathname = "/"
       return NextResponse.redirect(url)

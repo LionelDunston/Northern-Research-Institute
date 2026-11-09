@@ -2,9 +2,15 @@ import { NextResponse } from "next/server"
 import { createClient, createAdminClient } from "@/lib/supabase/server"
 
 export async function GET(request: Request) {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+  const admin = createAdminClient()
+  const { data: profile } = await admin.from("profiles").select("role").eq("id", user.id).maybeSingle()
+  if (profile?.role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 })
+
   const { searchParams } = new URL(request.url)
   const slug = searchParams.get("slug")
-  const admin = createAdminClient()
   if (slug) {
     const { data } = await admin.from("page_contents").select("*").eq("slug", slug).maybeSingle()
     return NextResponse.json(data || null)
