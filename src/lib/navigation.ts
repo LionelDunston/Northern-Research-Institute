@@ -15,7 +15,7 @@ export const mainNav: NavItem[] = [
       { label: "Mentor Network", href: "/governance#mentor-network" },
     ],
   },
-  { label: "RTI Programme", href: "/rti" },
+  { label: "RTI Programme", href: "/how-it-works" },
   { label: "News & Events", href: "/news" },
   { label: "Partnerships", href: "/partnerships" },
   { label: "Contact", href: "/contact" },
