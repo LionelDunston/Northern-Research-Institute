@@ -8,9 +8,23 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] })
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Northern Research Institute (NRI) - Transforming Research into Practical Solutions",
+  metadataBase: new URL("https://northernresearchinstitute.org"),
+  title: {
+    default: "Northern Research Institute (NRI) - Transforming Research into Practical Solutions",
+    template: "%s | Northern Research Institute",
+  },
   description:
-    "The Northern Research Institute (NRI) is responsible for research, innovation, governance, partnerships, and national development.",
+    "The Northern Research Institute (NRI) advances research, innovation, governance, partnerships, and development impact in Sri Lanka's Northern Province.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "https://northernresearchinstitute.org",
+    siteName: "Northern Research Institute",
+    title: "Northern Research Institute (NRI)",
+    description:
+      "Transforming research into practical solutions for innovation, policy, business, and community development.",
+  },
+  robots: { index: true, follow: true },
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
