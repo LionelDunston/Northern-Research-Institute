@@ -7,9 +7,28 @@ import { SuccessStories } from "@/components/sections/SuccessStories"
 import { NewsSection } from "@/components/sections/NewsSection"
 import { QuickLinks } from "@/components/sections/QuickLinks"
 
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ResearchOrganization",
+  name: "Northern Research Institute",
+  alternateName: "NRI",
+  url: "https://northernresearchinstitute.org",
+  description:
+    "The Northern Research Institute (NRI) transforms research into practical solutions for innovation, policy, business, and community development in Sri Lanka's Northern Province.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Jaffna",
+    addressCountry: "LK",
+  },
+}
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+      />
       <Hero />
       <StatsBar />
       <WelcomeMessage />
