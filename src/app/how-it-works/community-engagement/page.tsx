@@ -2,6 +2,7 @@ import { Section } from "@/components/layout/Section"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/how-it-works/community-engagement" },
   title: "Community Engagement and Participatory Research | NRI",
   description: "Understanding Community Needs. Co-Creating Solutions.",
 }

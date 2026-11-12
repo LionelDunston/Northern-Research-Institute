@@ -3,6 +3,7 @@ import { knowledgeResources } from "@/lib/data"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/knowledge" },
   title: "Knowledge Centre | Northern Research Institute",
   description: "Access NRI's learning resources including proposal templates, business plan templates, grant writing guides, and toolkits.",
 }

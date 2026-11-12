@@ -2,6 +2,7 @@ import { Section } from "@/components/layout/Section"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About the Institute | Northern Research Institute",
   description: "Learn about NRI's purpose, identity, strategic direction, vision, mission, core values, and commitment to transforming research into meaningful national development.",
 }

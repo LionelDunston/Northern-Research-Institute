@@ -2,6 +2,7 @@ import { Section } from "@/components/layout/Section"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/research-evaluation" },
   title: "Research Evaluation | NRI",
   description: "Experts assess submitted research through a structured evaluation process to identify practical potential and implementation pathways.",
 }

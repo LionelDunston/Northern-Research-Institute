@@ -2,6 +2,7 @@ import { Section } from "@/components/layout/Section"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/how-it-works/institutional-quality" },
   title: "Institutional Quality, Ethics and Accountability | NRI",
   description: "Building Trust. Upholding Integrity. Demonstrating Impact.",
 }

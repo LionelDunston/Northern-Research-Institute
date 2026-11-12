@@ -3,6 +3,7 @@ import { newsItems } from "@/lib/data"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/news" },
   title: "News & Events | Northern Research Institute",
   description: "Stay informed about NRI's conferences, workshops, training, competitions, and success stories.",
 }

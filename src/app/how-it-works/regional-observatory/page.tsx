@@ -2,6 +2,7 @@ import { Section } from "@/components/layout/Section"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/how-it-works/regional-observatory" },
   title: "Regional Development Observatory and Evidence Monitoring | NRI",
   description: "Understanding Regional Change. Informing Development Decisions.",
 }

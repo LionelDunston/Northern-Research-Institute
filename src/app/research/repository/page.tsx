@@ -2,6 +2,7 @@ import { Section } from "@/components/layout/Section"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/research/repository" },
   title: "Research Repository | NRI",
   description: "NRI develops an integrated Data & Knowledge Centre that collects, processes, analyses, and disseminates data and knowledge.",
 }

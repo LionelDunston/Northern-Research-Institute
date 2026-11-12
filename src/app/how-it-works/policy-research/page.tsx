@@ -2,6 +2,7 @@ import { Section } from "@/components/layout/Section"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/how-it-works/policy-research" },
   title: "Policy Research and Government Advisory | NRI",
   description: "Evidence for Better Decisions. Research for Better Public Services.",
 }

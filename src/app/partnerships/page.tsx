@@ -3,6 +3,7 @@ import { partners } from "@/lib/data"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/partnerships" },
   title: "Partnerships | Northern Research Institute",
   description: "Learn about NRI's strategic collaborations and how to partner with the Institute.",
 }

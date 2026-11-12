@@ -11,14 +11,21 @@ const routes = [
   "/partnerships",
   "/contact",
   "/governance",
-  "/research-programmes",
-  "/innovation",
   "/knowledge",
   "/publications",
   "/research/repository",
   "/research-evaluation",
   "/business-opportunities",
   "/community-development",
+  "/how-it-works/community-engagement",
+  "/how-it-works/policy-research",
+  "/how-it-works/research-to-opportunity",
+  "/how-it-works/graduate-development",
+  "/how-it-works/funding-mobilisation",
+  "/how-it-works/university-collaboration",
+  "/how-it-works/knowledge-dissemination",
+  "/how-it-works/institutional-quality",
+  "/how-it-works/regional-observatory",
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

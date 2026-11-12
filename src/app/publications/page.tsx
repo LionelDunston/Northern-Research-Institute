@@ -3,6 +3,7 @@ import { publications } from "@/lib/data"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/publications" },
   title: "Publications | Northern Research Institute",
   description: "Browse NRI's publications including annual reports, research reports, policy briefs, journal articles, and more.",
 }

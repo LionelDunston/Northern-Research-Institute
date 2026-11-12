@@ -3,6 +3,7 @@ import { boardMembers, mentorNetwork, managementTeam } from "@/lib/data"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/governance" },
   title: "Governance | Northern Research Institute",
   description: "Learn about NRI's Board of Directors, Executive Director, Management & Functional Team, Advisory Council, and Mentor Network.",
 }

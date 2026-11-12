@@ -2,6 +2,7 @@ import { Section } from "@/components/layout/Section"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/rti" },
   title: "Research-to-Impact (RTI) | Northern Research Institute",
   description: "NRI's flagship programme transforming research across disciplines into practical solutions, innovation, opportunities, and real-world impact.",
 }

@@ -9,13 +9,9 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://northernresearchinstitute.org"),
-  title: {
-    default: "Northern Research Institute (NRI) - Transforming Research into Practical Solutions",
-    template: "%s | Northern Research Institute",
-  },
+  title: "Northern Research Institute (NRI) - Transforming Research into Practical Solutions",
   description:
     "The Northern Research Institute (NRI) advances research, innovation, governance, partnerships, and development impact in Sri Lanka's Northern Province.",
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "https://northernresearchinstitute.org",

@@ -2,6 +2,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/how-it-works" },
   title: "How It Works | NRI",
   description: "NRI's approach to transforming research into practical solutions and development impact.",
 }

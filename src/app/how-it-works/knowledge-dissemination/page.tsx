@@ -2,6 +2,7 @@ import { Section } from "@/components/layout/Section"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/how-it-works/knowledge-dissemination" },
   title: "Knowledge Dissemination and Public Communication | NRI",
   description: "Making Knowledge Accessible. Connecting Evidence with Action.",
 }
